@@ -1,23 +1,42 @@
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JScrollBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
+import javax.swing.JTextField;
 
 
 public class GUI extends JFrame {
+	private JTextField Frase;
+	private JLabel Monty,title;
+	private JPanelBackground panel;
+	private JPanel panel_1, panel_2;
+	private JButton btnIniciar;
+	private JMenuBar menuBar;
+	private JMenu mnNewMenu;
+	private JMenuItem mntmSalir;
+	
 	public GUI() {
 		super("Proyecto Tecnologia de Programacion 2015");
 		setResizable(false);
@@ -25,39 +44,69 @@ public class GUI extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0, 0));
+		setIconImage(new ImageIcon(getClass()
+				.getResource("/Imagenes/icon.png")).getImage());
 		
-		JPanel panel = new JPanel();
+		panel = new JPanelBackground("/Imagenes/Planta Nuclear.png");
 		getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel Monty = new JLabel("");
+		Monty = new JLabel("");
+		Monty.setHorizontalAlignment(SwingConstants.CENTER);
 		Monty.setVerticalAlignment(SwingConstants.BOTTOM);
-		Monty.setIcon(new ImageIcon("C:\\Users\\Esteban Federico\\Documents\\Proyecto 0\\mont2.png"));
-		panel.add(Monty);
+		Monty.setIcon(new ImageIcon(getClass().getResource(
+				"/Imagenes/mont2.png")));
+		panel.add(Monty, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new JPanel();
+		Frase = new JTextField();
+		Frase.setHorizontalAlignment(SwingConstants.CENTER);
+		Frase.setFont(new Font("Tahoma", Font.BOLD, 18));
+		Frase.setEditable(false);
+		panel.add(Frase, BorderLayout.SOUTH);
+		Frase.setColumns(10);
+		
+		panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
 		
-		JButton btnIniciar = new JButton("Iniciar");
+		btnIniciar = new JButton("");
+		btnIniciar.setIcon(new ImageIcon(getClass().getResource(
+				"/Imagenes/Start.png")));
+		OyenteFrase of = new OyenteFrase();
+		btnIniciar.addActionListener(of);
 		btnIniciar.setForeground(new Color(255, 215, 0));
-		btnIniciar.setFont(new Font("Akbar", Font.PLAIN, 30));
 		panel_1.add(btnIniciar);
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		getContentPane().add(panel_2, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("Los Simpsons - TDP");
-		lblNewLabel.setFont(new Font("Akbar", Font.PLAIN, 30));
-		panel_2.add(lblNewLabel);
+		title = new JLabel("");
+		title.setIcon(new ImageIcon(getClass().getResource(
+				"/Imagenes/Simpsons.png")));
+		panel_2.add(title);
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Archivo");
+		mnNewMenu = new JMenu("Archivo");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmReiniciar = new JMenuItem("Reiniciar");
-		mnNewMenu.add(mntmReiniciar);
+		mntmSalir = new JMenuItem("Salir");
+		OyenteCerrar oc = new OyenteCerrar();
+		mntmSalir.addActionListener(oc);
+		mnNewMenu.add(mntmSalir);
+	}
+	
+	class OyenteFrase implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			btnIniciar.setEnabled(false);
+			Frase.setText("Excelentee...");
+		}
+	}
+	
+	class OyenteCerrar implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			System.exit(0);
+		}
 	}
 
 }

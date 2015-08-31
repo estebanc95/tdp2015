@@ -99,7 +99,7 @@ public class GUI extends JFrame {
 	class OyenteFrase implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			btnIniciar.setEnabled(false);
-			Frase.setText("Excelentee...");
+			Frase.setText("Excelente...");
 		}
 	}
 	

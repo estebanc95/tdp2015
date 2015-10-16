@@ -20,14 +20,14 @@ public class Bomberman extends Personaje {
 		if (maxBombas-bColocadas<=0)
 			return false;
 		else{
-			new Bomba(getCelda());
+			new Bomba(getCelda(),alcance);
 			bColocadas++;
 			return true;
 		}
 	}
 	
-	public void setAlcance(int a){
-		alcance=a;
+	public void duplicarAlcance(int a){
+		alcance*=2;
 	}
 	
 	public int getAlcance(){
@@ -46,8 +46,8 @@ public class Bomberman extends Personaje {
 		maxBombas=c;
 	}
 	
-	public void aumentarVelocidad(){
-		velocidad++;
+	public void duplicarVelocidad(){
+		velocidad*=2;
 	}
 	
 	public void aumentarMaxBombas(){

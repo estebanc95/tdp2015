@@ -1,4 +1,6 @@
 package celda;
+import personaje.*;
+import powerUp.PowerUp;
 
 public class Celda {
 
@@ -6,19 +8,19 @@ public class Celda {
 	protected int posY;
 	protected Bomberman miBomberman;
 	protected Enemigo miEnemigo;
-	protected PowerUP miPowerUp;
+	protected PowerUp miPowerUp;
 	protected Estructura miEstructura;
 	protected Nivel miNivel;
 	protected Bomba miBomba;
 
 	public Celda(int px, int py, Bomberman b, Enemigo e, PowerUp p,
-			Estructura e, Nivel n) {
+			Estructura pared, Nivel n) {
 		posX = px;
 		posY = py;
 		miBomberman = b;
 		miEnemigo = e;
 		miPowerUp = p;
-		miEstuctura = e;
+		miEstructura = pared;
 		miNivel = n;
 		miBomba = null;
 	}
@@ -29,21 +31,21 @@ public class Celda {
 		miBomberman = null;
 		miEnemigo = null;
 		miPowerUp = p;
-		miEstuctura = e;
+		miEstructura = e;
 		miNivel = e;
 		miBomba = null;
 	}
 
 	public void atravesar(Bomberman b) {
 		if (miEstructura != null)
-			Estructura.atravesar(b);
+			miEstructura.atravesar(b);
 		else
 			colocar(b);
 	}
 
 	public void atravesar(Enemigo e) {
 		if (miEstructura != null)
-			Estructura.atravesar(e);
+			miEstructura.atravesar(e);
 		else
 			colocar(e);
 	}

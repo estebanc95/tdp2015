@@ -1,4 +1,6 @@
 package celda;
+import personaje.Bomberman;
+import personaje.Enemigo;
 
 public abstract class Estructura {
 

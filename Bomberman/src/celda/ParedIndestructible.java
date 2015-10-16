@@ -1,4 +1,6 @@
 package celda;
+import personaje.Bomberman;
+import personaje.Enemigo;
 
 public class ParedIndestructible extends Estructura {
 

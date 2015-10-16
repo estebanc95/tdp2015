@@ -1,7 +1,7 @@
 package personaje;
 import celda.Celda;
 
-public abstract class Enemigo {
+public abstract class Enemigo extends Personaje {
 	
 	protected int velocidad;
 	protected IA miIA;
@@ -16,8 +16,7 @@ public abstract class Enemigo {
 		return velocidad;
 	}
 	
-	public void pensar(){
-		//Hay que pensarlo
-	}
+	public abstract void pensar();
+	
 
 }

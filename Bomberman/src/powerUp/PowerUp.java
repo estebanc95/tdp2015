@@ -1,5 +1,7 @@
 package powerUp;
 
+import personaje.Bomberman;
+
 public abstract class PowerUp {
 	
 	protected Nivel miNivel;
@@ -7,5 +9,7 @@ public abstract class PowerUp {
 	protected PowerUp(Nivel n){
 		miNivel=n;
 	}
+	
+	public abstract void activar(Bomberman b);
 
 }

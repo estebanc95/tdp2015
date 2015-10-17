@@ -1,5 +1,6 @@
 package personaje;
 
+import logica.Nivel;
 import celda.Celda;
 
 public class Sirius extends Enemigo {
@@ -7,8 +8,8 @@ public class Sirius extends Enemigo {
 	protected int maxBombas;
 	protected int bColocadas;
 
-	public Sirius(IA i,Celda c,Nivel n){
-		super(i,c,n,false);
+	public Sirius(Celda c,Nivel n){
+		super(new IASirius(),c,n,false);
 		maxBombas=1;
 		bColocadas=0;
 	}

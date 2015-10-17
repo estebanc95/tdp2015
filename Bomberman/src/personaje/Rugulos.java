@@ -1,5 +1,6 @@
 package personaje;
 
+import logica.Nivel;
 import celda.Celda;
 
 public class Rugulos extends Enemigo {

@@ -1,4 +1,5 @@
 package celda;
+import logica.Nivel;
 import personaje.*;
 import powerUp.PowerUp;
 
@@ -33,6 +34,17 @@ public class Celda {
 		miPowerUp = p;
 		miEstructura = e;
 		miNivel = e;
+		miBomba = null;
+	}
+	
+	public Celda (int px,int py, Nivel n){
+		posX = px;
+		posY = py;
+		miBomberman = null;
+		miEnemigo = null;
+		miPowerUp = null;
+		miEstructura = null;
+		miNivel = n;
 		miBomba = null;
 	}
 

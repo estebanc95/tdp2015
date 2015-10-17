@@ -1,5 +1,6 @@
 package powerUp;
 
+import logica.Nivel;
 import personaje.Bomberman;
 
 public class SpeedUp extends PowerUp {

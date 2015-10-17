@@ -1,4 +1,5 @@
 package personaje;
+import logica.Nivel;
 import celda.Celda;
 
 public abstract class Personaje {

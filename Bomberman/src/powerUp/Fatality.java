@@ -1,4 +1,5 @@
 package powerUp;
+import logica.Nivel;
 import personaje.Bomberman;
 
 public class Fatality extends PowerUp {

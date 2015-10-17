@@ -26,7 +26,7 @@ public class Bomberman extends Personaje {
 		}
 	}
 	
-	public void duplicarAlcance(int a){
+	public void duplicarAlcance(){
 		alcance*=2;
 	}
 	

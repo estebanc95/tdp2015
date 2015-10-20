@@ -3,15 +3,15 @@ package powerUp;
 import logica.Nivel;
 import personaje.Bomberman;
 
-public class SpeedUp extends PowerUp {
+public class Bombality extends PowerUp {
 	
-	public SpeedUp(Nivel n){
+	public Bombality(Nivel n){
 		super(n);
 	}
 	
 	public void activar(Bomberman b){
-		b.duplicarVelocidad();
-		getNivel().aumentarPuntuacion(30);
+		b.aumentarMaxBombas();
+		getNivel().aumentarPuntuacion(35);
 	}
 
 }

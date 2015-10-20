@@ -10,6 +10,7 @@ public class Fatality extends PowerUp {
 	
 	public void activar (Bomberman b) {
 		b.duplicarAlcance();
+		getNivel().aumentarPuntuacion(35);
 	}
 
 }

@@ -1,4 +1,5 @@
 package personaje;
+import bombas.Bomba;
 import logica.Nivel;
 import celda.Celda;
 
@@ -17,11 +18,11 @@ public class Bomberman extends Personaje {
 		velocidad=1;
 	}
 	
-	public boolean ColocarBomba(){
+	public boolean colocarBomba(){
 		if (maxBombas-bColocadas<=0)
 			return false;
 		else{
-			new Bomba(getCelda(),alcance);
+			new Bomba(getNivel(),alcance,getCelda(),this);
 			bColocadas++;
 			return true;
 		}

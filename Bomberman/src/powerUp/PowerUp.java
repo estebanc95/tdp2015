@@ -12,5 +12,9 @@ public abstract class PowerUp {
 	}
 	
 	public abstract void activar(Bomberman b);
+	
+	public Nivel getNivel(){
+		return miNivel;
+	}
 
 }

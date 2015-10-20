@@ -35,6 +35,10 @@ public abstract class Personaje {
 		return miCelda;
 	}
 	
+	public Nivel getNivel(){
+		return miNivel;
+	}
+	
 	public void setCelda(Celda c){
 		miCelda=c;
 	}

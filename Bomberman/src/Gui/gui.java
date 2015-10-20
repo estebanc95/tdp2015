@@ -57,7 +57,7 @@ public class gui extends JFrame {
 		getContentPane().setLayout(null);
 		getContentPane().add(panel);
 		setBounds(100, 100, 450, 300);
-		n = new Nivel ();
+		n = new Nivel (this);
 	}
 	
 	protected void mover(KeyEvent key) {

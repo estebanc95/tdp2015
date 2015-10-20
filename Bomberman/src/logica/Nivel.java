@@ -1,5 +1,5 @@
 package logica;
-
+import Gui.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,7 +20,7 @@ public class Nivel {
 	protected int puntuacion;
 	protected int bloquesParaGanar;
 
-	public Nivel() {
+	public Nivel(gui graf) {
 		puntuacion = 0;
 		rnd = new Random();
 		enemigos = new ArrayList<Enemigo>();

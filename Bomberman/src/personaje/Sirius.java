@@ -4,6 +4,7 @@ import threads.ThreadSirius;
 import bombas.Bomba;
 import logica.Nivel;
 import celda.Celda;
+import entidades.SiriusGrafica;
 
 public class Sirius extends Enemigo {
 	
@@ -17,6 +18,7 @@ public class Sirius extends Enemigo {
 		maxBombas=1;
 		bColocadas=0;
 		alcance=1;
+		miGrafico=new SiriusGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	
 	public void pensar(){

@@ -2,6 +2,7 @@ package personaje;
 import bombas.Bomba;
 import logica.Nivel;
 import celda.Celda;
+import entidades.BombermanGrafico;
 
 public class Bomberman extends Personaje {
 	
@@ -15,7 +16,8 @@ public class Bomberman extends Personaje {
 		alcance=1;
 		maxBombas=1;
 		bColocadas=0;
-		velocidad=1;
+		velocidad=10;
+		miGrafico=new BombermanGrafico(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	
 	public void moverArriba(){

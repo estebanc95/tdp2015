@@ -1,17 +1,19 @@
 package personaje;
 import logica.Nivel;
 import celda.Celda;
+import entidades.EntidadGrafica;
 
 public abstract class Personaje {
 	
 	protected Celda miCelda;
 	protected boolean esFantasma;
 	protected Nivel miNivel;
+	protected EntidadGrafica miGrafico;
 	
 	protected Personaje(Celda c,Nivel n,boolean es){
 		miCelda=c;
 		esFantasma=es;
-		miNivel=n;
+		miNivel=n; 
 	}
 	
 	public abstract void moverArriba();

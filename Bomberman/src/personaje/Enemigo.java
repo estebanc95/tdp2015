@@ -10,7 +10,7 @@ public abstract class Enemigo extends Personaje {
 	
 	protected Enemigo(ThreadEnemigo t,Celda c,Nivel n,boolean es){
 		super(c,n,es);
-		velocidad=1;
+		velocidad=10;
 		ia=t;
 		ia.run();
 	}

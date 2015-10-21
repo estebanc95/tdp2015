@@ -1,4 +1,5 @@
 package logica;
+
 import Gui.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,26 +130,45 @@ public class Nivel {
 		else
 			return null;
 	}
-	
-	public boolean gano(){
-		return (bloquesParaGanar==0);
+
+	public boolean gano() {
+		return (bloquesParaGanar == 0);
+	}
+
+	public void aumentarPuntuacion(int p) {
+		puntuacion += p;
+	}
+
+	public Celda getAdyacente(Celda c, char x) {
+		switch (x) {
+		case 'a':
+			return matrizCeldas[c.getPosX()][c.getPosY() + 1];
+
+		case 'i':
+			return matrizCeldas[c.getPosX() - 1][c.getPosY()];
+
+		case 'd':
+			return matrizCeldas[c.getPosX() + 1][c.getPosY()];
+
+		case 'b':
+			return matrizCeldas[c.getPosX()][c.getPosY() - 1];
+
+		}
+		return null;
+
 	}
 	
-	public void aumentarPuntuacion(int p){
-		puntuacion+=p;
+	public void destruirEnemigo(Enemigo e){
+		enemigos.remove(e);
 	}
 	
-	public Celda getAdyacente(Celda c,char x) throws{
-		switch(x){
-			case 'a': return matrizCeldas[c.getPosX()][c.getPosY()+1];
-			break;
-			case 'i': return 
-			
-				
+	public void gameOver(){
+		//???
 	}
 
 	private Celda crearPiso(int x, int y) {
 		return new Celda(x, y, this);
+
 	}
 
 	private Celda crearPI(int x, int y) {

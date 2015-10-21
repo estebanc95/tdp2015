@@ -14,21 +14,14 @@ public abstract class Personaje {
 		miNivel=n;
 	}
 	
-	public void moverArriba(){
-		miNivel.getAdyacente(miCelda,'a').atravesar(this);
-	}
+	public abstract void moverArriba();
 	
-	public void moverAbajo(){
-		miNivel.getAdyacente(miCelda,'b').atravesar(this);
-	}
+	public abstract void moverAbajo();
 	
-	public void moverDerecha(){
-		miNivel.getAdyacente(miCelda,'d').atravesar(this);
-	}
+	public abstract void moverDerecha();
 	
-	public void moverIzquierda(){
-		miNivel.getAdyacente(miCelda,'i').atravesar(this);
-	}
+	public abstract void moverIzquierda();
+	
 	//Es necesario implementar morir?
 	
 	public Celda getCelda(){

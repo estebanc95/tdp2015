@@ -22,8 +22,22 @@ public class Bomba {
 		
 	}
 	
+	
+	
 	public void explotar(){
-		for(int i=1;i<4;i++)
+		explotarAux(alcance,'a',miCelda);
+		explotarAux(alcance,'b',miCelda);
+		explotarAux(alcance,'d',miCelda);
+		explotarAux(alcance,'i',miCelda);
+			
+		}
 		
+	
+	private void explotarAux(int a,char x,Celda c){
+		if(a>0){
+			Celda sig=miNivel.getAdyacente(c, x);
+			sig.recibirExplosion();
+			explotarAux(a-1,x,sig);
+		}
 	}
 }

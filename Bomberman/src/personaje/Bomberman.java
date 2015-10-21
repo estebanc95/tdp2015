@@ -18,6 +18,22 @@ public class Bomberman extends Personaje {
 		velocidad=1;
 	}
 	
+	public void moverArriba(){
+		miNivel.getAdyacente(miCelda,'a').atravesar(this);
+	}
+	
+	public void moverAbajo(){
+		miNivel.getAdyacente(miCelda,'b').atravesar(this);
+	}
+	
+	public void moverDerecha(){
+		miNivel.getAdyacente(miCelda,'d').atravesar(this);
+	}
+	
+	public void moverIzquierda(){
+		miNivel.getAdyacente(miCelda,'i').atravesar(this);
+	}
+	
 	public boolean colocarBomba(){
 		if (maxBombas-bColocadas<=0)
 			return false;

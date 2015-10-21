@@ -1,4 +1,6 @@
-package bombas;
+package threads;
+
+import bombas.Bomba;
 
 public class ThreadBomba extends Thread {
 	

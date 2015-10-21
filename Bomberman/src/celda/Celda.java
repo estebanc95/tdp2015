@@ -48,6 +48,7 @@ public class Celda {
 		miNivel = n;
 		miBomba = null;
 	}
+	
 
 	public void atravesar(Bomberman b) {
 		if (miEstructura != null)

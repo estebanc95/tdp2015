@@ -1,5 +1,6 @@
 package celda;
 import entidades.CeldaGrafica;
+import entidades.CeldaPisoGrafico;
 import bombas.Bomba;
 import logica.Nivel;
 import personaje.*;
@@ -27,7 +28,7 @@ public class Celda {
 		miEstructura = pared;
 		miNivel = n;
 		miBomba = null;
-		graf = new CeldaGrafica (px,py);
+		graf = new CeldaPisoGrafico (px,py);
 		
 	}
 
@@ -40,6 +41,7 @@ public class Celda {
 		miEstructura = null;
 		miNivel = n;
 		miBomba = null;
+		graf = new CeldaPisoGrafico (px,py);
 	}
 	
 	public Celda (int px,int py, Nivel n){
@@ -51,6 +53,7 @@ public class Celda {
 		miEstructura = null;
 		miNivel = n;
 		miBomba = null;
+		graf = new CeldaPisoGrafico (px,py);
 	}
 	
 

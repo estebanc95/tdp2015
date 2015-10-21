@@ -6,12 +6,12 @@ public class BombermanGrafico extends EntidadGrafica {
 	public BombermanGrafico(int vel, int x, int y) {
 		super(vel, x, y);
 		
-		this.mov[0] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.png"));
-		this.mov[1] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.png"));
-		this.mov[2] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.png"));
-		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.png"));
+		this.mov[0] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.gif"));
+		this.mov[1] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.gif"));
+		this.mov[2] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.gif"));
+		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.gif"));
 		
-		this.dmovn = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.png"));
+		this.dmovn = new ImageIcon(this.getClass().getResource("/imagenes/SiriusDer.gif"));
 	}
 	
 	public void mover(int dir) {

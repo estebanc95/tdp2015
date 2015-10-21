@@ -49,16 +49,22 @@ public class Nivel {
 		int celdasVacias = ancho * largo;
 
 		// Inicializo los bordes del mapa con paredes indestructibles.
-		matrizCeldas[0][0] = crearPI(0, 0);
-		celdasVacias--;
-		for (int i = 1; i < ancho - 1; i++) {
+		for (int i = 0; i < ancho; i++) {
 			matrizCeldas[i][0] = crearPI(i, 0);
-			celdasVacias--;
+			matrizCeldas[i][largo-1]=crearPI(i,largo-1);
+			celdasVacias-=2;
+			guigraf.add (matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico());
+			guigraf.add (matrizCeldas[i][largo-1].getCeldaGrafica().obtenerGrafico());
 		}
-		for (int j = 1; j < largo - 1; j++) {
+		for (int j = 0; j < largo; j++) {
 			matrizCeldas[0][j] = crearPI(0, j);
-			celdasVacias--;
+			matrizCeldas[ancho-1][j]=crearPI(ancho-1,j);
+			guigraf.add (matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico());
+			guigraf.add (matrizCeldas[ancho-1][j].getCeldaGrafica().obtenerGrafico());
+			celdasVacias-=2;
 		}
+		
+		
 
 		// Inicializo con celdas sin paredes aquellas correspondientes a la
 		// ubicación inicial de Bomberman y Sirius.
@@ -66,16 +72,25 @@ public class Nivel {
 		matrizCeldas[1][2] = crearPiso(1, 2);
 		matrizCeldas[2][1] = crearPiso(2, 1);
 
+		guigraf.add (matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico());
+		guigraf.add (matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico());
+		guigraf.add (matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico());
+
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
 		matrizCeldas[ancho - 2][largo - 3] = crearPiso(ancho - 2, largo - 3);
+		
+		guigraf.add (matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica().obtenerGrafico());
+		guigraf.add (matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica().obtenerGrafico());
+		guigraf.add (matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica().obtenerGrafico());
 
 		celdasVacias -= 6;
 
 		// Inicializo las paredes indestructibles dentro del nivel.
-		for (int i = 2; i < ancho - 3; i = i + 2)
-			for (int j = 2; j < largo - 3; j = j + 2) {
+		for (int i = 2; i < ancho - 1; i = i + 2)
+			for (int j = 2; j < largo - 1; j = j + 2) {
 				matrizCeldas[i][j] = crearPI(i, j);
+				guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
 				celdasVacias--;
 			}
 
@@ -87,35 +102,35 @@ public class Nivel {
 
 		// Coloco las paredes destructibles en lugares aleatorios.
 		while (destruiblesRestantes > 0) {
-			int rx = rnd.nextInt();
-			int ry = rnd.nextInt();
+			int rx = rnd.nextInt(ancho-1);
+			int ry = rnd.nextInt(largo-1);
 			if (matrizCeldas[rx][ry] == null) {
 				if (listap.isEmpty())
 					matrizCeldas[rx][ry] = crearPD(rx, ry, null);
 				else
 					matrizCeldas[rx][ry] = crearPD(rx, ry, listap.remove(0));
+				guigraf.add (matrizCeldas[rx][ry].getCeldaGrafica().obtenerGrafico());
 				destruiblesRestantes--;
 				celdasVacias--;
 			}
 		}
 
 		// Coloco celdas sin estructuras en las ubicaciones restantes.
-		for (int i = 1; i < ancho - 2; i++)
-			for (int j = 1; j < largo - 2; j++)
+		for (int i = 1; i < ancho - 1; i++)
+			for (int j = 1; j < largo - 1; j++)
 				if (matrizCeldas[i][j] == null) {
 					matrizCeldas[i][j] = crearPiso(i, j);
+					guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
 					celdasVacias--;
 				}
 		// Finaliza creación mapa.
 		assert (celdasVacias == 0);
-
+		
+		
+		//Creo e inserto el bomberman
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
 		guigraf.add(miBomberman.obtenerGrafico().obtenergraf());
-		
-		for (int i = 1; i < ancho - 2; i++)
-			for (int j = 1; j < largo - 2; j++)
-				guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
 				
 
 		/*Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);

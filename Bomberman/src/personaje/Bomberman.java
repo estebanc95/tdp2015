@@ -22,18 +22,22 @@ public class Bomberman extends Personaje {
 	
 	public void moverArriba(){
 		miNivel.getAdyacente(miCelda,'a').atravesar(this);
+		obtenerGrafico().mover(2);
 	}
 	
 	public void moverAbajo(){
 		miNivel.getAdyacente(miCelda,'b').atravesar(this);
+		obtenerGrafico().mover(3);
 	}
 	
 	public void moverDerecha(){
 		miNivel.getAdyacente(miCelda,'d').atravesar(this);
+		obtenerGrafico().mover(0);
 	}
 	
 	public void moverIzquierda(){
 		miNivel.getAdyacente(miCelda,'i').atravesar(this);
+		obtenerGrafico().mover(1);
 	}
 	
 	public boolean colocarBomba(){

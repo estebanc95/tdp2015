@@ -1,10 +1,12 @@
 package celda;
+import entidades.CeldaGrafica;
 import personaje.Bomberman;
 import personaje.Enemigo;
 
 public abstract class Estructura {
 
 	protected Celda miCelda;
+	protected CeldaGrafica graf;
 	
 	protected Estructura(Celda c){
 		miCelda=c;

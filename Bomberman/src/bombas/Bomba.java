@@ -2,6 +2,7 @@ package bombas;
 
 import personaje.Bomberman;
 import celda.Celda;
+import entidades.BombaGrafica;
 import logica.Nivel;
 
 public class Bomba {
@@ -11,6 +12,7 @@ public class Bomba {
 	protected Celda miCelda;
 	protected Bomberman miBomberman;
 	protected int tiempo;
+	protected BombaGrafica graf;
 	
 	public Bomba(Nivel n,int a,Celda c,Bomberman b){
 		miNivel=n;
@@ -18,8 +20,7 @@ public class Bomba {
 		miCelda=c;
 		miBomberman=b;
 		tiempo=4000;
-		
-		
+		graf = new BombaGrafica (miCelda.getPosX(),miCelda.getPosY());	
 	}
 	
 	

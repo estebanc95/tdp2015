@@ -1,4 +1,5 @@
 package celda;
+import entidades.CeldaGrafica;
 import bombas.Bomba;
 import logica.Nivel;
 import personaje.*;
@@ -14,6 +15,7 @@ public class Celda {
 	protected Estructura miEstructura;
 	protected Nivel miNivel;
 	protected Bomba miBomba;
+	protected CeldaGrafica graf;
 
 	public Celda(int px, int py, Bomberman b, Enemigo e, PowerUp p,
 			Estructura pared, Nivel n) {
@@ -25,6 +27,8 @@ public class Celda {
 		miEstructura = pared;
 		miNivel = n;
 		miBomba = null;
+		graf = new CeldaGrafica (px,py);
+		
 	}
 
 	public Celda(int px, int py, PowerUp p, Nivel n) {

@@ -13,7 +13,7 @@ public class BombaGrafica {
 	protected final int height = 32;
 	protected Point pos;
 	
-	protected BombaGrafica(int x, int y) {
+	public BombaGrafica(int x, int y) {
 		this.pos = new Point(height * x, weight * y);
 		this.img = new ImageIcon(this.getClass().getResource("/imagenes/Bomba.png"));
 	}

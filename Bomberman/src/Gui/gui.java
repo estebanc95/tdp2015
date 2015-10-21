@@ -10,9 +10,10 @@ public class gui extends JFrame {
 	protected Nivel n;
 	
 	public gui () {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,600);
-		setLayout(null);
+		setSize(998,445);
+		getContentPane().setLayout(null);
 		n = new Nivel (this);
 		
 	}

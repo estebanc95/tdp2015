@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-public abstract class CeldaGrafica extends JComponent {
+public abstract class CeldaGrafica {
 	protected JLabel graf;
 	protected Icon img;
 	protected final int weight = 32;

@@ -4,9 +4,10 @@ import java.awt.Point;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-public abstract class CeldaGrafica {
+public abstract class CeldaGrafica extends JComponent {
 	protected JLabel graf;
 	protected Icon img;
 	protected final int weight = 32;

@@ -120,7 +120,7 @@ public class Nivel {
 			for (int j = 1; j < largo - 1; j++)
 				if (matrizCeldas[i][j] == null) {
 					matrizCeldas[i][j] = crearPiso(i, j);
-					guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
+					guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),0);
 					celdasVacias--;
 				}
 		// Finaliza creación mapa.
@@ -130,7 +130,7 @@ public class Nivel {
 		//Creo e inserto el bomberman
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
-		guigraf.add(miBomberman.obtenerGrafico().obtenergraf());
+		guigraf.add(miBomberman.obtenerGrafico().obtenergraf(),100);
 				
 
 		/*Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
@@ -185,6 +185,23 @@ public class Nivel {
 	
 	public void gameOver(){
 		//???
+	}
+	
+	public void moverPersonaje(int direccion){
+		switch (direccion) {
+		case 0 : // Derecha
+			miBomberman.moverDerecha();
+			break;
+		case 1 : // Izquierda
+			miBomberman.moverIzquierda();
+			break;
+		case 2 : // Arriba
+			miBomberman.moverArriba();
+			break;
+		case 3 : // Abajo
+			miBomberman.moverAbajo();
+			break;
+	}
 	}
 
 	private Celda crearPiso(int x, int y) {

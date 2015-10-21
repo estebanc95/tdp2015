@@ -1,4 +1,4 @@
-package personaje;
+/*package personaje;
 
 import threads.ThreadSirius;
 import bombas.Bomba;
@@ -11,8 +11,16 @@ public class Sirius extends Enemigo {
 	protected int maxBombas;
 	protected int bColocadas;
 	protected int alcance;
-
 	public Sirius(Celda c,Nivel n){
+		super(c,n);
+	}
+	@Override
+	public void pensar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*public Sirius(Celda c,Nivel n){
 		ThreadSirius tc=new ThreadSirius(this);
 		super(tc,c,n,false);
 		maxBombas=1;
@@ -31,4 +39,4 @@ public class Sirius extends Enemigo {
 			bColocadas++;
 		}
 	}
-}
+	*/

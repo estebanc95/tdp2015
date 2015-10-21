@@ -1,4 +1,4 @@
-package threads;
+/*package threads;
 
 import personaje.Sirius;
 
@@ -13,3 +13,4 @@ public class ThreadSirius extends ThreadEnemigo {
 	}
 
 }
+*/

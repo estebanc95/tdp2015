@@ -21,7 +21,7 @@ public class Nivel {
 	protected int puntuacion;
 	protected int bloquesParaGanar;
 
-	public Nivel(gui graf) {
+	public Nivel(gui guigraf) {
 		puntuacion = 0;
 		rnd = new Random();
 		enemigos = new ArrayList<Enemigo>();
@@ -111,10 +111,16 @@ public class Nivel {
 
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
+		guigraf.add(miBomberman.obtenerGrafico().obtenergraf());
+		
+		for (int i = 1; i < ancho - 2; i++)
+			for (int j = 1; j < largo - 2; j++)
+				guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
+				
 
-		Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
+		/*Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
 		matrizCeldas[ancho - 2][largo - 2].colocar(sr);
-		enemigos.add(sr);
+		enemigos.add(sr);*/
 
 		// Falta colocar al resto de los enemigos.
 

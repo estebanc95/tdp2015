@@ -46,6 +46,10 @@ public abstract class Personaje {
 		esFantasma=b;
 	}
 	
+	public EntidadGrafica obtenerGrafico() {
+		return miGrafico;
+	}
+	
 	
 
 }

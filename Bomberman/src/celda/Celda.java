@@ -128,5 +128,14 @@ public class Celda {
 	public boolean hayEnemigo() {
 		return (miEnemigo != null);
 	}
+	
+	public CeldaGrafica getCeldaGrafica () {
+		if (miEstructura==null) {
+			return graf;
+		}
+		else {
+			return miEstructura.getCeldaGrafica();
+		}
+	}
 
 }

@@ -15,4 +15,7 @@ public abstract class Estructura {
 	public abstract void atravesar(Bomberman b);
 	public abstract void atravesar(Enemigo e);
 	public abstract void recibirExplosion();
-}
+	public CeldaGrafica getCeldaGrafica () {
+		return graf;
+		}
+	}

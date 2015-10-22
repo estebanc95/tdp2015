@@ -25,11 +25,11 @@ public class BombermanGrafico extends EntidadGrafica {
 				super.mover(dir);
 				break;
 			case 2 : // Arriba
-				this.pos.setLocation(pos.x, pos.y - height);
+				this.pos.setLocation(pos.x, pos.y + height);
 				super.mover(dir);
 				break;
 			case 3 : // Abajo
-				this.pos.setLocation(pos.x, pos.y + height);
+				this.pos.setLocation(pos.x, pos.y - height);
 				super.mover(dir);
 				break;
 		}

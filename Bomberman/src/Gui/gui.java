@@ -37,16 +37,16 @@ public class gui extends JFrame {
 	protected void mover(KeyEvent key) {
 		switch (key.getKeyCode()) {
 			case KeyEvent.VK_RIGHT : // Derecha
-				n.obtenerBomberman().moverDerecha();
+				n.moverPersonaje(0);
 				break;
 			case KeyEvent.VK_LEFT : // Izquierda
-				n.obtenerBomberman().moverIzquierda();
+				n.moverPersonaje(1);
 				break;
 			case KeyEvent.VK_UP : // Arriba
-				n.obtenerBomberman().moverArriba();
+				n.moverPersonaje(2);
 				break;
 			case KeyEvent.VK_DOWN : // Abajo
-				n.obtenerBomberman().moverAbajo();
+				n.moverPersonaje(3);
 				break;
 			case KeyEvent.VK_SPACE : // Poner bomba
 				if(n.obtenerBomberman().colocarBomba())

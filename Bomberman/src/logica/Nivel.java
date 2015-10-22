@@ -41,16 +41,16 @@ public class Nivel {
 
 		// Creo una lista con los powerUp
 		List<PowerUp> listap = new ArrayList<PowerUp>();
-/*
+
 		for (int i = 0; i < 4; i++)
 			listap.add(new SpeedUp(this));
-
+/*
 		for (int i = 0; i < 3; i++)
 			listap.add(new Masacrality(this));
-
+*/
 		for (int i = 0; i < 3; i++)
 			listap.add(new Bombality(this));
-
+/*
 		listap.add(new Fatality(this));
 */
 		// Creo una matriz vacía.
@@ -121,8 +121,11 @@ public class Nivel {
 			if (matrizCeldas[rx][ry] == null) {
 				if (listap.isEmpty())
 					matrizCeldas[rx][ry] = crearPD(rx, ry, null);
-				else
-					matrizCeldas[rx][ry] = crearPD(rx, ry, listap.remove(0));
+				else{
+					PowerUp p=listap.remove(0);
+					matrizCeldas[rx][ry] = crearPD(rx, ry, p);
+					p.ubicarEnCelda(matrizCeldas[rx][ry]);
+				}
 				guigraf.add (matrizCeldas[rx][ry].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 				destruiblesRestantes--;
 				celdasVacias--;
@@ -205,8 +208,7 @@ public class Nivel {
 	}
 	
 	public void gameOver(){
-		System.out.println("Game over."); 
-		//System.exit(0);
+		miGui.gameOver();
 	}
 	
 	public void moverPersonaje(int direccion){
@@ -238,12 +240,17 @@ public class Nivel {
 		miGui.repaint();
 	}
 	
+	public void removerPowerUp(PowerUp p){
+		miGui.remove(p.obtenerGrafico().obtenerGrafico());
+		miGui.repaint();
+	}
+	
 	public void quitarPared(Celda c){
 		miGui.remove(c.getCeldaGrafica().obtenerGrafico());
 		c.setEstructura(null);
-		miGui.add(c.getCeldaGrafica().obtenerGrafico());
+		miGui.add(c.getCeldaGrafica().obtenerGrafico(),new Integer(1));
 		if (c.getPowerUp()!=null){
-			miGui.add(c.getPowerUp().obtenerGrafico().obtenerGrafico());
+			miGui.add(c.getPowerUp().obtenerGrafico().obtenerGrafico(),new Integer(5));
 		}
 		miGui.repaint();
 	}
@@ -272,4 +279,7 @@ public class Nivel {
 
 	}
 
-}
+		
+	}
+
+

@@ -65,6 +65,10 @@ public class Celda {
 		b.getCelda().quitarBomberman();
 		b.setCelda(this);
 		miBomberman = b;
+		if(miPowerUp!=null){
+			miPowerUp.activar(miBomberman);
+			miPowerUp=null;
+		}
 		if (hayEnemigo()) {
 			matarPersonaje();
 		}

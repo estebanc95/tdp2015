@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 
 import bombas.Bomba;
 import logica.Nivel;
@@ -35,6 +36,11 @@ public class gui extends JFrame {
 		n = new Nivel (this);
 		
 	}
+	
+	public void gameOver(){
+		JOptionPane.showMessageDialog(this, "Game Over.","Bomberman",JOptionPane.WARNING_MESSAGE);
+		System.exit(0);
+		}
 	
 	protected void mover(KeyEvent key) {
 		switch (key.getKeyCode()) {

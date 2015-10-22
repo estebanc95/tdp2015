@@ -1,10 +1,8 @@
 package bombas;
 
 import personaje.Bomberman;
-import threads.ThreadBomba;
 import celda.Celda;
 import entidades.BombaGrafica;
-import entidades.EntidadGrafica;
 import logica.Nivel;
 
 public class Bomba {
@@ -35,7 +33,7 @@ public class Bomba {
 		explotarAux(alcance,'d',miCelda);
 		explotarAux(alcance,'i',miCelda);
 		miNivel.removerBomba(this);
-			
+		miBomberman.bombaExploto();
 		}
 	
 	public BombaGrafica obtenerGrafico() {

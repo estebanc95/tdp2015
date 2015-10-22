@@ -1,5 +1,7 @@
 package powerUp;
 
+import celda.Celda;
+import entidades.MasacralityGrafica;
 import logica.Nivel;
 import personaje.Bomberman;
 
@@ -12,6 +14,12 @@ public class Masacrality extends PowerUp {
 	public void activar(Bomberman b){
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
+		getNivel().removerPowerUp(this);
+	}
+	
+	public void ubicarEnCelda(Celda c){
+		miCelda=c;
+		miGrafico= new MasacralityGrafica(c.getPosX(),c.getPosY());
 	}
 
 }

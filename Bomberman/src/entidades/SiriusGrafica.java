@@ -1,5 +1,4 @@
 package entidades;
-import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class SiriusGrafica extends EntidadGrafica{

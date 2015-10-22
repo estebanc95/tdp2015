@@ -50,24 +50,43 @@ public abstract class Personaje {
 		return miCelda;
 	}
 	/**
-	 * Retorna el nivel al que pertenece el personalje
-	 * @return
+	 * Retorna el nivel al que pertenece el personaje
+	 * @return el nivel en el que se encuentra
 	 */
 	public Nivel getNivel(){
 		return miNivel;
 	}
 	
+	/**
+	 * Setea la celda actual del Personaje
+	 * @param c Celda en la cual se lo va a colocar
+	 */
+	
 	public void setCelda(Celda c){
 		miCelda=c;
 	}
+	
+	/**
+	 * Verifica si el Personaje es fantasma
+	 * @return Verdadero si el Personaje es fantasma, Falso en caso contrario
+	 */
 	
 	public boolean esFantasma(){
 		return esFantasma;
 	}
 	
+	/**
+	 * Setea si el Personaje es Fantasma
+	 * @param b Verdadero si quiere que el Personaje sea fantasma, Falso en caso contrario
+	 */
+	
 	public void setFantasma (boolean b){
 		esFantasma=b;
 	}
+	/**
+	 * Grafico correspondiente con el Personaje
+	 * @return grafico que posee dicho personaje
+	 */
 	
 	public EntidadGrafica obtenerGrafico() {
 		return miGrafico;

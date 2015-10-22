@@ -6,6 +6,8 @@ import logica.Nivel;
 import celda.Celda;
 import entidades.SiriusGrafica;
 
+	SE TERMINARA USANDO ALGORITMO A* O DISTANCIA MANHATTAN PARA LA ENTREGA FINAL DEL PROYECTO
+
 public class Sirius extends Enemigo {
 	
 	protected int maxBombas;

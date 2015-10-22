@@ -340,21 +340,34 @@ public class Nivel {
 		}
 		miGui.repaint();
 	}
-/**
- * Quita un personaje del Nivel. (Dado que murió).
- * @param p personaje a remover.
- */
+	/**
+	 * Quita un personaje del Nivel. (Dado que murió).
+	 * @param p personaje a remover.
+	 */
 	
 	//Creadores de celdas.
 	public void quitarPersonaje(Personaje p) {
 		miGui.remove(p.obtenerGrafico().obtenergraf());
 		miGui.repaint();
 	}
-
+	
+	/**
+	 * Crea un piso en la celda
+	 * @param x Posicion X
+	 * @param y Posicion Y 
+	 * @return
+	 */
 	private Celda crearPiso(int x, int y) {
 		return new Celda(x, y, this);
 
 	}
+	
+	/**
+	 * Crea una pared indestructible en la celda
+	 * @param x Posicion X 
+	 * @param y Posicion Y
+	 * @return
+	 */
 
 	private Celda crearPI(int x, int y) {
 		Celda c = new Celda(x, y, this);
@@ -362,7 +375,16 @@ public class Nivel {
 		return c;
 
 	}
+	
+	/**
+	 * Crea una pared destructible en la celda
+	 * @param x Posicion X 
+	 * @param y Posicion Y
+	 * @param p PowerUp que contendrar la pared indestructible
+	 * @return
+	 */
 
+	
 	private Celda crearPD(int x, int y, PowerUp p) {
 		Celda c = new Celda(x, y, p, this);
 		c.setEstructura(new ParedDestructible(c));

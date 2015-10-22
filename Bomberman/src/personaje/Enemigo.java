@@ -2,14 +2,33 @@ package personaje;
 import logica.Nivel;
 import celda.Celda;
 
+/**
+ * Clase Enemigo
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
+
 public abstract class Enemigo extends Personaje {
 	
+	//Atributos
 	protected int velocidad;
+	
+	/**
+	 * Constructor de Enemigo
+	 * @param c Celda en la que esta el enemigo
+	 * @param n Nivel al que pertenece el enemigo
+	 * @param es Si es un enemigo fantasma
+	 */
 	
 	protected Enemigo(Celda c,Nivel n,boolean es){
 		super(c,n,es);
 		velocidad=10;
 	}
+	
+	/**
+	 * Velocidad actual del enemigo
+	 * @return la velocidad del enemigo
+	 */
 	
 	public int getVelocidad(){
 		return velocidad;
@@ -31,8 +50,9 @@ public abstract class Enemigo extends Personaje {
 		miNivel.getAdyacente(miCelda,'i').atravesar(this,1);
 	}
 	
-	public abstract void pensar();
-	
+	/**
+	 * Elimina al enemigo del Nivel
+	 */
 	public void morir(){
 		getNivel().destruirEnemigo(this);
 	}

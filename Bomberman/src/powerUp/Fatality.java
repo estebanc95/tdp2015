@@ -5,7 +5,17 @@ import logica.Nivel;
 import personaje.Bomberman;
 import threads.ThreadFatality;
 
+/**
+ * Clase Fatality
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
 public class Fatality extends PowerUp {
+	
+	/**
+	 * Constructor de Fatality
+	 * @param n Nivel al que pertenece el PowerUp
+	 */
 	
 	public Fatality (Nivel n) {
 		super(n);

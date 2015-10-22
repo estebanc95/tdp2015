@@ -4,8 +4,18 @@ import celda.Celda;
 import entidades.BombalityGrafica;
 import logica.Nivel;
 import personaje.Bomberman;
+/**
+ * Clase Bombality
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
 
 public class Bombality extends PowerUp {
+	
+	/**
+	 * Constructor de Bombality
+	 * @param n Nivel al que pertenece el PowerUp
+	 */
 	
 	public Bombality(Nivel n){
 		super(n);

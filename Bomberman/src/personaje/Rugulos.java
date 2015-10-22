@@ -7,8 +7,8 @@ import entidades.RugulosGrafica;
 
 public class Rugulos extends Enemigo {
 
-	public Rugulos(ThreadEnemigo t,Celda c,Nivel n){
-		super(t,c,n,false);
+	public Rugulos(Celda c,Nivel n){
+		super(c,n,false);
 		miGrafico=new RugulosGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	

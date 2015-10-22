@@ -14,14 +14,13 @@ public class ThreadEnemigo extends Thread {
 		miEnemigo = e;
 		activar = true;
 		rnd = new Random();
-		run();
 	}
 
 	public void run() {
 		while (activar) {
 			try {
 				sleep(3000);
-				int direccion = rnd.nextInt(4);
+				int direccion = rnd.nextInt(3);
 				switch (direccion) {
 				case 0: {
 					miEnemigo.moverArriba();

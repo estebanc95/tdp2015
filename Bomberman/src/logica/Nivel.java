@@ -10,6 +10,7 @@ import bombas.Bomba;
 import personaje.*;
 import powerUp.*;
 import threads.ThreadBomba;
+import threads.ThreadEnemigo;
 import celda.*;
 
 public class Nivel {
@@ -40,7 +41,7 @@ public class Nivel {
 
 		// Creo una lista con los powerUp
 		List<PowerUp> listap = new ArrayList<PowerUp>();
-
+/*
 		for (int i = 0; i < 4; i++)
 			listap.add(new SpeedUp(this));
 
@@ -51,7 +52,7 @@ public class Nivel {
 			listap.add(new Bombality(this));
 
 		listap.add(new Fatality(this));
-
+*/
 		// Creo una matriz vacía.
 		for (int i = 0; i < ancho - 1; i++)
 			for (int j = 0; j < largo - 1; j++)
@@ -127,7 +128,7 @@ public class Nivel {
 				celdasVacias--;
 			}
 		}
-
+		
 		// Coloco celdas sin estructuras en las ubicaciones restantes.
 		for (int i = 1; i < ancho - 1; i++)
 			for (int j = 1; j < largo - 1; j++)
@@ -144,6 +145,13 @@ public class Nivel {
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
 		guigraf.add(miBomberman.obtenerGrafico().obtenergraf(),new Integer(50));
+		
+		//Creo e inserto el rugulos.
+		
+		Rugulos rg=new Rugulos(matrizCeldas[ancho - 2][largo - 2],this);
+		ThreadEnemigo te=new ThreadEnemigo(rg);
+		te.start();
+		miGui.add(rg.obtenerGrafico().obtenergraf(),new Integer(50));
 				
 
 		/*Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
@@ -197,7 +205,8 @@ public class Nivel {
 	}
 	
 	public void gameOver(){
-		//???
+		System.out.println("Game over."); 
+		//System.exit(0);
 	}
 	
 	public void moverPersonaje(int direccion){
@@ -233,6 +242,14 @@ public class Nivel {
 		miGui.remove(c.getCeldaGrafica().obtenerGrafico());
 		c.setEstructura(null);
 		miGui.add(c.getCeldaGrafica().obtenerGrafico());
+		if (c.getPowerUp()!=null){
+			miGui.add(c.getPowerUp().obtenerGrafico().obtenerGrafico());
+		}
+		miGui.repaint();
+	}
+	
+	public void quitarPersonaje(Personaje p){
+		miGui.remove(p.obtenerGrafico().obtenergraf());
 		miGui.repaint();
 	}
 

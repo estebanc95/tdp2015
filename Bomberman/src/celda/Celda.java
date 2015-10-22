@@ -1,4 +1,5 @@
 package celda;
+
 import entidades.CeldaGrafica;
 import entidades.CeldaPisoGrafico;
 import bombas.Bomba;
@@ -18,20 +19,6 @@ public class Celda {
 	protected Bomba miBomba;
 	protected CeldaGrafica graf;
 
-	public Celda(int px, int py, Bomberman b, Enemigo e, PowerUp p,
-			Estructura pared, Nivel n) {
-		posX = px;
-		posY = py;
-		miBomberman = b;
-		miEnemigo = e;
-		miPowerUp = p;
-		miEstructura = pared;
-		miNivel = n;
-		miBomba = null;
-		graf = new CeldaPisoGrafico (px,py);
-		
-	}
-
 	public Celda(int px, int py, PowerUp p, Nivel n) {
 		posX = px;
 		posY = py;
@@ -41,10 +28,10 @@ public class Celda {
 		miEstructura = null;
 		miNivel = n;
 		miBomba = null;
-		graf = new CeldaPisoGrafico (px,py);
+		graf = new CeldaPisoGrafico(px, py);
 	}
-	
-	public Celda (int px,int py, Nivel n){
+
+	public Celda(int px, int py, Nivel n) {
 		posX = px;
 		posY = py;
 		miBomberman = null;
@@ -53,11 +40,10 @@ public class Celda {
 		miEstructura = null;
 		miNivel = n;
 		miBomba = null;
-		graf = new CeldaPisoGrafico (px,py);
+		graf = new CeldaPisoGrafico(px, py);
 	}
-	
 
-	public void atravesar(Bomberman b,int dir) {
+	public void atravesar(Bomberman b, int dir) {
 		if (miEstructura != null)
 			miEstructura.atravesar(b);
 		else {
@@ -66,27 +52,31 @@ public class Celda {
 		}
 	}
 
-	public void atravesar(Enemigo e) {
+	public void atravesar(Enemigo e, int dir) {
 		if (miEstructura != null)
 			miEstructura.atravesar(e);
-		else
+		else {
 			colocar(e);
+			miEnemigo.obtenerGrafico().mover(dir);
+		}
 	}
 
 	public void colocar(Bomberman b) {
+		b.getCelda().quitarBomberman();
 		b.setCelda(this);
 		miBomberman = b;
 		if (hayEnemigo()) {
-			miNivel.gameOver();
+			matarPersonaje();
 		}
 	}
 
 	public void colocar(Enemigo e) {
 		if (!hayEnemigo()) {
+			e.getCelda().quitarEnemigo();
 			e.setCelda(this);
 			miEnemigo = e;
 			if (hayBomberman()) {
-				miNivel.gameOver();
+				matarPersonaje();
 			}
 		}
 	}
@@ -94,15 +84,15 @@ public class Celda {
 	public void setEstructura(Estructura e) {
 		miEstructura = e;
 	}
-	
-	public Estructura getEstructura(){
+
+	public Estructura getEstructura() {
 		return miEstructura;
 	}
 
 	public void recibirExplosion() {
 		if (miEstructura != null)
 			miEstructura.recibirExplosion();
-		quitarPersonaje();
+		matarPersonaje();
 	}
 
 	public int getPosX() {
@@ -112,13 +102,21 @@ public class Celda {
 	public int getPosY() {
 		return posY;
 	}
+	
+	public void quitarBomberman(){
+		miBomberman=null;
+	}
+	
+	public void quitarEnemigo(){
+		miEnemigo=null;
+	}
 
-	public void quitarPersonaje() {
-		if (hayBomberman()) {
-			miBomberman = null;
+	public void matarPersonaje() {
+		if (miBomberman != null) {
+			miNivel.quitarPersonaje(miBomberman);
 			miNivel.gameOver();
 		} else if (hayEnemigo()) {
-			miEnemigo = null;
+			miNivel.quitarPersonaje(miEnemigo);
 			miNivel.destruirEnemigo(miEnemigo);
 		}
 	}
@@ -137,18 +135,21 @@ public class Celda {
 	public boolean hayEnemigo() {
 		return (miEnemigo != null);
 	}
-	
-	public CeldaGrafica getCeldaGrafica () {
-		if (miEstructura==null) {
+
+	public CeldaGrafica getCeldaGrafica() {
+		if (miEstructura == null) {
 			return graf;
-		}
-		else {
+		} else {
 			return miEstructura.getCeldaGrafica();
 		}
 	}
-	
-	public Nivel getNivel(){
+
+	public Nivel getNivel() {
 		return miNivel;
+	}
+
+	public PowerUp getPowerUp() {
+		return miPowerUp;
 	}
 
 }

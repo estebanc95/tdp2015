@@ -29,6 +29,7 @@ public class Bomba {
 	
 	
 	public void explotar(){
+		miCelda.recibirExplosion();
 		explotarAux(alcance,'a',miCelda);
 		explotarAux(alcance,'b',miCelda);
 		explotarAux(alcance,'d',miCelda);

@@ -7,8 +7,8 @@ import entidades.AltairGrafica;
 
 public class Altair extends Enemigo {
 
-	public Altair(ThreadEnemigo t,Celda c,Nivel n){
-		super(t,c,n,true);
+	public Altair(Celda c,Nivel n){
+		super(c,n,true);
 		miGrafico=new AltairGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	

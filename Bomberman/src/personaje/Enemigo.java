@@ -6,13 +6,10 @@ import celda.Celda;
 public abstract class Enemigo extends Personaje {
 	
 	protected int velocidad;
-	protected ThreadEnemigo ia;
 	
-	protected Enemigo(ThreadEnemigo t,Celda c,Nivel n,boolean es){
+	protected Enemigo(Celda c,Nivel n,boolean es){
 		super(c,n,es);
 		velocidad=10;
-		ia=t;
-		ia.run();
 	}
 	
 	public int getVelocidad(){
@@ -20,19 +17,19 @@ public abstract class Enemigo extends Personaje {
 	}
 	
 	public void moverArriba(){
-		miNivel.getAdyacente(miCelda,'a').atravesar(this);
+		miNivel.getAdyacente(miCelda,'a').atravesar(this,2);
 	}
 	
 	public void moverAbajo(){
-		miNivel.getAdyacente(miCelda,'b').atravesar(this);
+		miNivel.getAdyacente(miCelda,'b').atravesar(this,3);
 	}
 	
 	public void moverDerecha(){
-		miNivel.getAdyacente(miCelda,'d').atravesar(this);
+		miNivel.getAdyacente(miCelda,'d').atravesar(this,0);
 	}
 	
 	public void moverIzquierda(){
-		miNivel.getAdyacente(miCelda,'i').atravesar(this);
+		miNivel.getAdyacente(miCelda,'i').atravesar(this,1);
 	}
 	
 	public abstract void pensar();

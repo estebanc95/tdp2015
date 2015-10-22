@@ -18,5 +18,9 @@ public abstract class PowerUp {
 	public Nivel getNivel(){
 		return miNivel;
 	}
+	
+	public PowerUpGrafica obtenerGrafico(){
+		return miGrafico;
+	}
 
 }

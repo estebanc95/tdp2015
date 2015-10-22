@@ -182,7 +182,7 @@ public class Celda {
 		if (miEstructura != null)
 			miEstructura.recibirExplosion();
 		matarPersonaje();
-		if(miEstructura==null&&direccion!='x'&&alcance>0){
+		if((miEstructura==null)&&(direccion!='x')&&(alcance>1)){
 			miNivel.getAdyacente(this,direccion).recibirExplosion(alcance-1, direccion);
 		}
 	}

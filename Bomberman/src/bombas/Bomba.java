@@ -1,8 +1,10 @@
 package bombas;
 
 import personaje.Bomberman;
+import threads.ThreadBomba;
 import celda.Celda;
 import entidades.BombaGrafica;
+import entidades.EntidadGrafica;
 import logica.Nivel;
 
 public class Bomba {
@@ -19,8 +21,10 @@ public class Bomba {
 		alcance=a;
 		miCelda=c;
 		miBomberman=b;
-		tiempo=4000;
+		tiempo=10000;
 		graf = new BombaGrafica (miCelda.getPosX(),miCelda.getPosY());	
+		miNivel.agregarBomba(this);
+		new ThreadBomba(this,tiempo).run();
 	}
 	
 	
@@ -30,12 +34,18 @@ public class Bomba {
 		explotarAux(alcance,'b',miCelda);
 		explotarAux(alcance,'d',miCelda);
 		explotarAux(alcance,'i',miCelda);
+		miNivel.removerBomba(this);
 			
 		}
+	
+	public BombaGrafica obtenerGrafico() {
+		return graf;
+	}
 		
 	
 	private void explotarAux(int a,char x,Celda c){
 		if(a>0){
+			System.out.println("boom.");
 			Celda sig=miNivel.getAdyacente(c, x);
 			sig.recibirExplosion();
 			explotarAux(a-1,x,sig);

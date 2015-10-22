@@ -57,11 +57,13 @@ public class Celda {
 	}
 	
 
-	public void atravesar(Bomberman b) {
+	public void atravesar(Bomberman b,int dir) {
 		if (miEstructura != null)
 			miEstructura.atravesar(b);
-		else
+		else {
 			colocar(b);
+			miBomberman.obtenerGrafico().mover(dir);
+		}
 	}
 
 	public void atravesar(Enemigo e) {
@@ -91,6 +93,10 @@ public class Celda {
 
 	public void setEstructura(Estructura e) {
 		miEstructura = e;
+	}
+	
+	public Estructura getEstructura(){
+		return miEstructura;
 	}
 
 	public void recibirExplosion() {

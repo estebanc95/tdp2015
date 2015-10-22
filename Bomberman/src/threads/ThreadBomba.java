@@ -14,9 +14,10 @@ public class ThreadBomba extends Thread {
 	
 	public void run(){
 		try {
+			System.out.println("Inicio thread bomba.");
 			sleep(tiempo);
+			System.out.println("paso el tiempo.");
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		miBomba.explotar();

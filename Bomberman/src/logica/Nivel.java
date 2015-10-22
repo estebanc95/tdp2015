@@ -1,10 +1,12 @@
 package logica;
 
 import Gui.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import bombas.Bomba;
 import personaje.*;
 import powerUp.*;
 import celda.*;
@@ -20,8 +22,10 @@ public class Nivel {
 	protected Random rnd;
 	protected int puntuacion;
 	protected int bloquesParaGanar;
+	protected gui miGui;
 
 	public Nivel(gui guigraf) {
+		miGui=guigraf;
 		puntuacion = 0;
 		rnd = new Random();
 		enemigos = new ArrayList<Enemigo>();
@@ -53,14 +57,14 @@ public class Nivel {
 			matrizCeldas[i][0] = crearPI(i, 0);
 			matrizCeldas[i][largo-1]=crearPI(i,largo-1);
 			celdasVacias-=2;
-			guigraf.add (matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico());
-			guigraf.add (matrizCeldas[i][largo-1].getCeldaGrafica().obtenerGrafico());
+			guigraf.add (matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+			guigraf.add (matrizCeldas[i][largo-1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 		}
 		for (int j = 0; j < largo; j++) {
 			matrizCeldas[0][j] = crearPI(0, j);
 			matrizCeldas[ancho-1][j]=crearPI(ancho-1,j);
-			guigraf.add (matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico());
-			guigraf.add (matrizCeldas[ancho-1][j].getCeldaGrafica().obtenerGrafico());
+			guigraf.add (matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+			guigraf.add (matrizCeldas[ancho-1][j].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 			celdasVacias-=2;
 		}
 		
@@ -72,17 +76,17 @@ public class Nivel {
 		matrizCeldas[1][2] = crearPiso(1, 2);
 		matrizCeldas[2][1] = crearPiso(2, 1);
 
-		guigraf.add (matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico());
-		guigraf.add (matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico());
-		guigraf.add (matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico());
+		miGui.add (matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		guigraf.add (matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		guigraf.add (matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
 		matrizCeldas[ancho - 2][largo - 3] = crearPiso(ancho - 2, largo - 3);
 		
-		guigraf.add (matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica().obtenerGrafico());
-		guigraf.add (matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica().obtenerGrafico());
-		guigraf.add (matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica().obtenerGrafico());
+		guigraf.add (matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		guigraf.add (matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		guigraf.add (matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 
 		celdasVacias -= 6;
 
@@ -90,7 +94,7 @@ public class Nivel {
 		for (int i = 2; i < ancho - 1; i = i + 2)
 			for (int j = 2; j < largo - 1; j = j + 2) {
 				matrizCeldas[i][j] = crearPI(i, j);
-				guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico());
+				miGui.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 				celdasVacias--;
 			}
 
@@ -109,7 +113,7 @@ public class Nivel {
 					matrizCeldas[rx][ry] = crearPD(rx, ry, null);
 				else
 					matrizCeldas[rx][ry] = crearPD(rx, ry, listap.remove(0));
-				guigraf.add (matrizCeldas[rx][ry].getCeldaGrafica().obtenerGrafico());
+				guigraf.add (matrizCeldas[rx][ry].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 				destruiblesRestantes--;
 				celdasVacias--;
 			}
@@ -120,7 +124,7 @@ public class Nivel {
 			for (int j = 1; j < largo - 1; j++)
 				if (matrizCeldas[i][j] == null) {
 					matrizCeldas[i][j] = crearPiso(i, j);
-					guigraf.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),0);
+					miGui.add (matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 					celdasVacias--;
 				}
 		// Finaliza creación mapa.
@@ -130,7 +134,7 @@ public class Nivel {
 		//Creo e inserto el bomberman
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
-		guigraf.add(miBomberman.obtenerGrafico().obtenergraf(),100);
+		guigraf.add(miBomberman.obtenerGrafico().obtenergraf(),new Integer(50));
 				
 
 		/*Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
@@ -202,6 +206,15 @@ public class Nivel {
 			miBomberman.moverAbajo();
 			break;
 	}
+	}
+	
+	public void agregarBomba(Bomba b){
+		miGui.add(b.obtenerGrafico().obtenerGrafico(),80);
+		
+	}
+	
+	public void removerBomba(Bomba b){
+		miGui.remove(b.obtenerGrafico().obtenerGrafico());
 	}
 
 	private Celda crearPiso(int x, int y) {

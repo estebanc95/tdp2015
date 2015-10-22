@@ -49,7 +49,8 @@ public class gui extends JFrame {
 				n.obtenerBomberman().moverAbajo();
 				break;
 			case KeyEvent.VK_SPACE : // Poner bomba
-				n.obtenerBomberman().colocarBomba();
+				if(n.obtenerBomberman().colocarBomba())
+					System.out.println("Bomba colocada.\n");
 				break;
 			default : // Cualquier otra tecla
 				break;

@@ -1,9 +1,12 @@
 package entidades;
 
 import java.awt.Point;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import logica.Nivel;
 
 public class BombaGrafica {
 	

@@ -58,8 +58,6 @@ public class gui extends JFrame {
 				break;
 			case KeyEvent.VK_SPACE : { // Poner bomba
 				Bomba colocada = n.obtenerBomberman().colocarBomba();
-				if(colocada!=null)
-					System.out.println("Bomba colocada.\n");
 				break;
 			}
 			default : // Cualquier otra tecla

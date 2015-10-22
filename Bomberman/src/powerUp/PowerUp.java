@@ -25,7 +25,7 @@ public abstract class PowerUp {
 	}
 	
 	/**
-	 * Activa el PowerUp a un Bomberma
+	 * Activa el PowerUp a un Bomberman
 	 * @param b Bomberman al que se le quiere aplicar el PowerUp
 	 */
 	

@@ -22,7 +22,7 @@ public abstract class Enemigo extends Personaje {
 	
 	protected Enemigo(Celda c,Nivel n,boolean es){
 		super(c,n,es);
-		velocidad=10;
+		velocidad=1;
 	}
 	
 	/**

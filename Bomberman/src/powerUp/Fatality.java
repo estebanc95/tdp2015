@@ -21,12 +21,11 @@ public class Fatality extends PowerUp {
 		super(n);
 	}
 	
-	public void activar (Bomberman b) {
+	
+	public void activar(Bomberman b){
 		b.duplicarAlcance();
-		getNivel().aumentarPuntuacion(35);
+		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
-		ThreadFatality tf=new ThreadFatality(b);
-		tf.start();
 	}
 	
 	public void ubicarEnCelda(Celda c){

@@ -38,16 +38,16 @@ public class Bomba {
 		miNivel.agregarBomba(this);
 	}
 	
+
 	/**
-	 *  Explota la bomba pasado un tiempo. La explosion se propaga a las celdas adyacentes de acuerdo al alcance.
+	 * Explota la bomba pasado un tiempo. La explosion se propaga a las celdas adyacentes de acuerdo al alcance.
 	 */
-	
 	public void explotar(){
-		miCelda.recibirExplosion();
-		explotarAux(alcance,'a',miCelda);
-		explotarAux(alcance,'b',miCelda);
-		explotarAux(alcance,'d',miCelda);
-		explotarAux(alcance,'i',miCelda);
+		miCelda.recibirExplosion(alcance,'x');
+		miNivel.getAdyacente(miCelda,'a').recibirExplosion(alcance,'a');
+		miNivel.getAdyacente(miCelda,'b').recibirExplosion(alcance,'b');
+		miNivel.getAdyacente(miCelda,'d').recibirExplosion(alcance,'d');
+		miNivel.getAdyacente(miCelda,'i').recibirExplosion(alcance,'i');
 		miNivel.removerBomba(this);
 		miBomberman.bombaExploto();
 		}
@@ -61,19 +61,5 @@ public class Bomba {
 		return graf;
 	}
 		
-	/**
-	 *  Metodo auxiliar que explota las celdas adyacentes
-	 * @param a Alcance restante
-	 * @param x Direccion
-	 * @param c Celda en la que esta ubicada
-	 */
-	
-	private void explotarAux(int a,char x,Celda c){
-		if(a>0){
-			Celda sig=miNivel.getAdyacente(c, x);
-			sig.recibirExplosion();
-			explotarAux(a-1,x,sig);
-		}
-	}
 	
 }

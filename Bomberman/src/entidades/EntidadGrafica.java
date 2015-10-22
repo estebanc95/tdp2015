@@ -7,6 +7,10 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 public abstract class EntidadGrafica extends JComponent {	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected JLabel graf;
 	protected Icon mov[];
 	protected final int height = 32;
@@ -18,11 +22,11 @@ public abstract class EntidadGrafica extends JComponent {
 	protected EntidadGrafica(int velocidad, int x, int y) {
 		this.pos = new Point(weight * x, height * y);
 		this.mov = new Icon[4];
-		this.velocidad = this.height / 10 - velocidad;
+		this.velocidad =velocidad;
 	}
 	
 	public void setVelocidad(int velocidad){
-		this.velocidad = this.height / 10 - velocidad;
+		this.velocidad = velocidad;
 	}
 	
 	public int obtenerVelocidad() {
@@ -44,7 +48,6 @@ public abstract class EntidadGrafica extends JComponent {
 					for(int i = 0; i < this.height; i += this.velocidad){
 						this.graf.setBounds(this.pos.x, this.pos.y -= this.velocidad, weight, height);
 						Thread.sleep(100);
-						
 					}
 					break;
 				case 3 : // Abajo
@@ -65,8 +68,8 @@ public abstract class EntidadGrafica extends JComponent {
 						Thread.sleep(100);
 					}
 					break;
-				}
-			} catch (InterruptedException e) {
+				}}
+					catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

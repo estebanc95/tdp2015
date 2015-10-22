@@ -28,8 +28,9 @@ public class gui extends JFrame {
 		setSize(998,445);
 		JLayeredPane contentPane = new JLayeredPane();
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-		//this.setUndecorated(true); SE USA PARA PONER PANTALLA COMPLETA
+		//this.setUndecorated(true); //SE USA PARA PONER PANTALLA COMPLETA
 		//this.setExtendedState(MAXIMIZED_BOTH); SE USA PARA PONER PANTALLA COMPLETA
 		n = new Nivel (this);
 		

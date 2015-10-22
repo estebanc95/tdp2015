@@ -176,7 +176,7 @@ public class Nivel {
 	public Celda getAdyacente(Celda c, char x) {
 		switch (x) {
 		case 'a':
-			return matrizCeldas[c.getPosX()][c.getPosY() + 1];
+			return matrizCeldas[c.getPosX()][c.getPosY() - 1];
 
 		case 'i':
 			return matrizCeldas[c.getPosX() - 1][c.getPosY()];
@@ -185,7 +185,7 @@ public class Nivel {
 			return matrizCeldas[c.getPosX() + 1][c.getPosY()];
 
 		case 'b':
-			return matrizCeldas[c.getPosX()][c.getPosY() - 1];
+			return matrizCeldas[c.getPosX()][c.getPosY() + 1];
 
 		}
 		return null;

@@ -21,10 +21,9 @@ public class Bomba {
 		alcance=a;
 		miCelda=c;
 		miBomberman=b;
-		tiempo=10000;
+		tiempo=6000;
 		graf = new BombaGrafica (miCelda.getPosX(),miCelda.getPosY());	
 		miNivel.agregarBomba(this);
-		new ThreadBomba(this,tiempo).run();
 	}
 	
 	
@@ -45,10 +44,10 @@ public class Bomba {
 	
 	private void explotarAux(int a,char x,Celda c){
 		if(a>0){
-			System.out.println("boom.");
 			Celda sig=miNivel.getAdyacente(c, x);
 			sig.recibirExplosion();
 			explotarAux(a-1,x,sig);
 		}
 	}
+	
 }

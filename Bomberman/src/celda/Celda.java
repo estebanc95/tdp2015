@@ -146,5 +146,9 @@ public class Celda {
 			return miEstructura.getCeldaGrafica();
 		}
 	}
+	
+	public Nivel getNivel(){
+		return miNivel;
+	}
 
 }

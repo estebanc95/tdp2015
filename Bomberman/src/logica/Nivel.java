@@ -9,6 +9,7 @@ import java.util.Random;
 import bombas.Bomba;
 import personaje.*;
 import powerUp.*;
+import threads.ThreadBomba;
 import celda.*;
 
 public class Nivel {
@@ -23,8 +24,14 @@ public class Nivel {
 	protected int puntuacion;
 	protected int bloquesParaGanar;
 	protected gui miGui;
+	
+	protected ThreadBomba tb;
 
 	public Nivel(gui guigraf) {
+		
+		tb=new ThreadBomba();
+		tb.start();
+		
 		miGui=guigraf;
 		puntuacion = 0;
 		rnd = new Random();
@@ -51,6 +58,8 @@ public class Nivel {
 				matrizCeldas[i][j] = null;
 
 		int celdasVacias = ancho * largo;
+		
+		
 
 		// Inicializo los bordes del mapa con paredes indestructibles.
 		for (int i = 0; i < ancho; i++) {
@@ -77,16 +86,16 @@ public class Nivel {
 		matrizCeldas[2][1] = crearPiso(2, 1);
 
 		miGui.add (matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
-		guigraf.add (matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
-		guigraf.add (matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.add (matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.add (matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
 		matrizCeldas[ancho - 2][largo - 3] = crearPiso(ancho - 2, largo - 3);
 		
-		guigraf.add (matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
-		guigraf.add (matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
-		guigraf.add (matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.add (matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.add (matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.add (matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica().obtenerGrafico(),new Integer(1));
 
 		celdasVacias -= 6;
 
@@ -209,12 +218,22 @@ public class Nivel {
 	}
 	
 	public void agregarBomba(Bomba b){
-		miGui.add(b.obtenerGrafico().obtenerGrafico(),80);
+		tb.colocarBomba(b);
+		miGui.add(b.obtenerGrafico().obtenerGrafico(),new Integer (8));
+		miGui.repaint();
 		
 	}
 	
 	public void removerBomba(Bomba b){
 		miGui.remove(b.obtenerGrafico().obtenerGrafico());
+		miGui.repaint();
+	}
+	
+	public void quitarPared(Celda c){
+		miGui.remove(c.getCeldaGrafica().obtenerGrafico());
+		c.setEstructura(null);
+		miGui.add(c.getCeldaGrafica().obtenerGrafico());
+		miGui.repaint();
 	}
 
 	private Celda crearPiso(int x, int y) {

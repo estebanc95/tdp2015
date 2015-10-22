@@ -45,13 +45,13 @@ public class Bomberman extends Personaje {
 		//obtenerGrafico().mover(1);
 	}
 	
-	public boolean colocarBomba(){
+	public Bomba colocarBomba(){
 		if (maxBombas-bColocadas<=0)
-			return false;
+			return null;
 		else{
-			new Bomba(getNivel(),alcance,getCelda(),this);
+			Bomba bm = new Bomba(getNivel(),alcance,getCelda(),this);
 			bColocadas++;
-			return true;
+			return bm;
 		}
 	}
 	

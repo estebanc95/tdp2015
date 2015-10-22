@@ -1,27 +1,34 @@
 package threads;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import bombas.Bomba;
 
 public class ThreadBomba extends Thread {
-	
-	protected Bomba miBomba;
-	protected int tiempo;
-	
-	public ThreadBomba(Bomba b,int t){
-		miBomba=b;
-		tiempo=t;
+
+	protected final int tiempo=1500;
+	protected Queue<Bomba> miCola;
+
+	public ThreadBomba() {
+		miCola=new LinkedList<Bomba>();
 	}
-	
-	public void run(){
+
+	public void colocarBomba(Bomba b) {
+		miCola.add(b);
+	}
+
+	public void run() {
 		try {
-			System.out.println("Inicio thread bomba.");
-			sleep(tiempo);
-			System.out.println("paso el tiempo.");
+			while (true) {
+				if (!miCola.isEmpty()) {
+					sleep(tiempo);
+					miCola.remove().explotar();
+				}
+			sleep(1000);
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		miBomba.explotar();
-		this.interrupt(); 
 	}
-
 }

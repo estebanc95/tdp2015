@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class ThreadMovimiento extends Thread {
 	
+	protected boolean activado;
+	
 	public ThreadMovimiento(){
 		
 	}

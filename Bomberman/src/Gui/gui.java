@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import bombas.Bomba;
 import logica.Nivel;
 
 public class gui extends JFrame {
@@ -48,10 +49,12 @@ public class gui extends JFrame {
 			case KeyEvent.VK_DOWN : // Abajo
 				n.moverPersonaje(3);
 				break;
-			case KeyEvent.VK_SPACE : // Poner bomba
-				if(n.obtenerBomberman().colocarBomba())
+			case KeyEvent.VK_SPACE : { // Poner bomba
+				Bomba colocada = n.obtenerBomberman().colocarBomba();
+				if(colocada!=null)
 					System.out.println("Bomba colocada.\n");
 				break;
+			}
 			default : // Cualquier otra tecla
 				break;
 		}

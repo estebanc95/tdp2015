@@ -1,4 +1,4 @@
-package celda;
+		package celda;
 import entidades.CeldaGrafica;
 import personaje.Bomberman;
 import personaje.Enemigo;

@@ -16,7 +16,7 @@ public class Bomberman extends Personaje {
 		alcance=1;
 		maxBombas=1;
 		bColocadas=0;
-		velocidad=10;
+		velocidad=1;
 		miGrafico=new BombermanGrafico(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	
@@ -37,7 +37,7 @@ public class Bomberman extends Personaje {
 	}
 	
 	public Bomba colocarBomba(){
-		if (maxBombas-bColocadas<=0)
+		if (!esFantasma()&&maxBombas-bColocadas<=0)
 			return null;
 		else{
 			Bomba bm = new Bomba(getNivel(),alcance,getCelda(),this);
@@ -70,8 +70,12 @@ public class Bomberman extends Personaje {
 		maxBombas=c;
 	}
 	
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
 	public void duplicarVelocidad(){
-		velocidad*=2;
+		velocidad++; //Debug
 	}
 	
 	public void aumentarMaxBombas(){

@@ -1,31 +1,33 @@
-/*package threads;
+package threads;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import logica.Nivel;
+import Gui.gui;
+import personaje.Bomberman;
 
 public class ThreadMovimiento extends Thread {
 	
-	protected boolean activado;
+	protected Bomberman miBomberman;
+	protected gui miGui;
+	protected Nivel miNivel;
 	
-	public ThreadMovimiento(){
-		
+	public ThreadMovimiento (Bomberman b, gui g, Nivel n) {
+		miBomberman = b;
+		miGui= g;
+		miNivel = n;
 	}
 	
-	public void run(){
-		try {
-			sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void run () {
+		while(true) {
+			try {
+				sleep(100);
+				if(miGui.estaBloqueado()){
+					miNivel.moverPersonaje(miGui.getDir());
+					miGui.desbloquear();
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
-	
-	protected void addKeyListener(new KeyAdapter() {
-		@Override
-		public void keyReleased(KeyEvent arg0) {
-			mover(arg0);
-		}
-	});
-
 }
-*/

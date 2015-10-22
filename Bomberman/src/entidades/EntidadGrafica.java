@@ -18,7 +18,11 @@ public abstract class EntidadGrafica extends JComponent {
 	protected EntidadGrafica(int velocidad, int x, int y) {
 		this.pos = new Point(weight * x, height * y);
 		this.mov = new Icon[4];
-		this.velocidad = velocidad;
+		this.velocidad = this.height / 10 - velocidad;
+	}
+	
+	public void setVelocidad(int velocidad){
+		this.velocidad = this.height / 10 - velocidad;
 	}
 	
 	public int obtenerVelocidad() {
@@ -33,6 +37,39 @@ public abstract class EntidadGrafica extends JComponent {
 		if (this.graf != null) {
 			this.graf.setIcon(this.mov[dir]);
 			this.graf.setBounds(this.pos.x, this.pos.y, weight, height);
+			
+			try {
+				switch (dir){
+				case 2 : // Arriba
+					for(int i = 0; i < this.height; i += this.velocidad){
+						this.graf.setBounds(this.pos.x, this.pos.y -= this.velocidad, weight, height);
+						Thread.sleep(100);
+						
+					}
+					break;
+				case 3 : // Abajo
+					for(int i = 0; i < this.height; i += this.velocidad){
+						this.graf.setBounds(this.pos.x, this.pos.y += this.velocidad, weight, height);
+						Thread.sleep(100);
+					}
+					break;
+				case 0 : // Derecha
+					for(int i = 0; i < this.weight; i += this.velocidad){
+						this.graf.setBounds(this.pos.x += this.velocidad, this.pos.y, weight, height);
+						Thread.sleep(100);
+					}
+					break;
+				case 1 : // Derecha
+					for(int i = 0; i < this.weight; i += this.velocidad){
+						this.graf.setBounds(this.pos.x -= this.velocidad, this.pos.y, weight, height);
+						Thread.sleep(100);
+					}
+					break;
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

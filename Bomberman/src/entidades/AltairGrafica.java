@@ -11,7 +11,6 @@ public class AltairGrafica extends EntidadGrafica {
 		this.mov[1] = new ImageIcon(this.getClass().getResource("/imagenes/Altair.png"));
 		this.mov[2] = new ImageIcon(this.getClass().getResource("/imagenes/Altair.png"));
 		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/Altair.png"));
-		
 		this.dmovn = new ImageIcon(this.getClass().getResource("/imagenes/Altair.png"));
 	}
 	

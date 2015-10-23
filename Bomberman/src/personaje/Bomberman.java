@@ -29,7 +29,7 @@ public class Bomberman extends Personaje {
 		alcance=1;
 		maxBombas=1;
 		bColocadas=0;
-		velocidad=32;
+		velocidad=16;
 		miGrafico=new BombermanGrafico(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	

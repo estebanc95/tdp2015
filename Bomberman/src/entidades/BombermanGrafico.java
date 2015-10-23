@@ -9,8 +9,7 @@ public class BombermanGrafico extends EntidadGrafica {
 		this.mov[0] = new ImageIcon(this.getClass().getResource("/imagenes/BombermanDer.png"));
 		this.mov[1] = new ImageIcon(this.getClass().getResource("/imagenes/BombermanIzq.png"));
 		this.mov[2] = new ImageIcon(this.getClass().getResource("/imagenes/BombermanAb.gif"));
-		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/BombermanAr.png"));
-		
+		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/BombermanAr.png"));	
 		this.dmovn = new ImageIcon(this.getClass().getResource("/imagenes/BombermanAr.png"));
 	}
 	

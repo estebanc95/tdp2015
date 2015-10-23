@@ -11,7 +11,6 @@ public class RugulosGrafica extends EntidadGrafica {
 		this.mov[1] = new ImageIcon(this.getClass().getResource("/imagenes/RugulusIzq.gif"));
 		this.mov[2] = new ImageIcon(this.getClass().getResource("/imagenes/RugulusArr.gif"));
 		this.mov[3] = new ImageIcon(this.getClass().getResource("/imagenes/RugulusAb.gif"));
-		
 		this.dmovn = new ImageIcon(this.getClass().getResource("/imagenes/RugulusArr.gif"));
 	}
 	

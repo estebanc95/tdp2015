@@ -32,7 +32,7 @@ public class Sirius extends Enemigo {
 	}
 	
 	public void pensar(){
-		//hay que pensarlo
+		
 	}
 
 	public void ColocarBomba(){

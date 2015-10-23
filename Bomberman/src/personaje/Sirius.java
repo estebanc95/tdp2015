@@ -30,10 +30,6 @@ public class Sirius extends Enemigo {
 		alcance=1;
 		miGrafico=new SiriusGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
-	
-	public void pensar(){
-		
-	}
 
 	public void ColocarBomba(){
 		if (maxBombas-bColocadas>0)

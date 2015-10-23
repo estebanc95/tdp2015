@@ -25,7 +25,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFQkcIaAlEa1mU="
 							},
-							"name": "ParedIndestructible",
+							"name": "ParedDestructible",
 							"visible": true,
 							"defaultDiagram": false,
 							"ownedViews": [
@@ -56,11 +56,11 @@
 											"containerExtending": false,
 											"left": 78.97900390625,
 											"top": 5,
-											"width": 113.0107421875,
+											"width": 104.3271484375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "ParedIndestructible",
+											"text": "ParedDestructible",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -176,7 +176,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "miPared: ParedIndestructible",
+													"text": "miPared: ParedDestructible",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -3448,7 +3448,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
-					"type": "ParedIndestructible",
+					"type": "ParedDestructible",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,

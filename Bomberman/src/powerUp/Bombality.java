@@ -25,6 +25,7 @@ public class Bombality extends PowerUp {
 		b.aumentarMaxBombas();
 		getNivel().aumentarPuntuacion(35);
 		getNivel().removerPowerUp(this);
+		System.out.println("Bombality obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

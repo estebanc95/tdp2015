@@ -26,6 +26,7 @@ public class Masacrality extends PowerUp {
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
+		System.out.println("Masacrality obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

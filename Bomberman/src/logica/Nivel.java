@@ -392,4 +392,9 @@ public class Nivel {
 
 	}
 
+	public void victoria() {
+		miGui.mostrarVictoria();
+		
+	}
+
 }

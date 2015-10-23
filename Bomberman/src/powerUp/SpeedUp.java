@@ -26,6 +26,7 @@ public class SpeedUp extends PowerUp {
 		b.duplicarVelocidad();
 		getNivel().aumentarPuntuacion(30);
 		getNivel().removerPowerUp(this);
+		System.out.println("SpeedUp obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

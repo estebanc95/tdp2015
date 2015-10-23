@@ -3,7 +3,6 @@ import celda.Celda;
 import entidades.FatalityGrafica;
 import logica.Nivel;
 import personaje.Bomberman;
-import threads.ThreadFatality;
 
 /**
  * Clase Fatality
@@ -26,6 +25,7 @@ public class Fatality extends PowerUp {
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
+		System.out.println("Fatality obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

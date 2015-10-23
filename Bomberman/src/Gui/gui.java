@@ -93,5 +93,11 @@ public class gui extends JFrame {
 	public int getDir () {
 		return dir;
 	}
+
+	public void mostrarVictoria() {
+		JOptionPane.showMessageDialog(this, "El bomberman ha ganado!.","Bomberman",JOptionPane.INFORMATION_MESSAGE);
+		System.exit(0);
+		
+	}
 }
 	

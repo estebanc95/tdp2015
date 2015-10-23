@@ -32,6 +32,8 @@ public class ParedDestructible extends Estructura {
 	
 	public void recibirExplosion(){
 		miCelda.getNivel().quitarPared(miCelda);
+		if (miCelda.getNivel().gano())
+			miCelda.getNivel().victoria();
 		
 	}
 }

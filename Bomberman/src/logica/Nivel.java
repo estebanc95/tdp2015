@@ -23,7 +23,7 @@ public class Nivel {
 	// Atributos
 	private final int ancho = 31;
 	private final int largo = 13;
-	private final float porcentajeDestructibles = 0.1f;
+	private final float porcentajeDestructibles = 0.5f;
 	protected Celda[][] matrizCeldas;
 	protected Bomberman miBomberman;
 	protected List<Enemigo> enemigos;

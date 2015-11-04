@@ -25,6 +25,7 @@ public class Fatality extends PowerUp {
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
+		b.getNivel().aumentarFatality();
 		System.out.println("Fatality obtenido.");
 	}
 	

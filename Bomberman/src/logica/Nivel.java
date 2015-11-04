@@ -23,7 +23,7 @@ public class Nivel {
 	// Atributos
 	private final int ancho = 31;
 	private final int largo = 13;
-	private final float porcentajeDestructibles = 0.5f;
+	private final float porcentajeDestructibles = 0.1f;
 	protected Celda[][] matrizCeldas;
 	protected Bomberman miBomberman;
 	protected List<Enemigo> enemigos;
@@ -77,17 +77,17 @@ public class Nivel {
 			matrizCeldas[i][0] = crearPI(i, 0);
 			matrizCeldas[i][largo - 1] = crearPI(i, largo - 1);
 			celdasVacias -= 2;
-			miGui.add(matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico(),
+			miGui.miMapa().add(matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico(),
 					new Integer(1));
-			miGui.add(matrizCeldas[i][largo - 1].getCeldaGrafica()
+			miGui.miMapa().add(matrizCeldas[i][largo - 1].getCeldaGrafica()
 					.obtenerGrafico(), new Integer(1));
 		}
 		for (int j = 0; j < largo; j++) {
 			matrizCeldas[0][j] = crearPI(0, j);
 			matrizCeldas[ancho - 1][j] = crearPI(ancho - 1, j);
-			miGui.add(matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico(),
+			miGui.miMapa().add(matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico(),
 					new Integer(1));
-			miGui.add(matrizCeldas[ancho - 1][j].getCeldaGrafica()
+			miGui.miMapa().add(matrizCeldas[ancho - 1][j].getCeldaGrafica()
 					.obtenerGrafico(), new Integer(1));
 			celdasVacias -= 2;
 		}
@@ -98,22 +98,22 @@ public class Nivel {
 		matrizCeldas[1][2] = crearPiso(1, 2);
 		matrizCeldas[2][1] = crearPiso(2, 1);
 
-		miGui.add(matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico(),
+		miGui.miMapa().add(matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico(),
 				new Integer(1));
-		miGui.add(matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),
+		miGui.miMapa().add(matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),
 				new Integer(1));
-		miGui.add(matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),
+		miGui.miMapa().add(matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),
 				new Integer(1));
 
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
 		matrizCeldas[ancho - 2][largo - 3] = crearPiso(ancho - 2, largo - 3);
 
-		miGui.add(matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica()
+		miGui.miMapa().add(matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica()
 				.obtenerGrafico(), new Integer(1));
-		miGui.add(matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica()
+		miGui.miMapa().add(matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica()
 				.obtenerGrafico(), new Integer(1));
-		miGui.add(matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica()
+		miGui.miMapa().add(matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica()
 				.obtenerGrafico(), new Integer(1));
 
 		celdasVacias -= 6;
@@ -122,7 +122,7 @@ public class Nivel {
 		for (int i = 2; i < ancho - 1; i = i + 2)
 			for (int j = 2; j < largo - 1; j = j + 2) {
 				matrizCeldas[i][j] = crearPI(i, j);
-				miGui.add(
+				miGui.miMapa().add(
 						matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),
 						new Integer(1));
 				celdasVacias--;
@@ -146,7 +146,7 @@ public class Nivel {
 					matrizCeldas[rx][ry] = crearPD(rx, ry, p);
 					p.ubicarEnCelda(matrizCeldas[rx][ry]);
 				}
-				miGui.add(matrizCeldas[rx][ry].getCeldaGrafica()
+				miGui.miMapa().add(matrizCeldas[rx][ry].getCeldaGrafica()
 						.obtenerGrafico(), new Integer(1));
 				destruiblesRestantes--;
 				celdasVacias--;
@@ -158,7 +158,7 @@ public class Nivel {
 			for (int j = 1; j < largo - 1; j++)
 				if (matrizCeldas[i][j] == null) {
 					matrizCeldas[i][j] = crearPiso(i, j);
-					miGui.add(matrizCeldas[i][j].getCeldaGrafica()
+					miGui.miMapa().add(matrizCeldas[i][j].getCeldaGrafica()
 							.obtenerGrafico(), new Integer(1));
 					celdasVacias--;
 				}
@@ -168,14 +168,14 @@ public class Nivel {
 		// Creo e inserto el bomberman
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
-		miGui.add(miBomberman.obtenerGrafico().obtenergraf(), new Integer(50));
+		miGui.miMapa().add(miBomberman.obtenerGrafico().obtenergraf(), new Integer(50));
 
 		// Creo e inserto el rugulos.
 
 		Rugulos rg = new Rugulos(matrizCeldas[ancho - 2][largo - 2], this);
 		ThreadEnemigo te = new ThreadEnemigo(rg);
 		te.start();
-		miGui.add(rg.obtenerGrafico().obtenergraf(), new Integer(50));
+		miGui.miMapa().add(rg.obtenerGrafico().obtenergraf(), new Integer(50));
 
 		/*
 		 * Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
@@ -229,6 +229,7 @@ public class Nivel {
 	 */
 	public void aumentarPuntuacion(int p) {
 		puntuacion += p;
+		miGui.aumentarPuntos(p);
 	}
 
 	/**
@@ -305,8 +306,8 @@ public class Nivel {
 	 */
 	public void agregarBomba(Bomba b) {
 		tb.colocarBomba(b);
-		miGui.add(b.obtenerGrafico().obtenerGrafico(), new Integer(8));
-		miGui.repaint();
+		miGui.miMapa().add(b.obtenerGrafico().obtenerGrafico(), new Integer(8));
+		miGui.miMapa().repaint();
 
 	}
 	/**
@@ -314,16 +315,16 @@ public class Nivel {
 	 * @param b Bomba a remover.
 	 */
 	public void removerBomba(Bomba b) {
-		miGui.remove(b.obtenerGrafico().obtenerGrafico());
-		miGui.repaint();
+		miGui.miMapa().remove(b.obtenerGrafico().obtenerGrafico());
+		miGui.miMapa().repaint();
 	}
 	/**
 	 * Quita un powerUp del nivel (Dado que se activó).
 	 * @param p PowerUp a remover.
 	 */
 	public void removerPowerUp(PowerUp p) {
-		miGui.remove(p.obtenerGrafico().obtenerGrafico());
-		miGui.repaint();
+		miGui.miMapa().remove(p.obtenerGrafico().obtenerGrafico());
+		miGui.miMapa().repaint();
 	}
 	/**
 	 * Quita una pared destruible de una celda. (Dado que explotó).
@@ -331,14 +332,14 @@ public class Nivel {
 	 */
 
 	public void quitarPared(Celda c) {
-		miGui.remove(c.getCeldaGrafica().obtenerGrafico());
+		miGui.miMapa().remove(c.getCeldaGrafica().obtenerGrafico());
 		c.setEstructura(null);
-		miGui.add(c.getCeldaGrafica().obtenerGrafico(), new Integer(1));
+		miGui.miMapa().add(c.getCeldaGrafica().obtenerGrafico(), new Integer(1));
 		if (c.getPowerUp() != null) {
-			miGui.add(c.getPowerUp().obtenerGrafico().obtenerGrafico(),
+			miGui.miMapa().add(c.getPowerUp().obtenerGrafico().obtenerGrafico(),
 					new Integer(5));
 		}
-		miGui.repaint();
+		miGui.miMapa().repaint();
 	}
 	/**
 	 * Quita un personaje del Nivel. (Dado que murió).
@@ -347,8 +348,8 @@ public class Nivel {
 	
 	//Creadores de celdas.
 	public void quitarPersonaje(Personaje p) {
-		miGui.remove(p.obtenerGrafico().obtenergraf());
-		miGui.repaint();
+		miGui.miMapa().remove(p.obtenerGrafico().obtenergraf());
+		miGui.miMapa().repaint();
 	}
 	
 	/**
@@ -396,5 +397,23 @@ public class Nivel {
 		miGui.mostrarVictoria();
 		
 	}
+	
+	public void aumentarSpeedUp() {
+		miGui.aumentarSpeedUp();
+	}
+	
+	public void aumentarFatality() {
+		miGui.aumentarFatality();
+	}
+	
+	public void aumentarBombality() {
+		miGui.aumentarBombality();
+	}
+	
+	public void aumentarMasacrality() {
+		miGui.aumentarMasacrality();
+	}
+	
+
 
 }

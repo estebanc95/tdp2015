@@ -26,6 +26,7 @@ public class SpeedUp extends PowerUp {
 		b.duplicarVelocidad();
 		getNivel().aumentarPuntuacion(30);
 		getNivel().removerPowerUp(this);
+		b.getNivel().aumentarSpeedUp();
 		System.out.println("SpeedUp obtenido.");
 	}
 	

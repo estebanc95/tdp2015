@@ -26,6 +26,7 @@ public class Masacrality extends PowerUp {
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
+		b.getNivel().aumentarMasacrality();
 		System.out.println("Masacrality obtenido.");
 	}
 	

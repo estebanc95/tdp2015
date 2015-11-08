@@ -184,6 +184,7 @@ public class Celda {
 		matarPersonaje();
 		if((miEstructura==null)&&(direccion!='x')&&(alcance>1)){
 			miNivel.getAdyacente(this,direccion).recibirExplosion(alcance-1, direccion);
+			
 		}
 	}
 

@@ -24,6 +24,7 @@ public class gui extends JFrame {
 	protected int dir;
 	protected JLayeredPane mapa;
 	protected PanelInferior panelI;
+	protected PanelSuperior panelS;
 	
 	public gui () {
 		
@@ -36,11 +37,13 @@ public class gui extends JFrame {
 		});
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(998,480);
+		setSize(998,530);
 		panelI = new PanelInferior();
+		panelS = new PanelSuperior();
 		mapa = new JLayeredPane();
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		getContentPane().add(mapa, BorderLayout.CENTER);
+		getContentPane().add(panelS, BorderLayout.NORTH);
 		getContentPane().add(panelI, BorderLayout.SOUTH);
 		panelI.setLayout(new BoxLayout(panelI, BoxLayout.X_AXIS));
 		
@@ -49,7 +52,7 @@ public class gui extends JFrame {
 		lock = false;
 		dir = -1;
 		//this.setUndecorated(true); //SE USA PARA PONER PANTALLA COMPLETA
-		//this.setExtendedState(MAXIMIZED_BOTH); SE USA PARA PONER PANTALLA COMPLETA
+		//this.setExtendedState(MAXIMIZED_BOTH); //SE USA PARA PONER PANTALLA COMPLETA
 		n = new Nivel (this);
 		ThreadMovimiento tmv = new ThreadMovimiento (n.obtenerBomberman(),this,n);
 		tmv.start();
@@ -89,6 +92,10 @@ public class gui extends JFrame {
 		}
 			case KeyEvent.VK_SPACE : { // Poner bomba
 				n.obtenerBomberman().colocarBomba();
+				break;
+			}
+			case KeyEvent.VK_ESCAPE : { //Salir juego
+				System.exit(0);
 				break;
 			}
 			default : // Cualquier otra tecla

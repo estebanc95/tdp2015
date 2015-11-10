@@ -4,6 +4,7 @@ import celda.Celda;
 import entidades.MasacralityGrafica;
 import logica.Nivel;
 import personaje.Bomberman;
+import threads.ThreadMasacrality;
 
 /**
  * Clase Masacrality
@@ -23,7 +24,8 @@ public class Masacrality extends PowerUp {
 	}
 	
 	public void activar(Bomberman b){
-		b.duplicarAlcance();
+		ThreadMasacrality th=new ThreadMasacrality(b);
+		th.start();
 		getNivel().aumentarPuntuacion(50);
 		getNivel().removerPowerUp(this);
 		b.getNivel().aumentarMasacrality();

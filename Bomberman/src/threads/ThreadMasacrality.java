@@ -6,17 +6,17 @@ import personaje.Bomberman;
  * @author Esteban Federico Canela y German Herrou
  *
  */
-public class ThreadFatality extends Thread {
+public class ThreadMasacrality extends Thread {
 	
 	//Atributos
-	protected final int duracion=5000;
+	protected final int duracion=15000;
 	protected Bomberman miBomberman;
 	
 	/**
 	 * Constructor de Thread Fatality
 	 * @param b Bomberman que recibe el PowerUp
 	 */
-	public ThreadFatality(Bomberman b){
+	public ThreadMasacrality(Bomberman b){
 		miBomberman=b;
 	}
 	

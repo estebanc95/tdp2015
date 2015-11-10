@@ -26,13 +26,13 @@ public abstract class Estructura {
 	 * Intenta atravesar el Bomberman a la celda perteneciente a esta estructura
 	 * @param b Bomberman que desea atravesar
 	 */
-	public abstract void atravesar(Bomberman b);
+	public abstract void atravesar(Bomberman b,int dir);
 	
 	/**
 	 * Intenta atravesar el Enemigo a la celda perteneciente a esta estructura
 	 * @param e Enemigo que desea atravesar
 	 */
-	public abstract void atravesar(Enemigo e);
+	public abstract void atravesar(Enemigo e,int dir);
 	
 	/**
 	 * Recibe una explosion como consecuencia de una bomba que detono

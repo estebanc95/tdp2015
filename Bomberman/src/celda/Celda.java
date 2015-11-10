@@ -87,7 +87,7 @@ public class Celda {
 
 	public void atravesar(Bomberman b, int dir) {
 		if (miEstructura != null)
-			miEstructura.atravesar(b);
+			miEstructura.atravesar(b,dir);
 		else {
 			colocar(b);
 			miBomberman.obtenerGrafico().mover(dir);
@@ -106,7 +106,7 @@ public class Celda {
 
 	public void atravesar(Enemigo e, int dir) {
 		if (miEstructura != null)
-			miEstructura.atravesar(e);
+			miEstructura.atravesar(e,dir);
 		else {
 			colocar(e);
 			miEnemigo.obtenerGrafico().mover(dir);

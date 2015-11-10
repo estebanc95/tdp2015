@@ -20,10 +20,10 @@ public class ParedIndestructible extends Estructura {
 		this.graf = new CeldaIndestructibleGrafica(c.getPosX(),c.getPosY());
 	}
 
-	public void atravesar(Bomberman b) {
+	public void atravesar(Bomberman b,int dir) {
 	}
 
-	public void atravesar(Enemigo e) {
+	public void atravesar(Enemigo e,int dir) {
 	}
 
 	public void recibirExplosion() {

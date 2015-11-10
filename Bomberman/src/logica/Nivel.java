@@ -58,10 +58,12 @@ public class Nivel {
 		for (int i = 0; i < 4; i++)
 			listap.add(new SpeedUp(this));
 		
-		for (int i = 0; i < 3; i++) listap.add(new Masacrality(this));
+		for (int i = 0; i < 3; i++) listap.add(new Fatality(this));
 		 
 		for (int i = 0; i < 3; i++)
 			listap.add(new Bombality(this));
+		
+		listap.add(new Masacrality(this));
 
 		//listap.add(new Fatality(this));
 

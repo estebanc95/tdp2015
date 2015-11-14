@@ -27,8 +27,8 @@ public class Masacrality extends PowerUp {
 		ThreadMasacrality th=new ThreadMasacrality(b);
 		th.start();
 		getNivel().aumentarPuntuacion(50);
-		getNivel().removerPowerUp(this);
-		b.getNivel().aumentarMasacrality();
+		getNivel().procesarGrafico().removerPowerUp(this);
+		b.getNivel().procesarGrafico().aumentarMasacrality();
 		System.out.println("Masacrality obtenido.");
 	}
 	

@@ -24,8 +24,8 @@ public class Fatality extends PowerUp {
 	public void activar(Bomberman b){
 		b.duplicarAlcance();
 		getNivel().aumentarPuntuacion(50);
-		getNivel().removerPowerUp(this);
-		b.getNivel().aumentarFatality();
+		getNivel().procesarGrafico().removerPowerUp(this);
+		b.getNivel().procesarGrafico().aumentarFatality();
 		System.out.println("Fatality obtenido.");
 	}
 	

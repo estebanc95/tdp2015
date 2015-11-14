@@ -25,8 +25,8 @@ public class SpeedUp extends PowerUp {
 	public void activar(Bomberman b){
 		b.duplicarVelocidad();
 		getNivel().aumentarPuntuacion(30);
-		getNivel().removerPowerUp(this);
-		b.getNivel().aumentarSpeedUp();
+		getNivel().procesarGrafico().removerPowerUp(this);
+		b.getNivel().procesarGrafico().aumentarSpeedUp();
 		System.out.println("SpeedUp obtenido.");
 	}
 	

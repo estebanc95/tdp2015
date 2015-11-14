@@ -44,25 +44,25 @@ public abstract class EntidadGrafica extends JComponent {
 			
 			try {
 				switch (dir){
-				case 2 : // Arriba
+				case 0 : // Arriba
 					for(int i = 0; i < this.height; i += this.velocidad){
 						this.graf.setBounds(this.pos.x, this.pos.y -= this.velocidad, weight, height);
 						Thread.sleep(100-(2*velocidad));
 					}
 					break;
-				case 3 : // Abajo
+				case 2 : // Abajo
 					for(int i = 0; i < this.height; i += this.velocidad){
 						this.graf.setBounds(this.pos.x, this.pos.y += this.velocidad, weight, height);
 						Thread.sleep(100-(2*velocidad));
 					}
 					break;
-				case 0 : // Derecha
+				case 1 : // Derecha
 					for(int i = 0; i < this.weight; i += this.velocidad){
 						this.graf.setBounds(this.pos.x += this.velocidad, this.pos.y, weight, height);
 						Thread.sleep(100-(2*velocidad));
 					}
 					break;
-				case 1 : // Derecha
+				case 3 : // Izquierda
 					for(int i = 0; i < this.weight; i += this.velocidad){
 						this.graf.setBounds(this.pos.x -= this.velocidad, this.pos.y, weight, height);
 						Thread.sleep(100-(2*velocidad));

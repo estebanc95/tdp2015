@@ -1,4 +1,5 @@
 package personaje;
+import logica.Direccion;
 import logica.Nivel;
 import celda.Celda;
 
@@ -34,21 +35,25 @@ public abstract class Enemigo extends Personaje {
 		return velocidad;
 	}
 	
-	public void moverArriba(){
-		miNivel.getAdyacente(miCelda,'a').atravesar(this,2);
-	}
-	
-	public void moverAbajo(){
-		miNivel.getAdyacente(miCelda,'b').atravesar(this,3);
-	}
-	
-	public void moverDerecha(){
-		miNivel.getAdyacente(miCelda,'d').atravesar(this,0);
-	}
-	
-	public void moverIzquierda(){
-		miNivel.getAdyacente(miCelda,'i').atravesar(this,1);
-	}
+	//Ubicaciones adyacentes: 0 arriba, 1 derecha, 2 centro, 3 abajo, 4 izquierda
+		public void moverArriba(){
+			miNivel.getAdyacente(miCelda,Direccion.ARRIBA).atravesar(this,Direccion.ARRIBA);
+		}
+		
+		public void moverAbajo(){
+			miNivel.getAdyacente(miCelda,Direccion.ABAJO).atravesar(this,Direccion.ABAJO);
+		}
+		
+		
+		public void moverDerecha(){
+				miNivel.getAdyacente(miCelda,Direccion.DERECHA).atravesar(this,Direccion.DERECHA);
+		}
+		
+		
+		public void moverIzquierda(){
+			miNivel.getAdyacente(miCelda,Direccion.IZQUIERDA).atravesar(this,Direccion.IZQUIERDA);
+		}
+		
 	
 	/**
 	 * Elimina al enemigo del Nivel

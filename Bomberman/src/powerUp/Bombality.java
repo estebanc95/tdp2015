@@ -24,8 +24,8 @@ public class Bombality extends PowerUp {
 	public void activar(Bomberman b){
 		b.aumentarMaxBombas();
 		getNivel().aumentarPuntuacion(35);
-		getNivel().removerPowerUp(this);
-		b.getNivel().aumentarBombality();
+		getNivel().procesarGrafico().removerPowerUp(this);
+		b.getNivel().procesarGrafico().aumentarBombality();
 		System.out.println("Bombality obtenido.");
 	}
 	

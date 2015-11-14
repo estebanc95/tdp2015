@@ -3,6 +3,7 @@ package bombas;
 import personaje.Bomberman;
 import celda.Celda;
 import entidades.BombaGrafica;
+import logica.Direccion;
 import logica.Nivel;
 
 /**
@@ -35,20 +36,27 @@ public class Bomba {
 		miBomberman=b;
 		tiempo=6000;
 		graf = new BombaGrafica (miCelda.getPosX(),miCelda.getPosY());	
-		miNivel.agregarBomba(this);
+		miNivel.procesarGrafico().agregarBomba(this);
 	}
 	
 
 	/**
 	 * Explota la bomba pasado un tiempo. La explosion se propaga a las celdas adyacentes de acuerdo al alcance.
+	 * 0 arriba, 1 derecha, 2 centro, 3 abajo, 4 izquierda
 	 */
 	public void explotar(){
-		miCelda.recibirExplosion(alcance,'x');
-		miNivel.getAdyacente(miCelda,'a').recibirExplosion(alcance,'a');
-		miNivel.getAdyacente(miCelda,'b').recibirExplosion(alcance,'b');
-		miNivel.getAdyacente(miCelda,'d').recibirExplosion(alcance,'d');
-		miNivel.getAdyacente(miCelda,'i').recibirExplosion(alcance,'i');
-		miNivel.removerBomba(this);
+		miCelda.recibirExplosion(alcance,9);
+		
+		
+		miNivel.getAdyacente(miCelda,Direccion.ARRIBA).recibirExplosion(alcance,Direccion.ARRIBA);
+		
+		miNivel.getAdyacente(miCelda,Direccion.ABAJO).recibirExplosion(alcance,Direccion.ABAJO);
+		
+		miNivel.getAdyacente(miCelda,Direccion.DERECHA).recibirExplosion(alcance,Direccion.DERECHA);
+		
+		miNivel.getAdyacente(miCelda,Direccion.IZQUIERDA).recibirExplosion(alcance,Direccion.IZQUIERDA);
+		
+		miNivel.procesarGrafico().removerBomba(this);
 		miBomberman.bombaExploto();
 		}
 	

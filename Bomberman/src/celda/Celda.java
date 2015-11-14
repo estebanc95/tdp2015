@@ -87,7 +87,7 @@ public class Celda {
 
 	public void atravesar(Bomberman b, int dir) {
 		if (miEstructura != null)
-			miEstructura.atravesar(b,dir);
+			miEstructura.atravesar(b, dir);
 		else {
 			colocar(b);
 			miBomberman.obtenerGrafico().mover(dir);
@@ -106,7 +106,7 @@ public class Celda {
 
 	public void atravesar(Enemigo e, int dir) {
 		if (miEstructura != null)
-			miEstructura.atravesar(e,dir);
+			miEstructura.atravesar(e, dir);
 		else {
 			colocar(e);
 			miEnemigo.obtenerGrafico().mover(dir);
@@ -174,17 +174,23 @@ public class Celda {
 
 	/**
 	 * Recibe una explosion proveniente de una bomba
-	 * @param alcance El alcance restante de la explosion.
-	 * @param direccion Direcion a la que avanza la explosion. a arriba, b abajo, d derecha, i izquierda, x punto de origen
+	 * 
+	 * @param alcance
+	 *            El alcance restante de la explosion.
+	 * @param i
+	 *            Direcion a la que avanza la explosion.
+	 *            9 representa punto de origen.
 	 */
 
-	public void recibirExplosion(int alcance, char direccion) {
-		if (miEstructura != null)
+	public void recibirExplosion(int alcance, int dir) {
+		miNivel.procesarGrafico().mostrarExplosion(this,dir);
+		if (miEstructura != null) {
 			miEstructura.recibirExplosion();
+		}
 		matarPersonaje();
-		if((miEstructura==null)&&(direccion!='x')&&(alcance>1)){
-			miNivel.getAdyacente(this,direccion).recibirExplosion(alcance-1, direccion);
-			
+		if ((miEstructura == null) && (dir != 9) && (alcance > 1)) {
+			miNivel.getAdyacente(this, dir).recibirExplosion(alcance - 1,
+					dir);
 		}
 	}
 
@@ -229,10 +235,10 @@ public class Celda {
 
 	public void matarPersonaje() {
 		if (miBomberman != null) {
-			miNivel.quitarPersonaje(miBomberman);
+			miNivel.procesarGrafico().quitarPersonaje(miBomberman);
 			miNivel.gameOver();
 		} else if (hayEnemigo()) {
-			miNivel.quitarPersonaje(miEnemigo);
+			miNivel.procesarGrafico().quitarPersonaje(miEnemigo);
 			miNivel.destruirEnemigo(miEnemigo);
 		}
 	}

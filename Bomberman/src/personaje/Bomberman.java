@@ -1,5 +1,6 @@
 package personaje;
 import bombas.Bomba;
+import logica.Direccion;
 import logica.Nivel;
 import celda.Celda;
 import entidades.BombermanGrafico;
@@ -33,23 +34,22 @@ public class Bomberman extends Personaje {
 		miGrafico=new BombermanGrafico(velocidad,getCelda().getPosX(),getCelda().getPosY());
 	}
 	
-	
 	public void moverArriba(){
-		miNivel.getAdyacente(miCelda,'a').atravesar(this,2);
+		miNivel.getAdyacente(miCelda,Direccion.ARRIBA).atravesar(this,Direccion.ARRIBA);
 	}
 	
 	public void moverAbajo(){
-		miNivel.getAdyacente(miCelda,'b').atravesar(this,3);
+		miNivel.getAdyacente(miCelda,Direccion.ABAJO).atravesar(this,Direccion.ABAJO);
 	}
 	
 	
 	public void moverDerecha(){
-			miNivel.getAdyacente(miCelda,'d').atravesar(this,0);
+			miNivel.getAdyacente(miCelda,Direccion.DERECHA).atravesar(this,Direccion.DERECHA);
 	}
 	
 	
 	public void moverIzquierda(){
-		miNivel.getAdyacente(miCelda,'i').atravesar(this,1);
+		miNivel.getAdyacente(miCelda,Direccion.IZQUIERDA).atravesar(this,Direccion.IZQUIERDA);
 	}
 	
 	/**

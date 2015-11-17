@@ -242,6 +242,7 @@ public class Celda {
 		} else if (hayEnemigo()) {
 			miNivel.procesarGrafico().quitarPersonaje(miEnemigo);
 			miNivel.destruirEnemigo(miEnemigo);
+			miEnemigo=null;
 		}
 	}
 

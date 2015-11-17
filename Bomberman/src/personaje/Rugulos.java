@@ -3,6 +3,7 @@ package personaje;
 import logica.Nivel;
 import celda.Celda;
 import entidades.RugulosGrafica;
+import threads.ThreadEnemigo;
 
 /**
  * Clase Rugulos 
@@ -11,6 +12,9 @@ import entidades.RugulosGrafica;
  */
 
 public class Rugulos extends Enemigo {
+	
+	protected ThreadEnemigo th;
+	
 
 	/**
 	 * Constructor de Rugulos
@@ -20,6 +24,13 @@ public class Rugulos extends Enemigo {
 	public Rugulos(Celda c,Nivel n){
 		super(c,n,false);
 		miGrafico=new RugulosGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
+		th=new ThreadEnemigo(this);
+		th.start();
+	}
+	
+	public void morir(){
+		super.morir();
+		th.interrupt();
 	}
 	
 }

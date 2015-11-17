@@ -8,7 +8,6 @@ import java.util.Random;
 
 import personaje.*;
 import powerUp.*;
-import threads.ThreadEnemigo;
 import celda.*;
 
 /**
@@ -21,7 +20,7 @@ public class Nivel {
 	// Atributos
 	private final int ancho = 31;
 	private final int largo = 13;
-	private final float porcentajeDestructibles = 0.1f;
+	private final float porcentajeDestructibles = 0.5f;
 	protected Celda[][] matrizCeldas;
 	protected Bomberman miBomberman;
 	protected List<Enemigo> enemigos;
@@ -71,20 +70,12 @@ public class Nivel {
 			celdasVacias -= 2;
 			pg.agregarCelda(matrizCeldas[i][0]);
 			pg.agregarCelda(matrizCeldas[i][largo-1]);
-			//miGui.miMapa().add(matrizCeldas[i][0].getCeldaGrafica().obtenerGrafico(),
-			//		new Integer(1));
-			//miGui.miMapa().add(matrizCeldas[i][largo - 1].getCeldaGrafica()
-			//		.obtenerGrafico(), new Integer(1));
 		}
 		for (int j = 0; j < largo; j++) {
 			matrizCeldas[0][j] = crearPI(0, j);
 			matrizCeldas[ancho - 1][j] = crearPI(ancho - 1, j);
 			pg.agregarCelda(matrizCeldas[0][j]);
 			pg.agregarCelda(matrizCeldas[ancho-1][j]);
-			//miGui.miMapa().add(matrizCeldas[0][j].getCeldaGrafica().obtenerGrafico(),
-			//		new Integer(1));
-			//miGui.miMapa().add(matrizCeldas[ancho - 1][j].getCeldaGrafica()
-			//		.obtenerGrafico(), new Integer(1));
 			celdasVacias -= 2;
 		}
 
@@ -98,12 +89,6 @@ public class Nivel {
 		pg.agregarCelda(matrizCeldas[1][2]);
 		pg.agregarCelda(matrizCeldas[2][1]);
 
-		//miGui.miMapa().add(matrizCeldas[1][1].getCeldaGrafica().obtenerGrafico(),
-		//		new Integer(1));
-		//miGui.miMapa().add(matrizCeldas[1][2].getCeldaGrafica().obtenerGrafico(),
-		//		new Integer(1));
-		//miGui.miMapa().add(matrizCeldas[2][1].getCeldaGrafica().obtenerGrafico(),
-		//		new Integer(1));
 
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
@@ -113,12 +98,6 @@ public class Nivel {
 		pg.agregarCelda(matrizCeldas[ancho-3][largo-2]);
 		pg.agregarCelda(matrizCeldas[ancho-2][largo-3]);
 
-		//miGui.miMapa().add(matrizCeldas[ancho - 2][largo - 2].getCeldaGrafica()
-		//		.obtenerGrafico(), new Integer(1));
-		//miGui.miMapa().add(matrizCeldas[ancho - 3][largo - 2].getCeldaGrafica()
-		//		.obtenerGrafico(), new Integer(1));
-		//miGui.miMapa().add(matrizCeldas[ancho - 2][largo - 3].getCeldaGrafica()
-		//		.obtenerGrafico(), new Integer(1));
 
 		celdasVacias -= 6;
 
@@ -127,11 +106,12 @@ public class Nivel {
 			for (int j = 2; j < largo - 1; j = j + 2) {
 				matrizCeldas[i][j] = crearPI(i, j);
 				pg.agregarCelda(matrizCeldas[i][j]);
-				//miGui.miMapa().add(
-				//		matrizCeldas[i][j].getCeldaGrafica().obtenerGrafico(),
-				//		new Integer(1));
 				celdasVacias--;
 			}
+		
+		int rx=0;
+		int ry=0;
+		
 
 		// Estimo cuantas paredes destructibles debo colocar
 		int destruiblesRestantes = (int) (celdasVacias * porcentajeDestructibles);
@@ -141,8 +121,8 @@ public class Nivel {
 
 		// Coloco las paredes destructibles en lugares aleatorios.
 		while (destruiblesRestantes > 0) {
-			int rx = rnd.nextInt(ancho - 1);
-			int ry = rnd.nextInt(largo - 1);
+			rx = rnd.nextInt(ancho - 1);
+			ry = rnd.nextInt(largo - 1);
 			if (matrizCeldas[rx][ry] == null) {
 				if (listap.isEmpty())
 					matrizCeldas[rx][ry] = crearPD(rx, ry, null);
@@ -158,6 +138,38 @@ public class Nivel {
 				celdasVacias--;
 			}
 		}
+		
+		
+		
+		// Coloco a los enemigos en lugares aleatorios
+		int cantRugulos = 3;
+		while (cantRugulos > 0) {
+			rx = rnd.nextInt(ancho - 1);
+			ry = rnd.nextInt(largo - 1);
+			if (matrizCeldas[rx][ry] == null) {
+				matrizCeldas[rx][ry] = crearPiso(rx, ry);
+				pg.agregarCelda(matrizCeldas[rx][ry]);
+				celdasVacias--;
+				Rugulos rg1 = new Rugulos(matrizCeldas[rx][ry], this);
+				pg.agregarPersonaje(rg1);
+				cantRugulos--;
+			}
+		}
+		
+
+		int cantAltair = 2;
+		while (cantAltair > 0) {
+			rx = rnd.nextInt(ancho - 1);
+			ry = rnd.nextInt(largo - 1);
+			if (matrizCeldas[rx][ry] == null) {
+				celdasVacias--;
+				matrizCeldas[rx][ry] = crearPiso(rx, ry);
+				pg.agregarCelda(matrizCeldas[rx][ry]);
+				Altair at = new Altair(matrizCeldas[rx][ry], this);
+				pg.agregarPersonaje(at);
+				cantAltair--;
+			}
+		}
 
 		// Coloco celdas sin estructuras en las ubicaciones restantes.
 		for (int i = 1; i < ancho - 1; i++)
@@ -165,8 +177,6 @@ public class Nivel {
 				if (matrizCeldas[i][j] == null) {
 					matrizCeldas[i][j] = crearPiso(i, j);
 					pg.agregarCelda(matrizCeldas[i][j]);
-					//miGui.miMapa().add(matrizCeldas[i][j].getCeldaGrafica()
-					//		.obtenerGrafico(), new Integer(1));
 					celdasVacias--;
 				}
 		// Finaliza creación mapa.
@@ -176,22 +186,13 @@ public class Nivel {
 		miBomberman = new Bomberman(matrizCeldas[1][1], this);
 		matrizCeldas[1][1].colocar(miBomberman);
 		pg.agregarPersonaje(miBomberman);
-		//miGui.miMapa().add(miBomberman.obtenerGrafico().obtenergraf(), new Integer(50));
 
-		// Creo e inserto el rugulos.
+		// Creo e inserto a Sirius.
 
-		Rugulos rg = new Rugulos(matrizCeldas[ancho - 2][largo - 2], this);
-		ThreadEnemigo te = new ThreadEnemigo(rg);
-		te.start();
-		pg.agregarPersonaje(rg);
-		//miGui.miMapa().add(rg.obtenerGrafico().obtenergraf(), new Integer(50));
-
-		/*
-		 * Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
-		 * matrizCeldas[ancho - 2][largo - 2].colocar(sr); enemigos.add(sr);
-		 */
-
-		// Falta colocar al resto de los enemigos.
+		 Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
+		 matrizCeldas[ancho - 2][largo - 2].colocar(sr); enemigos.add(sr);
+		 pg.agregarPersonaje(sr);
+		 
 
 	}
 
@@ -281,6 +282,7 @@ public class Nivel {
 	 */
 	public void destruirEnemigo(Enemigo e) {
 		enemigos.remove(e);
+		pg.quitarPersonaje(e);
 	}
 
 	/**
@@ -289,7 +291,6 @@ public class Nivel {
 
 	public void gameOver() {
 		pg.gameOver();
-		//miGui.gameOver();
 	}
 	/**
 	 * Mueve el personaje jugador a partir de una direccion definida por el ususario.

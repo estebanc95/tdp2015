@@ -26,6 +26,6 @@ public class ParedIndestructible extends Estructura {
 	public void atravesar(Enemigo e,int dir) {
 	}
 
-	public void recibirExplosion() {
+	public void recibirExplosion(int dir) {
 	}
 }

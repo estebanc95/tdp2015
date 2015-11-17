@@ -183,9 +183,11 @@ public class Celda {
 	 */
 
 	public void recibirExplosion(int alcance, int dir) {
-		miNivel.procesarGrafico().mostrarExplosion(this,dir);
 		if (miEstructura != null) {
-			miEstructura.recibirExplosion();
+			miEstructura.recibirExplosion(dir);
+		}
+		else{
+			miNivel.procesarGrafico().mostrarExplosion(this,dir);
 		}
 		matarPersonaje();
 		if ((miEstructura == null) && (dir != 9) && (alcance > 1)) {

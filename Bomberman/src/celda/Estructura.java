@@ -37,7 +37,7 @@ public abstract class Estructura {
 	/**
 	 * Recibe una explosion como consecuencia de una bomba que detono
 	 */
-	public abstract void recibirExplosion();
+	public abstract void recibirExplosion(int dir);
 	
 	/**
 	 * Retorna el grafico de la Celda correspondiente a esta estructura

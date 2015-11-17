@@ -10,7 +10,7 @@ public class ExplosionGrafica {
 	
 	protected static final int VERTICAL = 0;
 	protected static final int HORIZONTAL = 1;
-	protected static final int CENTRO = 2;
+	protected static final int CENTRO = 9;
 	
 	protected JLabel graf;
 	protected Icon img;

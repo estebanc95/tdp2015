@@ -1,6 +1,5 @@
 package threads;
 
-import javax.swing.ImageIcon;
 
 import bombas.Explosion;
 import celda.Celda;

@@ -3,6 +3,11 @@ import javax.swing.ImageIcon;
 
 public class SiriusGrafica extends EntidadGrafica{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SiriusGrafica (int vel, int x, int y) {
 		super(vel, x, y);
 		

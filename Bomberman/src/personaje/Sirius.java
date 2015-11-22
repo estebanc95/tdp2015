@@ -3,7 +3,6 @@ package personaje;
 import threads.ThreadEnemigo;
 import logica.Nivel;
 import celda.Celda;
-import entidades.RugulosGrafica;
 import entidades.SiriusGrafica;
 
 /**

@@ -9,8 +9,8 @@ public class ThreadTiempo extends Thread {
 	protected PanelInferior panel;
 
     public ThreadTiempo (PanelInferior pi) {
-    	this.segundos = 0;
-    	this.minutos = 0;
+    	this.segundos = 00;
+    	this.minutos = 00;
     	this.panel = pi;
     }
     
@@ -21,10 +21,10 @@ public class ThreadTiempo extends Thread {
     			Thread.sleep(1000);
     			segundos++;
     			if (segundos == 60) { // Cada 60 segundos la variable se resetea para agregar un minuto
-    				segundos = 0;
+    				segundos = 00;
     				minutos++;
     			}
-    			//this.panel.actualizarTiempo(this.minutos, this.segundos);
+    			this.panel.actualizarTiempo(this.minutos, this.segundos);
     		}
     		catch (InterruptedException e) {
     			e.printStackTrace();

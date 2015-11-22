@@ -17,7 +17,7 @@ public class Tester {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gui frame = new gui();
+					MenuGUI frame = new MenuGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

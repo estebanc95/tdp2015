@@ -1,8 +1,14 @@
 package Gui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -23,6 +29,7 @@ public class PanelInferior extends JPanel {
 	private int totalMassa;
 	private JLabel puntaje,cantPunt;
 	private int totalPunt;
+	private JLabel temp,min,dosp,seg;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -72,6 +79,15 @@ public class PanelInferior extends JPanel {
 			cantPunt.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
 			this.add(cantPunt);
 			
+			temp = new JLabel();
+			temp.setIcon(new ImageIcon(getClass().getResource("/imagenes/time.png")));
+			this.add(temp);
+			min = new JLabel("00");
+			this.add(min);
+			dosp = new JLabel (":");
+			this.add(dosp);
+			seg = new JLabel ("00");
+			this.add(seg);
 			
 			
 		}
@@ -149,6 +165,22 @@ public class PanelInferior extends JPanel {
 			  String total = Integer.toString(totalPunt);
 			  cantPunt.setIcon(null);
 			  cantPunt.setText(total);
+		  }
+		  
+		  public void actualizarTiempo(int minutos, int segundos) {
+			  String minut = Integer.toString(minutos);
+			  String segu = Integer.toString(segundos);
+			  if (minutos<10) {
+			  min.setText("0"+minut);
+			  }
+			  else 
+				  min.setText(minut);
+			  
+			  if (segundos<10) {
+				  seg.setText("0"+segu);
+			  } else
+				  seg.setText(segu);
+			  
 		  }
 }
 

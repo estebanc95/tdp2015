@@ -9,9 +9,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import threads.ThreadMovimiento;
+import threads.ThreadTiempo;
 import bombas.Bomba;
 import logica.Nivel;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
@@ -45,6 +48,7 @@ public class gui extends JFrame {
 		getContentPane().add(mapa, BorderLayout.CENTER);
 		getContentPane().add(panelS, BorderLayout.NORTH);
 		getContentPane().add(panelI, BorderLayout.SOUTH);
+		panelS.setFocusable(false);
 		panelI.setLayout(new BoxLayout(panelI, BoxLayout.X_AXIS));
 		
 		setLocationRelativeTo(null);
@@ -54,6 +58,8 @@ public class gui extends JFrame {
 		//this.setUndecorated(true); //SE USA PARA PONER PANTALLA COMPLETA
 		//this.setExtendedState(MAXIMIZED_BOTH); //SE USA PARA PONER PANTALLA COMPLETA
 		n = new Nivel (this);
+		ThreadTiempo tiempoC = new ThreadTiempo (panelI);
+		tiempoC.start();
 		ThreadMovimiento tmv = new ThreadMovimiento (n.obtenerBomberman(),this,n);
 		tmv.start();
 	}

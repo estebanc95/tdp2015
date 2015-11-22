@@ -16,7 +16,6 @@ public class FondoMenu extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imagen;
-	private JButton nuevoJuego;
 
 	public FondoMenu () {
 		this.setVisible(true);

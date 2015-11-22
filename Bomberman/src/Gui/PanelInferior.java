@@ -80,9 +80,9 @@ public class PanelInferior extends JPanel {
 			this.add(cantPunt);
 			
 			temp = new JLabel();
-			temp.setIcon(new ImageIcon(getClass().getResource("/imagenes/time.png")));
+			temp.setIcon(new ImageIcon(getClass().getResource("/imagenes/timer1.png")));
 			this.add(temp);
-			min = new JLabel("00");
+			min = new JLabel(" 00");
 			this.add(min);
 			dosp = new JLabel (":");
 			this.add(dosp);
@@ -171,10 +171,10 @@ public class PanelInferior extends JPanel {
 			  String minut = Integer.toString(minutos);
 			  String segu = Integer.toString(segundos);
 			  if (minutos<10) {
-			  min.setText("0"+minut);
+			  min.setText(" 0"+minut);
 			  }
 			  else 
-				  min.setText(minut);
+				  min.setText(" "+minut);
 			  
 			  if (segundos<10) {
 				  seg.setText("0"+segu);

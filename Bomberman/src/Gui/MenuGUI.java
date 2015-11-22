@@ -1,6 +1,7 @@
 package Gui;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ public class MenuGUI extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private FondoMenu panel;
-	private JButton nuevoJuego;
+	private JButton nuevoJuego,salir;
 	private gui miGui;
 	private MenuGUI miPrincipal;
 	
@@ -26,13 +27,22 @@ public class MenuGUI extends JFrame{
 		panel = new FondoMenu ();
 		panel.setBounds(0, 0,998,530);
 		getContentPane().add(panel);
+		miPrincipal = this;
+		
 		nuevoJuego = new JButton("Nuevo Juego");
 		nuevoJuego.setBounds(160, 200, 200, 50);
-		nuevoJuego.setSelected(false);
 		getContentPane().add(nuevoJuego);
 		OyenteNJ nj = new OyenteNJ();
 		nuevoJuego.addActionListener(nj);
-		miPrincipal = this;
+		
+		salir = new JButton("Exit");
+		salir.setBounds(160, 252, 200, 50);
+		OyenteSJ sj = new OyenteSJ();
+		salir.addActionListener(sj);
+		salir.setVisible(true);
+		getContentPane().add(salir);
+		getContentPane().repaint();
+		
 		
 	}
 	
@@ -41,6 +51,12 @@ public class MenuGUI extends JFrame{
 				miGui = new gui();
 				miPrincipal.setVisible(false);
 				miGui.setVisible(true);
+			}
+		}
+	 
+	 class OyenteSJ implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
 			}
 		}
 

@@ -23,6 +23,7 @@ public class ThreadEnemigo extends Thread {
 	 */
 
 	public ThreadEnemigo(Enemigo e) {
+		setName("Thread Enemigo");
 		miEnemigo = e;
 		activar = true;
 		rnd = new Random();
@@ -60,6 +61,12 @@ public class ThreadEnemigo extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		try {
+			join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

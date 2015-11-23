@@ -152,6 +152,7 @@ public class Nivel {
 				pg.agregarCelda(matrizCeldas[rx][ry]);
 				celdasVacias--;
 				Rugulos rg1 = new Rugulos(matrizCeldas[rx][ry], this);
+				matrizCeldas[rx][ry].colocar(rg1);
 				pg.agregarPersonaje(rg1);
 				cantRugulos--;
 			}
@@ -167,6 +168,7 @@ public class Nivel {
 				matrizCeldas[rx][ry] = crearPiso(rx, ry);
 				pg.agregarCelda(matrizCeldas[rx][ry]);
 				Altair at = new Altair(matrizCeldas[rx][ry], this);
+				matrizCeldas[rx][ry].colocar(at);
 				pg.agregarPersonaje(at);
 				cantAltair--;
 			}
@@ -274,6 +276,17 @@ public class Nivel {
 		return null;
 
 	}
+	
+	
+	
+	//Debug
+	public void matarPersonaje(Bomberman b){
+		gameOver();
+	}
+	
+	public void matarPersonaje(Enemigo e){
+		
+	}
 
 	/**
 	 * Quita un enemigo del juego.
@@ -282,8 +295,10 @@ public class Nivel {
 	 *            Enemigo a quitar.
 	 */
 	public void destruirEnemigo(Enemigo e) {
+		if(e!=null){
 		enemigos.remove(e);
 		pg.quitarPersonaje(e);
+		}
 	}
 
 	/**

@@ -89,8 +89,8 @@ public class Celda {
 		if (miEstructura != null)
 			miEstructura.atravesar(b, dir);
 		else {
+			b.obtenerGrafico().mover(dir);
 			colocar(b);
-			miBomberman.obtenerGrafico().mover(dir);
 		}
 	}
 
@@ -108,8 +108,10 @@ public class Celda {
 		if (miEstructura != null)
 			miEstructura.atravesar(e, dir);
 		else {
-			colocar(e);
-			miEnemigo.obtenerGrafico().mover(dir);
+			if (!hayEnemigo()) {
+				e.obtenerGrafico().mover(dir);
+				colocar(e);
+			}
 		}
 	}
 
@@ -141,13 +143,11 @@ public class Celda {
 	 */
 
 	public void colocar(Enemigo e) {
-		if (!hayEnemigo()) {
-			e.getCelda().quitarEnemigo();
-			e.setCelda(this);
-			miEnemigo = e;
-			if (hayBomberman()) {
-				matarPersonaje();
-			}
+		e.getCelda().quitarEnemigo();
+		e.setCelda(this);
+		miEnemigo = e;
+		if (hayBomberman()) {
+			matarPersonaje();
 		}
 	}
 
@@ -178,21 +178,19 @@ public class Celda {
 	 * @param alcance
 	 *            El alcance restante de la explosion.
 	 * @param i
-	 *            Direcion a la que avanza la explosion.
-	 *            9 representa punto de origen.
+	 *            Direcion a la que avanza la explosion. 9 representa punto de
+	 *            origen.
 	 */
 
 	public void recibirExplosion(int alcance, int dir) {
 		if (miEstructura != null) {
 			miEstructura.recibirExplosion(dir);
-		}
-		else{
-			miNivel.procesarGrafico().mostrarExplosion(this,dir);
+		} else {
+			miNivel.procesarGrafico().mostrarExplosion(this, dir);
 		}
 		matarPersonaje();
 		if ((miEstructura == null) && (dir != 9) && (alcance > 1)) {
-			miNivel.getAdyacente(this, dir).recibirExplosion(alcance - 1,
-					dir);
+			miNivel.getAdyacente(this, dir).recibirExplosion(alcance - 1, dir);
 		}
 	}
 
@@ -236,15 +234,11 @@ public class Celda {
 	 */
 
 	public void matarPersonaje() {
-		if (miBomberman != null) {
-			miNivel.procesarGrafico().quitarPersonaje(miBomberman);
+		if(miBomberman!=null)
 			miNivel.gameOver();
-		} else if (hayEnemigo()) {
-			miNivel.procesarGrafico().quitarPersonaje(miEnemigo);
-			miNivel.destruirEnemigo(miEnemigo);
-			miEnemigo=null;
+		miNivel.destruirEnemigo(miEnemigo);
+		miEnemigo=null;
 		}
-	}
 
 	/**
 	 * Retorna el personaje sobre esta Celda

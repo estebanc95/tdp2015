@@ -15,6 +15,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Panel inferior del Juego
+ * @author Esteban Canela y German Herrou
+ *
+ */
 public class PanelInferior extends JPanel {
 	
 	private ImageIcon imagen;
@@ -33,7 +38,9 @@ public class PanelInferior extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-		
+		/**
+		 * Constructor de Panel Inferior
+		 */
 		public PanelInferior () {
 			this.setSize(88,126);
 			this.setVisible(true);
@@ -204,11 +211,19 @@ public class PanelInferior extends JPanel {
 		        super.paint(g);
 		    }
 		  
+		  /**
+		   * Incrementa el valor del power up 
+		   */
+		  
 		  public void aumentarSpeedUP() {
 			  totalSpeedUp++;
 			  String tot = Integer.toString(totalSpeedUp);
 			  cantSU.setText(" "+tot+" ");
 		  }
+		  
+		  /**
+		   * Incrementa el valor del power up 
+		   */
 		  
 		  public void aumentarFatality() {
 			  totalFatality++;
@@ -216,11 +231,19 @@ public class PanelInferior extends JPanel {
 			  cantFa.setText(" "+tot+" ");
 		  }
 		  
+		  /**
+		   * Incrementa el valor del power up 
+		   */
+		  
 		  public void aumentarBombality() {
 			  totalBombality++;
 			  String tot = Integer.toString(totalBombality);
 			  cantBom.setText(" "+tot+" ");
 		  }
+		  
+		  /**
+		   * Incrementa el valor del power up 
+		   */
 		  
 		  public void aumentarMasacrality() {
 			  totalMassa++;
@@ -228,11 +251,21 @@ public class PanelInferior extends JPanel {
 			  cantMa.setText(" "+tot+" ");
 		  }
 		  
+		  /**
+		   * Incrementa el valor de los puntajes 
+		   */
+		  
 		  public void aumentarPuntaje(int n) {
 			  totalPunt+=n;
 			  String total = Integer.toString(totalPunt);
 			  cantPunt.setText(" "+total+" ");
 		  }
+		  
+		  /**
+		   * Actualiza el tiempo en el panel inferior
+		   * @param minutos minutos a colocar en el panel
+		   * @param segundos segundos a colocar en el panel
+		   */
 		  
 		  public void actualizarTiempo(int minutos, int segundos) {
 			  String minut = Integer.toString(minutos);

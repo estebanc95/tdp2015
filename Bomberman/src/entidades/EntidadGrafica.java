@@ -5,11 +5,14 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+
+/**
+ * Clase Entidad Grafica
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
 public abstract class EntidadGrafica extends JComponent {	
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	protected JLabel graf;
 	protected Icon mov[];
@@ -19,24 +22,47 @@ public abstract class EntidadGrafica extends JComponent {
 	protected final int weight = 32;
 	protected Point pos;
 	
+	/**
+	 * Constructor de Celda Grafica
+	 * @param velocidad velocidad de la entidad
+	 * @param x posicion x 
+	 * @param y posicion y
+	 */
+	
 	protected EntidadGrafica(int velocidad, int x, int y) {
 		this.pos = new Point(weight * x, height * y);
 		this.mov = new Icon[4];
 		this.velocidad =velocidad;
 	}
 	
+	/**
+	 * Setea la velocidad de la entidad
+	 * @param velocidad la cual se quiere actualizar
+	 */
 	public void setVelocidad(int velocidad){
 		this.velocidad = velocidad;
 	}
 	
+	/**
+	 * Devuelve la velocidad de la entidad
+	 * @return la velocidad
+	 */
 	public int obtenerVelocidad() {
 		return this.velocidad;
 	}
 	
+	/**
+	 * Devuelve la posicion de la entidad
+	 * @return la posicion
+	 */
 	public Point obtenerPos() {
 		return this.pos;
 	}
 	
+	/**
+	 * Mueve la entidad grafica en una determinada posicion
+	 * @param dir direccion en la que se desea mover
+	 */
 	public void mover(int dir) {
 		if (this.graf != null) {
 			this.graf.setIcon(this.mov[dir]);
@@ -77,7 +103,9 @@ public abstract class EntidadGrafica extends JComponent {
 		}
 	}	
 	
-	
+	/**
+	 * Mata a la entidad grafica
+	 */
 	public void morir() {
 		if (this.graf != null) {
 			this.graf.setIcon(this.dmovn);
@@ -85,6 +113,10 @@ public abstract class EntidadGrafica extends JComponent {
 		}
 	}
 	
+	/**
+	 * Devuelve el grafico que posee la entidad
+	 * @return el grafico de la entidad
+	 */
 	public JLabel obtenergraf() {
 		if (this.graf == null) {
 			this.graf = new JLabel(mov[0]);

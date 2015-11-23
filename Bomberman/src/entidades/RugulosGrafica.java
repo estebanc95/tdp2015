@@ -1,14 +1,20 @@
 package entidades;
 
 import javax.swing.ImageIcon;
-
+/**
+ * Clase RugulosGrafica
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
 public class RugulosGrafica extends EntidadGrafica {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
+	/**
+	 * Constructor de RugulosGrafica
+	 * @param vel velocidad del Rugulos
+	 * @param x posicion X
+	 * @param y posicion Y
+	 */
 	public RugulosGrafica (int vel, int x, int y) {
 		super(vel, x, y);
 		

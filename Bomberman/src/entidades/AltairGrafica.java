@@ -1,9 +1,20 @@
 package entidades;
 import javax.swing.ImageIcon;
 
+/**	
+ * Entidad grafica de un Altair
+ * @author Esteban Federico y German Herrou
+ *
+ */
+
 public class AltairGrafica extends EntidadGrafica {
 	
-
+	/**
+	 * Constructor de AltairGrafica, establece las imagenes del Altair
+	 * @param vel velocidad del personaje
+	 * @param x ubicacion del personaje en pos x
+	 * @param y ubicacion del personaje en pos y
+	 */
 	public AltairGrafica (int vel, int x, int y) {
 		super(vel, x, y);
 		

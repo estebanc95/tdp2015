@@ -14,10 +14,18 @@ import bombas.Bomba;
 import logica.Nivel;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
+
+/**
+ * Clase gui
+ * @author Esteban Canela y German Herrou
+ *
+ */
 
 public class gui extends JFrame {
 
@@ -28,8 +36,13 @@ public class gui extends JFrame {
 	protected JLayeredPane mapa;
 	protected PanelInferior panelI;
 	protected PanelSuperior panelS;
+	protected JFrame miPrincipal;
 	
-	public gui () {
+	/**
+	 * Constructor de gui
+	 */
+	
+	public gui (JFrame p) {
 		
 		super ("Proyecto X - TECNOLOGIA DE PROGRAMACION - 2015");
 		addKeyListener(new KeyAdapter() {
@@ -40,9 +53,12 @@ public class gui extends JFrame {
 		});
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/IconoJuego.png"));
+	    setIconImage(icon);
 		setSize(998,530);
+		miPrincipal=p;
 		panelI = new PanelInferior();
-		panelS = new PanelSuperior();
+		panelS = new PanelSuperior(miPrincipal,this);
 		mapa = new JLayeredPane();
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		getContentPane().add(mapa, BorderLayout.CENTER);
@@ -64,14 +80,27 @@ public class gui extends JFrame {
 		tmv.start();
 	}
 	
+	/**
+	 * Devuelve el mapa principal el cual contiene el juego en si
+	 * @return el mapa de juego
+	 */
+	
 	public JLayeredPane miMapa () {
 		return mapa;
 	}
+	/**
+	 * Finaliza el juego
+	 */
 	
 	public void gameOver(){
 		JOptionPane.showMessageDialog(this, "Game Over.","Bomberman",JOptionPane.WARNING_MESSAGE);
 		System.exit(0);
 		}
+	
+	/**
+	 * Establece los movimientos que el usuario desea
+	 * @param key movimiento del usuario
+	 */
 	
 	protected void mover(KeyEvent key) {
 		if(!lock){
@@ -111,39 +140,75 @@ public class gui extends JFrame {
 	}
 	}
 	
+	/**
+	 * Se fija si el teclado se encuentra bloqueado
+	 * @return verdadero si el teclado esta bloqueado, en caso contrario falso
+	 */
+	
 	public boolean estaBloqueado () {
 		return lock;
 	}
+	
+	/**
+	 * Desbloquea el teclado
+	 */
 	
 	public void desbloquear () {
 		lock = !lock;
 	}
 	
+	/**
+	 * Devuelve la direccion en que se movio
+	 * @return direccion del ulimo movimiento
+	 */
+	
 	public int getDir () {
 		return dir;
 	}
 
+	/**
+	 * Muestra que el jugador gano el Juego
+	 */
 	public void mostrarVictoria() {
 		JOptionPane.showMessageDialog(this, "El bomberman ha ganado!.","Bomberman",JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 		
 	}
 	
+	/**
+	 * Aumenta el powerUp
+	 */
+	
 	public void aumentarSpeedUp() {
 		panelI.aumentarSpeedUP();
 	}
 	
+	/**
+	 * Aumenta el powerUp
+	 */
 	public void aumentarFatality() {
 		panelI.aumentarFatality();
 	}
+
+	/**
+	 * Aumenta el powerUp
+	 */
 	
 	public void aumentarBombality() {
 		panelI.aumentarBombality();
 	}
+
+	/**
+	 * Aumenta el powerUp
+	 */
 	
 	public void aumentarMasacrality() {
 		panelI.aumentarMasacrality();
 	}
+
+	/**
+	 * Aumenta el powerUp
+	 */
 	
 	public void aumentarPuntos (int n) {
 		panelI.aumentarPuntaje(n);

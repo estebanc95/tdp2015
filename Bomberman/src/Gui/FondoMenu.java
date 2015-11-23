@@ -11,12 +11,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Establece un fondo al menu principal
+ * @author Esteban Canela y German Herrou
+ *
+ */
 
 public class FondoMenu extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imagen;
 
+	/**
+	 * Constructor de fondo Menu
+	 */
 	public FondoMenu () {
 		this.setVisible(true);
 		imagen = new ImageIcon(getClass().getResource("/imagenes/fondoJuego.png"));

@@ -7,6 +7,7 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,19 +15,31 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase Panel Superior
+ * @author Esteban Federico
+ *
+ */
+
 public class PanelSuperior extends JPanel {
 		
 	private ImageIcon imagen;
 	private URL fondo,su;
 	private JButton volver,config;
+	private JFrame principal,juego;
 	
+	/**
+	 * Constructor de Panel Superior
+	 */
 	
-	public PanelSuperior () {
+	public PanelSuperior (JFrame p, JFrame j) {
 		this.setSize(88,126);
 		this.setVisible(true);
 		//fondo = this.getClass().getResource("imagenes/PanelInferior.png");
 		imagen = new ImageIcon(getClass().getResource("/imagenes/PanelSuperior.png"));
 		setLayout(new BorderLayout(0, 0));
+		principal=p;
+		juego=j;
 		
 		volver = new JButton();
 		volver.setBorderPainted(false);
@@ -51,8 +64,8 @@ public class PanelSuperior extends JPanel {
 	
 	class OyenteBack implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-			volver.setEnabled(true);
-			System.exit(0);
+			juego.setVisible(false);
+			principal.setVisible(true);
 		}
 	}
 	

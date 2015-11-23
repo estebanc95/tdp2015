@@ -4,6 +4,12 @@ import java.awt.EventQueue;
 
 import threads.ThreadBomba;
 
+/**
+ * Encargado de ejecutar la aplicacion
+ * @author Esteban Federico Canela y  German Herrou
+ *
+ */
+
 public class Tester {
 /*
 	public static void main(String[] args) {

@@ -6,7 +6,11 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * Clase ExplosionGrafica
+ * @author Esteban Federico Canela y German Herrou
+ *
+ */
 public class ExplosionGrafica {
 	
 	protected static final int VERTICAL = 0;
@@ -19,6 +23,12 @@ public class ExplosionGrafica {
 	protected final int height = 32;
 	protected Point pos;
 	
+	/**
+	 * Constructor de Explosion Grafica
+	 * @param x posicion x
+	 * @param y posicion y 
+	 * @param dir direccion de la explosion
+	 */
 	public ExplosionGrafica(int x, int y,int dir) {
 		this.pos = new Point(height * x, weight * y);
 		switch(dir){
@@ -39,10 +49,19 @@ public class ExplosionGrafica {
 		
 	}
 	
+	/**
+	 * Devuelve el punto donde se encuentra la explosion grafica
+	 * @return la posicion de la explosion
+	 */
+	
 	public Point obtenerpos() {
 		return this.pos;
 	}
 	
+	/**
+	 * Devuelve el grafico que posee la explosion grafica
+	 * @return el grafico que contiene la explosion
+	 */
 	public JLabel obtenerGrafico() {
 		if (this.graf == null) {
 			this.graf = new JLabel(img);

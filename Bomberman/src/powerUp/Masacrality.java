@@ -1,5 +1,7 @@
 package powerUp;
 
+import java.applet.AudioClip;
+
 import celda.Celda;
 import entidades.MasacralityGrafica;
 import logica.Nivel;
@@ -29,6 +31,9 @@ public class Masacrality extends PowerUp {
 		getNivel().aumentarPuntuacion(50);
 		getNivel().procesarGrafico().removerPowerUp(this);
 		b.getNivel().procesarGrafico().aumentarMasacrality();
+		AudioClip poweru;
+		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
+		poweru.play();
 		System.out.println("Masacrality obtenido.");
 	}
 	

@@ -1,4 +1,6 @@
 package powerUp;
+import java.applet.AudioClip;
+
 import celda.Celda;
 import entidades.FatalityGrafica;
 import logica.Nivel;
@@ -26,6 +28,9 @@ public class Fatality extends PowerUp {
 		getNivel().aumentarPuntuacion(50);
 		getNivel().procesarGrafico().removerPowerUp(this);
 		b.getNivel().procesarGrafico().aumentarFatality();
+		AudioClip poweru;
+		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
+		poweru.play();
 		System.out.println("Fatality obtenido.");
 	}
 	

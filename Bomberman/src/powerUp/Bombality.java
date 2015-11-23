@@ -1,5 +1,7 @@
 package powerUp;
 
+import java.applet.AudioClip;
+
 import celda.Celda;
 import entidades.BombalityGrafica;
 import logica.Nivel;
@@ -26,6 +28,9 @@ public class Bombality extends PowerUp {
 		getNivel().aumentarPuntuacion(35);
 		getNivel().procesarGrafico().removerPowerUp(this);
 		b.getNivel().procesarGrafico().aumentarBombality();
+		AudioClip poweru;
+		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
+		poweru.play();
 		System.out.println("Bombality obtenido.");
 	}
 	

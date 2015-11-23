@@ -1,5 +1,7 @@
 package logica;
 
+import java.applet.AudioClip;
+
 import personaje.Personaje;
 import powerUp.PowerUp;
 import threads.ThreadBomba;

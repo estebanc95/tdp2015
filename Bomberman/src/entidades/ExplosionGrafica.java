@@ -1,5 +1,6 @@
 package entidades;
 
+import java.applet.AudioClip;
 import java.awt.Point;
 
 import javax.swing.Icon;
@@ -34,6 +35,9 @@ public class ExplosionGrafica {
 				break;
 			}
 		}
+	AudioClip explot;
+	explot = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Explosion.mid"));
+	explot.play();
 		
 	}
 	

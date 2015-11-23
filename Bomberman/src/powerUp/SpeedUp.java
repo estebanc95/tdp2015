@@ -1,5 +1,7 @@
 package powerUp;
 
+import java.applet.AudioClip;
+
 import celda.Celda;
 import entidades.SpeedUpGrafica;
 import logica.Nivel;
@@ -27,6 +29,9 @@ public class SpeedUp extends PowerUp {
 		getNivel().aumentarPuntuacion(30);
 		getNivel().procesarGrafico().removerPowerUp(this);
 		b.getNivel().procesarGrafico().aumentarSpeedUp();
+		AudioClip poweru;
+		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
+		poweru.play();
 		System.out.println("SpeedUp obtenido.");
 	}
 	

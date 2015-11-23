@@ -57,6 +57,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			cantSU.setForeground(Color.YELLOW);
 			this.add(cantSU);
 			
 			//FATALITY
@@ -76,6 +77,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			cantFa.setForeground(Color.YELLOW);
 			this.add(cantFa);
 			
 			//BOMBALITY
@@ -95,6 +97,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			cantBom.setForeground(Color.YELLOW);
 			this.add(cantBom);
 			
 			//MASACRALITY
@@ -114,6 +117,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			cantMa.setForeground(Color.YELLOW);
 			this.add(cantMa);
 			
 			
@@ -134,6 +138,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			cantPunt.setForeground(Color.YELLOW);
 			this.add(cantPunt);
 			
 			//TIMER
@@ -152,8 +157,9 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			min.setForeground(Color.YELLOW);
 			this.add(min);
+			
 			dosp = new JLabel (":");
 			InputStream dospis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
 			try {
@@ -165,7 +171,9 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			dosp.setForeground(Color.YELLOW);
 			this.add(dosp);
+			
 			seg = new JLabel ("00");
 			InputStream seginp=this.getClass().getResourceAsStream("/Font/akbar.ttf");
 			try {
@@ -177,7 +185,7 @@ public class PanelInferior extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			seg.setForeground(Color.YELLOW);
 			this.add(seg);
 			
 			

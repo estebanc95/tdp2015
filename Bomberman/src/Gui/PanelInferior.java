@@ -39,54 +39,145 @@ public class PanelInferior extends JPanel {
 			this.setVisible(true);
 			//fondo = this.getClass().getResource("imagenes/PanelInferior.png");
 			imagen = new ImageIcon(getClass().getResource("/imagenes/PanelInferior.png"));
+			
+			//SPEED-UP
+			
 			speedUp= new JLabel();
 			this.speedUp.setIcon(new ImageIcon(getClass().getResource("/imagenes/SpeedUpPI.png")));
 			this.add(speedUp);
 			totalSpeedUp=0;
-			cantSU= new JLabel();
-			cantSU.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
+			cantSU= new JLabel(" 0 ");
+			InputStream spis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				cantSU.setFont(Font.createFont(Font.TRUETYPE_FONT, spis).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(cantSU);
+			
+			//FATALITY
 			
 			fatality = new JLabel();
 			this.fatality.setIcon(new ImageIcon(getClass().getResource("/imagenes/FatalityPI.png")));
 			this.add(fatality);
 			totalFatality=0;
-			cantFa= new JLabel();
-			cantFa.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
+			cantFa= new JLabel(" 0 ");
+			InputStream fais=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				cantFa.setFont(Font.createFont(Font.TRUETYPE_FONT, fais).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(cantFa);
+			
+			//BOMBALITY
 			
 			bombality = new JLabel();
 			this.bombality.setIcon(new ImageIcon(getClass().getResource("/imagenes/BombalityPI.png")));
 			this.add(bombality);
 			totalBombality=0;
-			cantBom= new JLabel();
-			cantBom.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
+			cantBom= new JLabel(" 0 ");
+			InputStream bombis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				cantBom.setFont(Font.createFont(Font.TRUETYPE_FONT, bombis).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(cantBom);
+			
+			//MASACRALITY
 			
 			massacrality = new JLabel();
 			this.massacrality.setIcon(new ImageIcon(getClass().getResource("/imagenes/MasacralityPI.png")));
 			this.add(massacrality);
 			totalMassa=0;
-			cantMa= new JLabel();
-			cantMa.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
+			cantMa= new JLabel(" 0 ");
+			InputStream cantMatis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				cantMa.setFont(Font.createFont(Font.TRUETYPE_FONT, cantMatis).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(cantMa);
+			
+			
+			//PUNTAJE
 			
 			puntaje= new JLabel();
 			this.puntaje.setIcon(new ImageIcon(getClass().getResource("/imagenes/Puntos.png")));
 			this.add(puntaje);
 			totalPunt=0;
-			cantPunt= new JLabel();
-			cantPunt.setIcon(new ImageIcon(getClass().getResource("/imagenes/0.png")));
+			cantPunt= new JLabel(" 0 ");
+			InputStream puntis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				cantPunt.setFont(Font.createFont(Font.TRUETYPE_FONT, puntis).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(cantPunt);
+			
+			//TIMER
 			
 			temp = new JLabel();
 			temp.setIcon(new ImageIcon(getClass().getResource("/imagenes/timer1.png")));
 			this.add(temp);
 			min = new JLabel(" 00");
+			InputStream is=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				min.setFont(Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			this.add(min);
 			dosp = new JLabel (":");
+			InputStream dospis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				dosp.setFont(Font.createFont(Font.TRUETYPE_FONT, dospis).deriveFont(0, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.add(dosp);
 			seg = new JLabel ("00");
+			InputStream seginp=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				seg.setFont(Font.createFont(Font.TRUETYPE_FONT, seginp).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			this.add(seg);
 			
 			
@@ -107,64 +198,32 @@ public class PanelInferior extends JPanel {
 		  
 		  public void aumentarSpeedUP() {
 			  totalSpeedUp++;
-			  if (totalSpeedUp==1) {
-				  cantSU.setIcon(new ImageIcon(getClass().getResource("/imagenes/1.png")));
-			  }
-			  else 
-				  if(totalSpeedUp==2){
-					  cantSU.setIcon(new ImageIcon(getClass().getResource("/imagenes/2.png")));
-				  }
-				  else
-					  if(totalSpeedUp==3) {
-						  cantSU.setIcon(new ImageIcon(getClass().getResource("/imagenes/3.png")));
-					  }
-					  else {
-						  cantSU.setIcon(new ImageIcon(getClass().getResource("/imagenes/4.png")));
-					  }
+			  String tot = Integer.toString(totalSpeedUp);
+			  cantSU.setText(" "+tot+" ");
 		  }
 		  
 		  public void aumentarFatality() {
 			  totalFatality++;
-			  if (totalFatality==1) {
-				  cantFa.setIcon(new ImageIcon(getClass().getResource("/imagenes/1.png")));
-			  }
-			  else 
-				  if(totalFatality==2){
-					  cantFa.setIcon(new ImageIcon(getClass().getResource("/imagenes/2.png")));
-				  }
-				  else
-				  	{
-						  cantFa.setIcon(new ImageIcon(getClass().getResource("/imagenes/3.png")));
-					  }
+			  String tot = Integer.toString(totalFatality);
+			  cantFa.setText(" "+tot+" ");
 		  }
 		  
 		  public void aumentarBombality() {
 			  totalBombality++;
-			  if (totalBombality==1) {
-				  cantBom.setIcon(new ImageIcon(getClass().getResource("/imagenes/1.png")));
-			  }
-			  else 
-				  if(totalBombality==2){
-					  cantBom.setIcon(new ImageIcon(getClass().getResource("/imagenes/2.png")));
-				  }
-				  else
-					  {
-						  cantBom.setIcon(new ImageIcon(getClass().getResource("/imagenes/3.png")));
-					  }
+			  String tot = Integer.toString(totalBombality);
+			  cantBom.setText(" "+tot+" ");
 		  }
 		  
 		  public void aumentarMasacrality() {
 			  totalMassa++;
-			  if (totalMassa==1) {
-				  cantMa.setIcon(new ImageIcon(getClass().getResource("/imagenes/1.png")));
-			  }
+			  String tot = Integer.toString(totalMassa);
+			  cantMa.setText(" "+tot+" ");
 		  }
 		  
 		  public void aumentarPuntaje(int n) {
 			  totalPunt+=n;
 			  String total = Integer.toString(totalPunt);
-			  cantPunt.setIcon(null);
-			  cantPunt.setText(total);
+			  cantPunt.setText(" "+total+" ");
 		  }
 		  
 		  public void actualizarTiempo(int minutos, int segundos) {

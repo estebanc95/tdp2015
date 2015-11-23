@@ -26,15 +26,15 @@ public class ParedDestructible extends Estructura {
 
 	public void atravesar(Bomberman b, int dir) {
 		if (b.esFantasma()) {
-			miCelda.colocar(b);
 			b.obtenerGrafico().mover(dir);
+			miCelda.colocar(b);
 		}
 	}
 
 	public void atravesar(Enemigo e, int dir) {
 		if (e.esFantasma()){
-			miCelda.colocar(e);
 			e.obtenerGrafico().mover(dir);
+			miCelda.colocar(e);
 		}
 	}
 

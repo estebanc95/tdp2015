@@ -133,8 +133,6 @@ public class Nivel {
 					p.ubicarEnCelda(matrizCeldas[rx][ry]);
 				}
 				pg.agregarCelda(matrizCeldas[rx][ry]);
-				//miGui.miMapa().add(matrizCeldas[rx][ry].getCeldaGrafica()
-				//		.obtenerGrafico(), new Integer(1));
 				destruiblesRestantes--;
 				celdasVacias--;
 			}
@@ -152,7 +150,7 @@ public class Nivel {
 				pg.agregarCelda(matrizCeldas[rx][ry]);
 				celdasVacias--;
 				Rugulos rg1 = new Rugulos(matrizCeldas[rx][ry], this);
-				matrizCeldas[rx][ry].colocar(rg1);
+				matrizCeldas[rx][ry].setEnemigo(rg1);
 				pg.agregarPersonaje(rg1);
 				cantRugulos--;
 			}
@@ -168,7 +166,7 @@ public class Nivel {
 				matrizCeldas[rx][ry] = crearPiso(rx, ry);
 				pg.agregarCelda(matrizCeldas[rx][ry]);
 				Altair at = new Altair(matrizCeldas[rx][ry], this);
-				matrizCeldas[rx][ry].colocar(at);
+				matrizCeldas[rx][ry].setEnemigo(at);
 				pg.agregarPersonaje(at);
 				cantAltair--;
 			}
@@ -275,17 +273,6 @@ public class Nivel {
 		}
 		return null;
 
-	}
-	
-	
-	
-	//Debug
-	public void matarPersonaje(Bomberman b){
-		gameOver();
-	}
-	
-	public void matarPersonaje(Enemigo e){
-		
 	}
 
 	/**

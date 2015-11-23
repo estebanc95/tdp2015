@@ -14,6 +14,7 @@ public class ThreadExplosionGrafica extends Thread {
 	protected Celda c;
 
 	public ThreadExplosionGrafica(int tipo, Celda c) {
+		setName("Explosion Grafica");
 		if (tipo == 9)
 			this.tipo = tipo;
 		else

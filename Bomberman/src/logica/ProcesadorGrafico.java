@@ -25,10 +25,12 @@ public class ProcesadorGrafico {
 	
 	public void agregarCelda(Celda c){
 		miGui.miMapa().add(c.getCeldaGrafica().obtenerGrafico(),new Integer(1));
+		miGui.miMapa().repaint();
 	}
 	
 	public void agregarPersonaje(Personaje p){
 		miGui.miMapa().add(p.obtenerGrafico().obtenergraf(), new Integer(50));
+		miGui.miMapa().repaint();
 	}
 	
 	public void aumentarPuntos(int p){
@@ -61,6 +63,7 @@ public class ProcesadorGrafico {
 	public void mostrarExplosion(Celda c,int tipo){
 		ThreadExplosionGrafica th=new ThreadExplosionGrafica(tipo,c);
 		th.start();
+		miGui.miMapa().repaint();
 	}
 	
 	public void agregarExplosion(Explosion e){

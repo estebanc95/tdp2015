@@ -1,6 +1,8 @@
 package threads;
 
 
+import java.applet.AudioClip;
+
 import bombas.Explosion;
 import celda.Celda;
 
@@ -24,6 +26,11 @@ public class ThreadExplosionGrafica extends Thread {
 			Explosion e=new Explosion(tipo,c);
 			c.getNivel().procesarGrafico()
 					.agregarExplosion(e);
+			if(tipo==9){
+			AudioClip explot;
+			explot = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Explosion.mid"));
+			explot.play();
+			}
 			sleep(duracion);
 			c.getNivel().procesarGrafico()
 					.quitarExplosion(e);

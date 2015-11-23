@@ -35,9 +35,7 @@ public class ExplosionGrafica {
 				break;
 			}
 		}
-	AudioClip explot;
-	explot = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Explosion.mid"));
-	explot.play();
+
 		
 	}
 	

@@ -66,6 +66,7 @@ public class gui extends JFrame {
 		getContentPane().add(panelI, BorderLayout.SOUTH);
 		panelS.setFocusable(false);
 		panelI.setLayout(new BoxLayout(panelI, BoxLayout.X_AXIS));
+		this.setFocusable(true);
 		
 		setLocationRelativeTo(null);
 		mapa.setLayout(null);

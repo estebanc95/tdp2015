@@ -47,16 +47,12 @@ public class PanelSuperior extends JPanel {
 		volver.setContentAreaFilled(false);
 		OyenteBack ob = new OyenteBack();
 		volver.addActionListener(ob);
-		volver.setSelected(false);
-		volver.setEnabled(false);
 		this.add(volver,BorderLayout.WEST);
 		
 		config = new JButton();
 		config.setBorderPainted(false);
 		config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonConfig.png")));
 		config.setContentAreaFilled(false);
-		config.setSelected(false);
-		config.setEnabled(false);
 		this.add(config,BorderLayout.EAST);
 		
 		

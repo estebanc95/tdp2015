@@ -40,11 +40,12 @@ public class MenuGUI extends JFrame{
 		panel = new FondoMenu ();
 		panel.setBounds(0, 0,998,530);
 		getContentPane().add(panel);
+		panel.setLayout(null);
 		miPrincipal = this;
 		
 		nuevoJuego = new JButtonMod("/imagenes/NewGame.png");
 		nuevoJuego.setBounds(160, 200, 190, 50);
-		getContentPane().add(nuevoJuego);
+		panel.add(nuevoJuego);
 		OyenteNJ nj = new OyenteNJ();
 		nuevoJuego.addActionListener(nj);
 		
@@ -52,8 +53,8 @@ public class MenuGUI extends JFrame{
 		salir.setBounds(160, 252, 190, 50);
 		OyenteSJ sj = new OyenteSJ();
 		salir.addActionListener(sj);
-		salir.setVisible(true);
-		getContentPane().add(salir);
+		panel.add(salir);
+		salir.setFocusPainted(true);
 		getContentPane().repaint();
 		
 		

@@ -29,7 +29,8 @@ public class ThreadTiempo extends Thread {
     			if (segundos == 60) { // Cada 60 segundos la variable se resetea para agregar un minuto
     				segundos = 00;
     				minutos++;
-    			if (minutos == 60) 
+    			}
+    			if (minutos == 60) {
     				minutos=00;
     				horas++;
     			}

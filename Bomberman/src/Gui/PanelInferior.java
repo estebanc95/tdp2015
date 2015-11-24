@@ -293,6 +293,7 @@ public class PanelInferior extends JPanel {
 			  }
 			  else 
 				  hor.setText(" "+hora);
+			  
 			  if (minutos<10) {
 			  min.setText(" 0"+minut);
 			  }

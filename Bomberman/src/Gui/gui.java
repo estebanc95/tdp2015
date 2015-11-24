@@ -40,6 +40,7 @@ public class gui extends JFrame {
 	protected MenuGUI miPrincipal;
 	protected ThreadTiempo tiempoC;
 	protected AudioClip music;
+	private int cantClicks;
 	
 	/**
 	 * Constructor de gui
@@ -83,7 +84,8 @@ public class gui extends JFrame {
 		ThreadMovimiento tmv = new ThreadMovimiento (n.obtenerBomberman(),this,n);
 		tmv.start();
 		music = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/SongGame.mid"));
-		music.play();
+		music.loop();
+		cantClicks=0;
 	}
 	
 	/**
@@ -229,7 +231,11 @@ public class gui extends JFrame {
 	 */
 	
 	public void silenciar () {
-		music.stop();
+		if (cantClicks%2==0)
+			music.stop();
+		else 
+			music.play();
+		cantClicks++;
 	}
 	
 }

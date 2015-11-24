@@ -63,7 +63,7 @@ public class Nivel {
 				matrizCeldas[i][j] = null;
 
 		int celdasVacias = ancho * largo;
-
+		
 		// Inicializo los bordes del mapa con paredes indestructibles.
 		for (int i = 0; i < ancho; i++) {
 			matrizCeldas[i][0] = crearPI(i, 0);

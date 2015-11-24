@@ -63,6 +63,7 @@ public class Bomberman extends Personaje {
 		else{
 			Bomba bm = new Bomba(getNivel(),alcance,getCelda(),this);
 			bColocadas++;
+			miCelda.colocarBomba();
 			return bm;
 		}
 	}

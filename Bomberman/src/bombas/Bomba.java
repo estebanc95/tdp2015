@@ -57,6 +57,7 @@ public class Bomba {
 		miNivel.getAdyacente(miCelda,Direccion.IZQUIERDA).recibirExplosion(alcance,Direccion.IZQUIERDA);
 		
 		miNivel.procesarGrafico().removerBomba(this);
+		miCelda.quitarBomba();
 		miBomberman.bombaExploto();
 		}
 	

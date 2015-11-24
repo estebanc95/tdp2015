@@ -26,6 +26,7 @@ public class Celda {
 	protected Nivel miNivel;
 	protected Bomba miBomba;
 	protected CeldaGrafica graf;
+	protected boolean hayBomba;
 
 	/**
 	 * Constructor de Celda
@@ -50,6 +51,7 @@ public class Celda {
 		miNivel = n;
 		miBomba = null;
 		graf = new CeldaPisoGrafico(px, py);
+		hayBomba = false;
 	}
 
 	/**
@@ -73,6 +75,7 @@ public class Celda {
 		miNivel = n;
 		miBomba = null;
 		graf = new CeldaPisoGrafico(px, py);
+		hayBomba = false;
 	}
 
 	/**
@@ -89,8 +92,10 @@ public class Celda {
 		if (miEstructura != null)
 			miEstructura.atravesar(b, dir);
 		else {
-			b.obtenerGrafico().mover(dir);
-			colocar(b);
+			if (!hayBomba()) {
+				b.obtenerGrafico().mover(dir);
+				colocar(b);
+			}
 		}
 	}
 
@@ -108,7 +113,7 @@ public class Celda {
 		if (miEstructura != null)
 			miEstructura.atravesar(e, dir);
 		else {
-			if (!hayEnemigo()) {
+			if (!hayEnemigo() && !hayBomba()) {
 				e.obtenerGrafico().mover(dir);
 				colocar(e);
 			}
@@ -130,7 +135,7 @@ public class Celda {
 			miPowerUp.activar(miBomberman);
 			miPowerUp = null;
 		}
-		if (hayEnemigo()&&!miBomberman.esFantasma()) {
+		if (hayEnemigo() && !miBomberman.esFantasma()) {
 			matarPersonaje();
 		}
 	}
@@ -146,14 +151,13 @@ public class Celda {
 		e.getCelda().quitarEnemigo();
 		e.setCelda(this);
 		miEnemigo = e;
-		if (hayBomberman()&&!miBomberman.esFantasma()) {
+		if (hayBomberman() && !miBomberman.esFantasma()) {
 			miNivel.gameOver();
 		}
 	}
-	
-	
-	public void setEnemigo(Enemigo e){
-		miEnemigo=e;
+
+	public void setEnemigo(Enemigo e) {
+		miEnemigo = e;
 	}
 
 	/**
@@ -190,14 +194,12 @@ public class Celda {
 	public void recibirExplosion(int alcance, int dir) {
 		if (miEstructura != null) {
 			miEstructura.recibirExplosion(dir);
-		} 
-			else {
+		} else {
 			miNivel.procesarGrafico().mostrarExplosion(this, dir);
 		}
-		
+
 		matarPersonaje();
-		
-		
+
 		if ((miEstructura == null) && (dir != 9) && (alcance > 1)) {
 			miNivel.getAdyacente(this, dir).recibirExplosion(alcance - 1, dir);
 		}
@@ -243,11 +245,11 @@ public class Celda {
 	 */
 
 	public void matarPersonaje() {
-		if(miBomberman!=null)
+		if (miBomberman != null)
 			miNivel.gameOver();
 		miNivel.destruirEnemigo(miEnemigo);
-		miEnemigo=null;
-		}
+		miEnemigo = null;
+	}
 
 	/**
 	 * Retorna el personaje sobre esta Celda
@@ -314,6 +316,18 @@ public class Celda {
 
 	public PowerUp getPowerUp() {
 		return miPowerUp;
+	}
+
+	public boolean hayBomba() {
+		return hayBomba;
+	}
+
+	public void colocarBomba() {
+		hayBomba = true;
+	}
+
+	public void quitarBomba() {
+		hayBomba = false;
 	}
 
 }

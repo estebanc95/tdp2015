@@ -29,8 +29,7 @@ public class Altair extends Enemigo {
 	}
 	
 	public void morir(){
-		super.morir();
-		th.interrupt();
+		th.detener();
 	}
 	
 	}

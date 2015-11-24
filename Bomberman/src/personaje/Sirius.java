@@ -28,8 +28,7 @@ public class Sirius extends Enemigo {
 	}
 	
 	public void morir(){
-		super.morir();
-		th.interrupt();
+		th.detener();
 	}
 	
 	}

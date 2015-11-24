@@ -283,6 +283,7 @@ public class Nivel {
 	 */
 	public void destruirEnemigo(Enemigo e) {
 		if(e!=null){
+		e.morir();
 		enemigos.remove(e);
 		pg.quitarPersonaje(e);
 		}

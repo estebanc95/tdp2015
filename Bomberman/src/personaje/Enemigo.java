@@ -58,9 +58,7 @@ public abstract class Enemigo extends Personaje {
 	/**
 	 * Elimina al enemigo del Nivel
 	 */
-	public void morir(){
-		getNivel().destruirEnemigo(this);
-	}
+	public abstract void morir();
 	
 
 }

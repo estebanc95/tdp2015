@@ -231,11 +231,19 @@ public class gui extends JFrame {
 	 */
 	
 	public void silenciar () {
+	
 		if (cantClicks%2==0)
 			music.stop();
 		else 
 			music.play();
 		cantClicks++;
+	}
+	
+	/**
+	 * Silenciar definitivamente la musica de fondo
+	 */
+	public void silenciarDefin() {
+		music.stop();
 	}
 	
 }

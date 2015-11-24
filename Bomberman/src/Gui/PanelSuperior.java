@@ -65,6 +65,7 @@ public class PanelSuperior extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			juego.setVisible(false);
 			principal.setVisible(true);
+			juego.silenciar();
 			
 		}
 	}

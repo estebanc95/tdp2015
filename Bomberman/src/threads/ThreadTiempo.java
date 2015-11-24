@@ -2,6 +2,8 @@ package threads;
 
 import java.applet.AudioClip;
 
+import javax.print.attribute.standard.Media;
+
 import Gui.PanelInferior;
 
 public class ThreadTiempo extends Thread {
@@ -21,10 +23,6 @@ public class ThreadTiempo extends Thread {
     
     public void run() {
     	while(true) {
-    		/*AudioClip explot;
-			explot = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Explosion.mid"));
-			explot.play();
-			*/
     		try { // Mientras el hilo este activo, cuenta los segundos
     			Thread.sleep(1000);
     			segundos++;

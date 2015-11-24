@@ -1,5 +1,6 @@
 package Gui;
 
+import java.applet.AudioClip;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -38,6 +39,7 @@ public class gui extends JFrame {
 	protected PanelSuperior panelS;
 	protected MenuGUI miPrincipal;
 	protected ThreadTiempo tiempoC;
+	protected AudioClip music;
 	
 	/**
 	 * Constructor de gui
@@ -80,6 +82,8 @@ public class gui extends JFrame {
 		tiempoC.start();
 		ThreadMovimiento tmv = new ThreadMovimiento (n.obtenerBomberman(),this,n);
 		tmv.start();
+		music = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/SongGame.mid"));
+		music.play();
 	}
 	
 	/**
@@ -223,6 +227,7 @@ public class gui extends JFrame {
 	
 	public void silenciar () {
 		tiempoC.silenciar();
+		music.stop();
 	}
 }
 	

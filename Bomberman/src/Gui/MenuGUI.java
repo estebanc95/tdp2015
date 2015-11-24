@@ -77,6 +77,7 @@ public class MenuGUI extends JFrame{
 	 public void gameOver() {
 		 PanelFin pp = new PanelFin (miPrincipal,"/imagenes/GameOver.png");
 		 getContentPane().add(pp);
+		 repaint();
 			
 	 }
 

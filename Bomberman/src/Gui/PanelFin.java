@@ -17,21 +17,13 @@ import javax.swing.JPanel;
 public class PanelFin extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private ImageIcon imagen;
-	private JFrame miPrincipal;
-	private JButtonMod nuevoJuego;
 
 	/**
 	 * Constructor de Panel Perdedor
 	 */
-	public PanelFin (JFrame pr,String ruta) {
-		miPrincipal = pr;
+	public PanelFin (String ruta) {
 		this.setVisible(true);
 		imagen = new ImageIcon(getClass().getResource(ruta));
-		nuevoJuego = new JButtonMod("/imagenes/NewGame.png");
-		nuevoJuego.setBounds(160, 200, 190, 50);
-		OyenteBack ob = new OyenteBack();
-		nuevoJuego.addActionListener(ob);
-		this.add(nuevoJuego);
 	}
 	
 	 public void paint(Graphics g) {
@@ -47,12 +39,6 @@ public class PanelFin extends JPanel {
 	        super.paint(g);
 	    }
 	 
-	 class OyenteBack implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				setVisible(false);
-				miPrincipal.setVisible(true);
-				
-			}
-		}
+	
 }
 

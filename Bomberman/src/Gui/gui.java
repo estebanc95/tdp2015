@@ -98,11 +98,11 @@ public class gui extends JFrame {
 	 * Finaliza el juego
 	 */
 	
-	public void gameOver(){
-		this.setVisible(false);
-		miPrincipal.setVisible(true);
-		miPrincipal.gameOver();
-		music.stop();
+	 public void gameOver() {
+		 FondoFin ff = new FondoFin (miPrincipal,this,"/imagenes/GameOver.png");
+		 ff.setVisible(true);
+		 setVisible(false);
+		 music.stop();
 		}
 	
 	/**
@@ -178,9 +178,10 @@ public class gui extends JFrame {
 	 * Muestra que el jugador gano el Juego
 	 */
 	public void mostrarVictoria() {
-		music.stop();
-		JOptionPane.showMessageDialog(this, "El bomberman ha ganado!.","Bomberman",JOptionPane.INFORMATION_MESSAGE);
-		System.exit(0);
+		 FondoFin ff = new FondoFin (miPrincipal,this,"/imagenes/Win.png");
+		 ff.setVisible(true);
+		 setVisible(false);
+		 music.stop();
 		
 	}
 	

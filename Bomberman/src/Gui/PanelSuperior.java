@@ -73,6 +73,9 @@ public class PanelSuperior extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			juego.silenciar();
 			juego.setFocusable(true);
+			config.setSelected(false);
+			config.setFocusable(false);
+			
 		}
 	}
 	

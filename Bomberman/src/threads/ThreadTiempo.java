@@ -41,9 +41,6 @@ public class ThreadTiempo extends Thread {
     	}    	
     }
     
-    public void silenciar () {
-    	//music.stop();
-    }
 
 }
 

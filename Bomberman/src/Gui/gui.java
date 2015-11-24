@@ -102,6 +102,7 @@ public class gui extends JFrame {
 		this.setVisible(false);
 		miPrincipal.setVisible(true);
 		miPrincipal.gameOver();
+		music.stop();
 		}
 	
 	/**
@@ -177,6 +178,7 @@ public class gui extends JFrame {
 	 * Muestra que el jugador gano el Juego
 	 */
 	public void mostrarVictoria() {
+		music.stop();
 		JOptionPane.showMessageDialog(this, "El bomberman ha ganado!.","Bomberman",JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 		
@@ -226,8 +228,8 @@ public class gui extends JFrame {
 	 */
 	
 	public void silenciar () {
-		tiempoC.silenciar();
 		music.stop();
 	}
+	
 }
 	

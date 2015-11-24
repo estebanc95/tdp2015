@@ -34,7 +34,7 @@ public class PanelInferior extends JPanel {
 	private int totalMassa;
 	private JLabel puntaje,cantPunt;
 	private int totalPunt;
-	private JLabel temp,min,dosp,seg;
+	private JLabel temp,hor,min,dosp,seg;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -153,6 +153,23 @@ public class PanelInferior extends JPanel {
 			temp = new JLabel();
 			temp.setIcon(new ImageIcon(getClass().getResource("/imagenes/timer1.png")));
 			this.add(temp);
+			
+			hor = new JLabel (" 00");
+			InputStream horis=this.getClass().getResourceAsStream("/Font/akbar.ttf");
+			try {
+				hor.setFont(Font.createFont(Font.TRUETYPE_FONT, horis).deriveFont(1, 38));
+			} catch (FontFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			hor.setForeground(Color.YELLOW);
+			this.add(hor);
+			
+			
+			
 			min = new JLabel(" 00");
 			InputStream is=this.getClass().getResourceAsStream("/Font/akbar.ttf");
 			try {
@@ -267,9 +284,15 @@ public class PanelInferior extends JPanel {
 		   * @param segundos segundos a colocar en el panel
 		   */
 		  
-		  public void actualizarTiempo(int minutos, int segundos) {
+		  public void actualizarTiempo(int horas,int minutos, int segundos) {
 			  String minut = Integer.toString(minutos);
 			  String segu = Integer.toString(segundos);
+			  String hora = Integer.toString(horas);
+			  if (horas<10) {
+				  hor.setText(" 0"+hora);
+			  }
+			  else 
+				  hor.setText(" "+hora);
 			  if (minutos<10) {
 			  min.setText(" 0"+minut);
 			  }

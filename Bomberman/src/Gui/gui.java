@@ -36,13 +36,14 @@ public class gui extends JFrame {
 	protected JLayeredPane mapa;
 	protected PanelInferior panelI;
 	protected PanelSuperior panelS;
-	protected JFrame miPrincipal;
+	protected MenuGUI miPrincipal;
+	protected ThreadTiempo tiempoC;
 	
 	/**
 	 * Constructor de gui
 	 */
 	
-	public gui (JFrame p) {
+	public gui (MenuGUI p) {
 		
 		super ("Proyecto X - TECNOLOGIA DE PROGRAMACION - 2015");
 		addKeyListener(new KeyAdapter() {
@@ -75,7 +76,7 @@ public class gui extends JFrame {
 		//this.setUndecorated(true); //SE USA PARA PONER PANTALLA COMPLETA
 		//this.setExtendedState(MAXIMIZED_BOTH); //SE USA PARA PONER PANTALLA COMPLETA
 		n = new Nivel (this);
-		ThreadTiempo tiempoC = new ThreadTiempo (panelI);
+		tiempoC = new ThreadTiempo (panelI);
 		tiempoC.start();
 		ThreadMovimiento tmv = new ThreadMovimiento (n.obtenerBomberman(),this,n);
 		tmv.start();
@@ -94,8 +95,9 @@ public class gui extends JFrame {
 	 */
 	
 	public void gameOver(){
-		JOptionPane.showMessageDialog(this, "Game Over.","Bomberman",JOptionPane.WARNING_MESSAGE);
-		System.exit(0);
+		this.setVisible(false);
+		miPrincipal.setVisible(true);
+		miPrincipal.gameOver();
 		}
 	
 	/**
@@ -213,6 +215,14 @@ public class gui extends JFrame {
 	
 	public void aumentarPuntos (int n) {
 		panelI.aumentarPuntaje(n);
+	}
+	
+	/**
+	 * Silencia la musica de fondo
+	 */
+	
+	public void silenciar () {
+		tiempoC.silenciar();
 	}
 }
 	

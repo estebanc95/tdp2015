@@ -26,13 +26,14 @@ public class PanelSuperior extends JPanel {
 	private ImageIcon imagen;
 	private URL fondo,su;
 	private JButton volver,config;
-	private JFrame principal,juego;
+	private JFrame principal;
+	private gui juego;
 	
 	/**
 	 * Constructor de Panel Superior
 	 */
 	
-	public PanelSuperior (JFrame p, JFrame j) {
+	public PanelSuperior (JFrame p, gui j) {
 		this.setSize(88,126);
 		this.setVisible(true);
 		//fondo = this.getClass().getResource("imagenes/PanelInferior.png");
@@ -51,8 +52,10 @@ public class PanelSuperior extends JPanel {
 		
 		config = new JButton();
 		config.setBorderPainted(false);
-		config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonConfig.png")));
+		config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonSound.png")));
 		config.setContentAreaFilled(false);
+		OyenteSd sd = new OyenteSd();
+		config.addActionListener(sd);
 		this.add(config,BorderLayout.EAST);
 		
 		
@@ -62,6 +65,14 @@ public class PanelSuperior extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 			juego.setVisible(false);
 			principal.setVisible(true);
+			
+		}
+	}
+	
+	class OyenteSd implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			juego.silenciar();
+			juego.setFocusable(true);
 		}
 	}
 	

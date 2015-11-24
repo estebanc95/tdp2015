@@ -77,13 +77,5 @@ public class ThreadEnemigo extends Thread {
 		this.interrupt();
 		activar=false;
 	}
-	
-	/**
-	 * Matar al enemigo
-	 */
-	public void destruir() {
-		this.detener();
-		miEnemigo.morir();
-	}
 
 }

@@ -67,7 +67,7 @@ public class ProcesadorGrafico {
 	}
 	
 	public void agregarExplosion(Explosion e){
-		miGui.miMapa().add(e.obtenerGrafico().obtenerGrafico(),new Integer(7));
+		miGui.miMapa().add(e.obtenerGrafico().obtenerGrafico(),new Integer(9));
 		miGui.miMapa().repaint();
 	}
 	

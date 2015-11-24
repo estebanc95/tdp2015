@@ -2,7 +2,6 @@ package logica;
 
 import Gui.*;
 
-import java.applet.AudioClip;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -363,6 +362,13 @@ public class Nivel {
 	
 	public ProcesadorGrafico procesarGrafico(){
 		return pg;
+	}
+	
+	
+	public void paredDestruida(){
+		bloquesParaGanar--;
+		if (gano())
+			pg.mostrarVictoria();
 	}
 	
 

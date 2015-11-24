@@ -235,7 +235,7 @@ public class gui extends JFrame {
 		if (cantClicks%2==0)
 			music.stop();
 		else 
-			music.play();
+			music.loop();
 		cantClicks++;
 	}
 	

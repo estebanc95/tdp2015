@@ -65,6 +65,7 @@ public class MenuGUI extends JFrame{
 				miGui = new gui(miPrincipal);
 				miPrincipal.setVisible(false);
 				miGui.setVisible(true);
+				nuevoJuego.setEnabled(false);
 			}
 		}
 	 
@@ -73,5 +74,12 @@ public class MenuGUI extends JFrame{
 				System.exit(0);
 			}
 		}
-
+	 
+	 /**
+	  * Activar el boton NEW GAME
+	  */
+	 
+	 public void activarNewGame() {
+		 nuevoJuego.setEnabled(true);
+	 }
 }

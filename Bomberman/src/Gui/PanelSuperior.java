@@ -26,14 +26,14 @@ public class PanelSuperior extends JPanel {
 	private ImageIcon imagen;
 	private URL fondo,su;
 	private JButton volver,config;
-	private JFrame principal;
+	private MenuGUI principal;
 	private gui juego;
 	
 	/**
 	 * Constructor de Panel Superior
 	 */
 	
-	public PanelSuperior (JFrame p, gui j) {
+	public PanelSuperior (MenuGUI p, gui j) {
 		this.setSize(88,126);
 		this.setVisible(true);
 		//fondo = this.getClass().getResource("imagenes/PanelInferior.png");
@@ -66,6 +66,7 @@ public class PanelSuperior extends JPanel {
 			juego.setVisible(false);
 			principal.setVisible(true);
 			juego.silenciarDefin();
+			principal.activarNewGame();
 			
 		}
 	}

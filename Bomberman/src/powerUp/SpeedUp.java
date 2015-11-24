@@ -32,7 +32,6 @@ public class SpeedUp extends PowerUp {
 		AudioClip poweru;
 		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
 		poweru.play();
-		System.out.println("SpeedUp obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

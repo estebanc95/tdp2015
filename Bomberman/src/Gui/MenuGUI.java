@@ -28,7 +28,7 @@ public class MenuGUI extends JFrame{
 	 */
 	
 	public MenuGUI () {
-		super ("Proyecto X - TECNOLOGIA DE PROGRAMACIONS - 2015");
+		super ("Proyecto X - TECNOLOGIA DE PROGRAMACION - 2015");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/IconoJuego.png"));

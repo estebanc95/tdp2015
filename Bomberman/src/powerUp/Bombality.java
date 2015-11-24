@@ -31,7 +31,6 @@ public class Bombality extends PowerUp {
 		AudioClip poweru;
 		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
 		poweru.play();
-		System.out.println("Bombality obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

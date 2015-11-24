@@ -59,14 +59,14 @@ public class ThreadEnemigo extends Thread {
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 		}
 		try {
 			join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 	}

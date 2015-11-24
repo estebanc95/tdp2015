@@ -34,7 +34,6 @@ public class Masacrality extends PowerUp {
 		AudioClip poweru;
 		poweru = java.applet.Applet.newAudioClip(getClass().getResource("/Sounds/Bonus.mid"));
 		poweru.play();
-		System.out.println("Masacrality obtenido.");
 	}
 	
 	public void ubicarEnCelda(Celda c){

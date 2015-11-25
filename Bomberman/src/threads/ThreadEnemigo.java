@@ -36,7 +36,7 @@ public class ThreadEnemigo extends Thread {
 	public void run() {
 		while (activar) {
 			try {
-				sleep(3000);
+				sleep(1000);
 				int direccion = rnd.nextInt(3);
 				switch (direccion) {
 				case 0: {
@@ -49,6 +49,7 @@ public class ThreadEnemigo extends Thread {
 				}
 				case 2: {
 					miEnemigo.moverAbajo();
+					
 					break;
 				}
 				case 3: {

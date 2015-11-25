@@ -1,6 +1,7 @@
 package personaje;
 
 import threads.ThreadEnemigo;
+import threads.ThreadSirius;
 import logica.Nivel;
 import celda.Celda;
 import entidades.SiriusGrafica;
@@ -19,11 +20,12 @@ public class Sirius extends Enemigo {
 	 * Constructor de Sirius
 	 * @param c Celda a la que pertenece
 	 * @param n Nivel al que pertenece
+	 * @param b Bomberman al que debe perseguir
 	 */
-	public Sirius(Celda c,Nivel n){
+	public Sirius(Celda c,Nivel n,Bomberman b){
 		super(c,n,false);
 		miGrafico=new SiriusGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
-		th=new ThreadEnemigo(this);
+		th=new ThreadSirius(this,n,b);
 		th.start();
 	}
 	

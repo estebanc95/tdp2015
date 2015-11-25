@@ -20,7 +20,7 @@ public class Nivel {
 	// Atributos
 	private final int ancho = 31;
 	private final int largo = 13;
-	private final float porcentajeDestructibles = 0.5f;
+	private final float porcentajeDestructibles = 0.1f;
 	protected Celda[][] matrizCeldas;
 	protected Bomberman miBomberman;
 	protected List<Enemigo> enemigos;
@@ -189,7 +189,7 @@ public class Nivel {
 
 		// Creo e inserto a Sirius.
 
-		 Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this);
+		 Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this,miBomberman);
 		 matrizCeldas[ancho - 2][largo - 2].colocar(sr); enemigos.add(sr);
 		 pg.agregarPersonaje(sr);
 		 

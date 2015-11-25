@@ -270,6 +270,7 @@ public class PanelInferior extends JPanel {
 		  
 		  /**
 		   * Incrementa el valor de los puntajes 
+		   * @param n Cantidad a aumentar.
 		   */
 		  
 		  public void aumentarPuntaje(int n) {
@@ -280,6 +281,7 @@ public class PanelInferior extends JPanel {
 		  
 		  /**
 		   * Actualiza el tiempo en el panel inferior
+		   * @param horas a colocar en el panel
 		   * @param minutos minutos a colocar en el panel
 		   * @param segundos segundos a colocar en el panel
 		   */

@@ -20,6 +20,7 @@ public class PanelFin extends JPanel {
 
 	/**
 	 * Constructor de Panel Perdedor
+	 * @param ruta ruta de la imagen.
 	 */
 	public PanelFin (String ruta) {
 		this.setVisible(true);

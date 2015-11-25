@@ -44,6 +44,7 @@ public class gui extends JFrame {
 	
 	/**
 	 * Constructor de gui
+	 * @param p gui del menu.
 	 */
 	
 	public gui (MenuGUI p) {
@@ -219,7 +220,8 @@ public class gui extends JFrame {
 	}
 
 	/**
-	 * Aumenta el powerUp
+	 * Aumenta la puntuación.
+	 * @param n cantidad a aumentar.
 	 */
 	
 	public void aumentarPuntos (int n) {

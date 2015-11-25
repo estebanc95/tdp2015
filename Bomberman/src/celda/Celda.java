@@ -189,7 +189,7 @@ public class Celda {
 	 * 
 	 * @param alcance
 	 *            El alcance restante de la explosion.
-	 * @param i
+	 * @param dir
 	 *            Direcion a la que avanza la explosion. 9 representa punto de
 	 *            origen.
 	 */

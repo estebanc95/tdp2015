@@ -236,7 +236,6 @@ public class Nivel {
 	public void aumentarPuntuacion(int p) {
 		puntuacion += p;
 		pg.aumentarPuntos(p);
-		// miGui.aumentarPuntos(p);
 	}
 
 	/**
@@ -374,6 +373,7 @@ public class Nivel {
 	 */
 	public void paredDestruida() {
 		bloquesParaGanar--;
+		aumentarPuntuacion(10);
 		if (gano())
 			pg.mostrarVictoria();
 	}

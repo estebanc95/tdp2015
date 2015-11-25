@@ -22,13 +22,14 @@ public class Rugulos extends Enemigo {
 	 * @param n Nivel al que pertenece
 	 */
 	public Rugulos(Celda c,Nivel n){
-		super(c,n,false);
+		super(c,n,false,15);
 		miGrafico=new RugulosGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 		th=new ThreadEnemigo(this);
 		th.start();
 	}
 	
 	public void morir(){
+		super.morir();
 		th.detener();
 	}
 	

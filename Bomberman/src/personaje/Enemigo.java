@@ -13,17 +13,20 @@ public abstract class Enemigo extends Personaje {
 	
 	//Atributos
 	protected int velocidad;
+	protected int puntos;
 	
 	/**
 	 * Constructor de Enemigo
 	 * @param c Celda en la que esta el enemigo
 	 * @param n Nivel al que pertenece el enemigo
 	 * @param es Si es un enemigo fantasma
+	 * @param p puntos que otorga al morir
 	 */
 	
-	protected Enemigo(Celda c,Nivel n,boolean es){
+	protected Enemigo(Celda c,Nivel n,boolean es,int p){
 		super(c,n,es);
 		velocidad=16;
+		puntos=p;
 	}
 	
 	/**
@@ -57,7 +60,9 @@ public abstract class Enemigo extends Personaje {
 	/**
 	 * Elimina al enemigo del Nivel
 	 */
-	public abstract void morir();
+	public void morir(){
+		miNivel.aumentarPuntuacion(puntos);
+	}
 	
 
 }

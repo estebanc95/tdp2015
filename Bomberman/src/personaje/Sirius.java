@@ -23,13 +23,14 @@ public class Sirius extends Enemigo {
 	 * @param b Bomberman al que debe perseguir
 	 */
 	public Sirius(Celda c,Nivel n,Bomberman b){
-		super(c,n,false);
+		super(c,n,false,50);
 		miGrafico=new SiriusGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 		th=new ThreadSirius(this,n,b);
 		th.start();
 	}
 	
 	public void morir(){
+		super.morir();
 		th.detener();
 	}
 	

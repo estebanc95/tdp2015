@@ -22,13 +22,14 @@ public class Altair extends Enemigo {
 	 */
 
 	public Altair(Celda c,Nivel n){
-		super(c,n,true);
+		super(c,n,true,20);
 		miGrafico=new AltairGrafica(velocidad,getCelda().getPosX(),getCelda().getPosY());
 		th=new ThreadEnemigo(this);
 		th.start();
 	}
 	
 	public void morir(){
+		super.morir();
 		th.detener();
 	}
 	

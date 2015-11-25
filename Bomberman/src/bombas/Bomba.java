@@ -8,7 +8,7 @@ import logica.Nivel;
 
 /**
  * Clase Bomba. 
- * @author Esteban Federico
+ * @author Esteban Federico Canela y Germán Herrou
  *
  */
 
@@ -42,9 +42,9 @@ public class Bomba {
 
 	/**
 	 * Explota la bomba pasado un tiempo. La explosion se propaga a las celdas adyacentes de acuerdo al alcance.
-	 * 0 arriba, 1 derecha, 2 centro, 3 abajo, 4 izquierda
 	 */
 	public void explotar(){
+		//Caso 9: La bomba exploto en esta ubicación.
 		miCelda.recibirExplosion(alcance,9);
 		
 		

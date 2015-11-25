@@ -155,7 +155,10 @@ public class Celda {
 			miNivel.gameOver();
 		}
 	}
-
+	/**
+	 * Coloca a un enemigo en esta celda, sin considerar el estado actual de la celda.
+	 * @param e Enemigo a colocar.
+	 */
 	public void setEnemigo(Enemigo e) {
 		miEnemigo = e;
 	}
@@ -317,15 +320,22 @@ public class Celda {
 	public PowerUp getPowerUp() {
 		return miPowerUp;
 	}
-
+	/**
+	 * Analiza si hay una bomba en esta celda.
+	 * @return Verdadero si hay una bomba en esta celda, falso en caso contrario.
+	 */
 	public boolean hayBomba() {
 		return hayBomba;
 	}
-
+	/**
+	 * Coloca una bomba en esta celda.
+	 */
 	public void colocarBomba() {
 		hayBomba = true;
 	}
-
+	/**
+	 * Quita la bomba de esta celda, si es que había alguna.
+	 */
 	public void quitarBomba() {
 		hayBomba = false;
 	}

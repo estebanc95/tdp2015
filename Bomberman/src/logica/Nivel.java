@@ -20,7 +20,7 @@ public class Nivel {
 	// Atributos
 	private final int ancho = 31;
 	private final int largo = 13;
-	private final float porcentajeDestructibles = 0.1f;
+	private final float porcentajeDestructibles = 0.5f;
 	protected Celda[][] matrizCeldas;
 	protected Bomberman miBomberman;
 	protected List<Enemigo> enemigos;
@@ -37,7 +37,7 @@ public class Nivel {
 	 */
 	public Nivel(gui guigraf) {
 
-		pg=new ProcesadorGrafico(guigraf);
+		pg = new ProcesadorGrafico(guigraf);
 		puntuacion = 0;
 		rnd = new Random();
 		enemigos = new ArrayList<Enemigo>();
@@ -48,12 +48,13 @@ public class Nivel {
 
 		for (int i = 0; i < 4; i++)
 			listap.add(new SpeedUp(this));
-		
-		for (int i = 0; i < 3; i++) listap.add(new Fatality(this));
-		 
+
+		for (int i = 0; i < 3; i++)
+			listap.add(new Fatality(this));
+
 		for (int i = 0; i < 3; i++)
 			listap.add(new Bombality(this));
-		
+
 		listap.add(new Masacrality(this));
 
 		// Creo una matriz vacía.
@@ -62,20 +63,20 @@ public class Nivel {
 				matrizCeldas[i][j] = null;
 
 		int celdasVacias = ancho * largo;
-		
+
 		// Inicializo los bordes del mapa con paredes indestructibles.
 		for (int i = 0; i < ancho; i++) {
 			matrizCeldas[i][0] = crearPI(i, 0);
 			matrizCeldas[i][largo - 1] = crearPI(i, largo - 1);
 			celdasVacias -= 2;
 			pg.agregarCelda(matrizCeldas[i][0]);
-			pg.agregarCelda(matrizCeldas[i][largo-1]);
+			pg.agregarCelda(matrizCeldas[i][largo - 1]);
 		}
 		for (int j = 0; j < largo; j++) {
 			matrizCeldas[0][j] = crearPI(0, j);
 			matrizCeldas[ancho - 1][j] = crearPI(ancho - 1, j);
 			pg.agregarCelda(matrizCeldas[0][j]);
-			pg.agregarCelda(matrizCeldas[ancho-1][j]);
+			pg.agregarCelda(matrizCeldas[ancho - 1][j]);
 			celdasVacias -= 2;
 		}
 
@@ -84,20 +85,18 @@ public class Nivel {
 		matrizCeldas[1][1] = crearPiso(1, 1);
 		matrizCeldas[1][2] = crearPiso(1, 2);
 		matrizCeldas[2][1] = crearPiso(2, 1);
-		
+
 		pg.agregarCelda(matrizCeldas[1][1]);
 		pg.agregarCelda(matrizCeldas[1][2]);
 		pg.agregarCelda(matrizCeldas[2][1]);
 
-
 		matrizCeldas[ancho - 2][largo - 2] = crearPiso(ancho - 2, largo - 2);
 		matrizCeldas[ancho - 3][largo - 2] = crearPiso(ancho - 3, largo - 2);
 		matrizCeldas[ancho - 2][largo - 3] = crearPiso(ancho - 2, largo - 3);
-		
-		pg.agregarCelda(matrizCeldas[ancho-2][largo-2]);
-		pg.agregarCelda(matrizCeldas[ancho-3][largo-2]);
-		pg.agregarCelda(matrizCeldas[ancho-2][largo-3]);
 
+		pg.agregarCelda(matrizCeldas[ancho - 2][largo - 2]);
+		pg.agregarCelda(matrizCeldas[ancho - 3][largo - 2]);
+		pg.agregarCelda(matrizCeldas[ancho - 2][largo - 3]);
 
 		celdasVacias -= 6;
 
@@ -108,10 +107,9 @@ public class Nivel {
 				pg.agregarCelda(matrizCeldas[i][j]);
 				celdasVacias--;
 			}
-		
-		int rx=0;
-		int ry=0;
-		
+
+		int rx = 0;
+		int ry = 0;
 
 		// Estimo cuantas paredes destructibles debo colocar
 		int destruiblesRestantes = (int) (celdasVacias * porcentajeDestructibles);
@@ -136,9 +134,7 @@ public class Nivel {
 				celdasVacias--;
 			}
 		}
-		
-		
-		
+
 		// Coloco a los enemigos en lugares aleatorios
 		int cantRugulos = 3;
 		while (cantRugulos > 0) {
@@ -154,7 +150,6 @@ public class Nivel {
 				cantRugulos--;
 			}
 		}
-		
 
 		int cantAltair = 2;
 		while (cantAltair > 0) {
@@ -189,10 +184,11 @@ public class Nivel {
 
 		// Creo e inserto a Sirius.
 
-		 Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this,miBomberman);
-		 matrizCeldas[ancho - 2][largo - 2].colocar(sr); enemigos.add(sr);
-		 pg.agregarPersonaje(sr);
-		 
+		Sirius sr = new Sirius(matrizCeldas[ancho - 2][largo - 2], this,
+				miBomberman);
+		matrizCeldas[ancho - 2][largo - 2].colocar(sr);
+		enemigos.add(sr);
+		pg.agregarPersonaje(sr);
 
 	}
 
@@ -240,7 +236,7 @@ public class Nivel {
 	public void aumentarPuntuacion(int p) {
 		puntuacion += p;
 		pg.aumentarPuntos(p);
-		//miGui.aumentarPuntos(p);
+		// miGui.aumentarPuntos(p);
 	}
 
 	/**
@@ -249,13 +245,11 @@ public class Nivel {
 	 * @param c
 	 *            La celda cuya adyacente se desea conocer.
 	 * @param x
-	 *            Direccion de la celda adyacente. A: arriba B: abajo D: derecha
-	 *            I:izquierda
+	 *            Direccion de la celda adyacente.
 	 * @return La celda correspondiente a la direccion, null si la direccion no
 	 *         es valida.
 	 */
 	public Celda getAdyacente(Celda c, int x) {
-		//0 arriba, 1 derecha, 2 abajo, 3 izquierda
 		switch (x) {
 		case 0:
 			return matrizCeldas[c.getPosX()][c.getPosY() - 1];
@@ -281,10 +275,10 @@ public class Nivel {
 	 *            Enemigo a quitar.
 	 */
 	public void destruirEnemigo(Enemigo e) {
-		if(e!=null){
-		e.morir();
-		enemigos.remove(e);
-		pg.quitarPersonaje(e);
+		if (e != null) {
+			e.morir();
+			enemigos.remove(e);
+			pg.quitarPersonaje(e);
 		}
 	}
 
@@ -295,9 +289,15 @@ public class Nivel {
 	public void gameOver() {
 		pg.gameOver();
 	}
+
 	/**
-	 * Mueve el personaje jugador a partir de una direccion definida por el ususario.
-	 * @param direccion Direccion en la que el personaje se debe mover. 0: Derecha 1: Izquierda 2:Arriba 3:Abajo. No esta definido para otra direccion
+	 * Mueve el personaje jugador a partir de una direccion definida por el
+	 * ususario.
+	 * 
+	 * @param direccion
+	 *            Direccion en la que el personaje se debe mover. 0: Derecha 1:
+	 *            Izquierda 2:Arriba 3:Abajo. No esta definido para otra
+	 *            direccion
 	 */
 
 	public void moverPersonaje(int direccion) {
@@ -316,24 +316,28 @@ public class Nivel {
 			break;
 		}
 	}
-	
-	//Creadores de celdas.
+
+	// Creadores de celdas.
 	/**
 	 * Crea un piso en la celda
-	 * @param x Posicion X
-	 * @param y Posicion Y 
+	 * 
+	 * @param x
+	 *            Posicion X
+	 * @param y
+	 *            Posicion Y
 	 * @return
 	 */
 	private Celda crearPiso(int x, int y) {
 		return new Celda(x, y, this);
 
 	}
-	
+
 	/**
 	 * Crea una pared indestructible en la celda
-	 * @param x Posicion X 
+	 * 
+	 * @param x Posicion X
 	 * @param y Posicion Y
-	 * @return
+	 * @return Celda con pared destructible.
 	 */
 
 	private Celda crearPI(int x, int y) {
@@ -342,35 +346,36 @@ public class Nivel {
 		return c;
 
 	}
-	
+
 	/**
 	 * Crea una pared destructible en la celda
-	 * @param x Posicion X 
+	 * 
+	 * @param x Posicion X
 	 * @param y Posicion Y
 	 * @param p PowerUp que contendrar la pared indestructible
-	 * @return
+	 * @return Celda con pared indestructible.
 	 */
 
-	
 	private Celda crearPD(int x, int y, PowerUp p) {
 		Celda c = new Celda(x, y, p, this);
 		c.setEstructura(new ParedDestructible(c));
 		return c;
 
 	}
-	
-	
-	public ProcesadorGrafico procesarGrafico(){
+	/**
+	 * Retorna el procesador grafico del nivel.
+	 * @return Procesador gráfico del nivel.
+	 */
+	public ProcesadorGrafico procesarGrafico() {
 		return pg;
 	}
-	
-	
-	public void paredDestruida(){
+	/**
+	 * Notifica al nivel de la destrucción de una pared.
+	 */
+	public void paredDestruida() {
 		bloquesParaGanar--;
 		if (gano())
 			pg.mostrarVictoria();
 	}
-	
-
 
 }

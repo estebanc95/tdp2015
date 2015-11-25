@@ -10,20 +10,31 @@ import logica.Nivel;
 import celda.Celda;
 import personaje.Bomberman;
 import personaje.Sirius;
-
+/**
+ * Clase ThreadSirius
+ * @author Germán Herrou, Esteban Federico Canela
+ *
+ */
 public class ThreadSirius extends ThreadEnemigo {
 
 	protected Nivel miNivel;
 	protected Bomberman miBomberman;
 	protected Celda celdaAnterior;
-
+	/**
+	 * Constructor ThreadSirius
+	 * @param s Sirius que se mueve.
+	 * @param n Nivel en el que se mueve.
+	 * @param b Bomberman al que persigue.
+	 */
 	public ThreadSirius(Sirius s, Nivel n, Bomberman b) {
 		super(s);
 		miNivel = n;
 		miBomberman = b;
 		celdaAnterior = s.getCelda();
 	}
-
+	/**
+	 * Comienza a correr el hilo.
+	 */
 	public void run() {
 		List<Integer> dir = dirPrioridad();
 		while (activar) {

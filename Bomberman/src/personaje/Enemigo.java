@@ -35,7 +35,6 @@ public abstract class Enemigo extends Personaje {
 		return velocidad;
 	}
 	
-	//Ubicaciones adyacentes: 0 arriba, 1 derecha, 2 centro, 3 abajo, 4 izquierda
 		public void moverArriba(){
 			miNivel.getAdyacente(miCelda,Direccion.ARRIBA).atravesar(this,Direccion.ARRIBA);
 		}

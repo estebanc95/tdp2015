@@ -5,14 +5,21 @@ import java.applet.AudioClip;
 import javax.print.attribute.standard.Media;
 
 import Gui.PanelInferior;
-
+/**
+ * Clase ThreadTiempo
+ * @author Esteban Federico Canela, Germán Herrou
+ *
+ */
 public class ThreadTiempo extends Thread {
 	protected int segundos;
 	protected int minutos;
 	protected int horas;
 	
 	protected PanelInferior panel;
-
+	/**
+	 * Costructor ThreadTiempo.
+	 * @param pi Panel en el que se visualiza el tiempo.
+	 */
     public ThreadTiempo (PanelInferior pi) {
     	this.segundos = 00;
     	this.minutos = 00;
@@ -20,7 +27,9 @@ public class ThreadTiempo extends Thread {
     	this.panel = pi;
     }
     
-    
+    /**
+     * Comienza a correr el hilo.
+     */
     public void run() {
     	while(true) {
     		try { // Mientras el hilo este activo, cuenta los segundos

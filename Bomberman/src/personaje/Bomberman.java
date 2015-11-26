@@ -58,11 +58,12 @@ public class Bomberman extends Personaje {
 	 */
 	
 	public Bomba colocarBomba(){
-		if (!esFantasma()&&maxBombas-bColocadas<=0)
+		if ((!esFantasma()&&maxBombas-bColocadas<=0)||miCelda.hayBomba())
 			return null;
 		else{
 			Bomba bm = new Bomba(getNivel(),alcance,getCelda(),this);
-			bColocadas++;
+			if (!esFantasma()) 
+				bColocadas++;
 			miCelda.colocarBomba();
 			return bm;
 		}

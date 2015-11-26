@@ -1,5 +1,7 @@
 package threads;
 
+import herramientas.Pair;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +47,7 @@ public class ThreadSirius extends ThreadEnemigo {
 		List<Integer> dir = dirPrioridad();
 		while (activar) {
 			try {
-				sleep(2000);
+				sleep(800);
 			} catch (InterruptedException e) {
 			}
 
@@ -54,22 +56,18 @@ public class ThreadSirius extends ThreadEnemigo {
 			switch (direccion) {
 			case Direccion.ARRIBA: {
 				miEnemigo.moverArriba();
-				System.out.println("Se movio arriba.");
 				break;
 			}
 			case Direccion.DERECHA: {
 				miEnemigo.moverDerecha();
-				System.out.println("Se movio derecha.");
 				break;
 			}
 			case Direccion.ABAJO: {
 				miEnemigo.moverAbajo();
-				System.out.println("Se movio abajo.");
 				break;
 			}
 			case Direccion.IZQUIERDA: {
 				miEnemigo.moverIzquierda();
-				System.out.println("Se movio izquierda.");
 				break;
 			}
 			}
@@ -83,50 +81,33 @@ public class ThreadSirius extends ThreadEnemigo {
 
 	private List<Integer> dirPrioridad() {
 
-		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		PriorityQueue<Pair> pq = new PriorityQueue<Pair>();
 		List<Integer> res = new LinkedList<Integer>();
 
 		Celda celdaSirius = miEnemigo.getCelda();
 		
 		int up = distancia(
-				miNivel.getAdyacente(celdaSirius, Direccion.IZQUIERDA),
+				miNivel.getAdyacente(celdaSirius, Direccion.ARRIBA),
 				miBomberman.getCelda());
 		
-		int left = distancia(miNivel.getAdyacente(celdaSirius, Direccion.ARRIBA),
+		int left = distancia(miNivel.getAdyacente(celdaSirius, Direccion.IZQUIERDA),
 				miBomberman.getCelda());
-		
-		if(up==left)
-			left++;
 		
 		int right = distancia(
 				miNivel.getAdyacente(celdaSirius, Direccion.DERECHA),
 				miBomberman.getCelda());
 		
-		while(right==up||right==left)
-			right++;
-		
 		int down = distancia(
 				miNivel.getAdyacente(celdaSirius, Direccion.ABAJO),
 				miBomberman.getCelda());
 		
-		while(down==up||down==left||down==right)
-			down++;
-		
-		
-
-		pq.add(up);
-		pq.add(down);
-		pq.add(left);
-		pq.add(right);
-
-		HashMap<Integer, Integer> h = new HashMap<Integer, Integer>();
-		h.put(down, Direccion.ABAJO);
-		h.put(left, Direccion.IZQUIERDA);
-		h.put(up, Direccion.ARRIBA);
-		h.put(right, Direccion.DERECHA);
+		pq.add(new Pair(up,Direccion.ARRIBA));
+		pq.add(new Pair(left,Direccion.IZQUIERDA));
+		pq.add(new Pair(right,Direccion.DERECHA));
+		pq.add(new Pair(down,Direccion.ABAJO));
 
 		for (int i = 0; i < 4; i++) {
-			res.add(h.get(pq.poll()));
+			res.add(pq.poll().gete2());
 		}
 
 		return res;
@@ -143,18 +124,4 @@ public class ThreadSirius extends ThreadEnemigo {
 		return celdaAnterior != miEnemigo.getCelda();
 	}
 
-	private int opuesto(int x) {
-		switch (x) {
-		case Direccion.ARRIBA:
-			return Direccion.ABAJO;
-		case Direccion.ABAJO:
-			return Direccion.ARRIBA;
-		case Direccion.DERECHA:
-			return Direccion.IZQUIERDA;
-		case Direccion.IZQUIERDA:
-			return Direccion.DERECHA;
-		default:
-			return -1;
-		}
-	}
 }

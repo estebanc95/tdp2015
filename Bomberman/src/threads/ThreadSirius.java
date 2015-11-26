@@ -36,6 +36,12 @@ public class ThreadSirius extends ThreadEnemigo {
 	 * Comienza a correr el hilo.
 	 */
 	public void run() {
+		try {
+			sleep(1000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		List<Integer> dir = dirPrioridad();
 		while (activar) {
 			try {
@@ -81,17 +87,32 @@ public class ThreadSirius extends ThreadEnemigo {
 		List<Integer> res = new LinkedList<Integer>();
 
 		Celda celdaSirius = miEnemigo.getCelda();
-		int up = distancia(miNivel.getAdyacente(celdaSirius, Direccion.ARRIBA),
-				miBomberman.getCelda());
-		int down = distancia(
-				miNivel.getAdyacente(celdaSirius, Direccion.ABAJO),
-				miBomberman.getCelda());
-		int left = distancia(
+		
+		int up = distancia(
 				miNivel.getAdyacente(celdaSirius, Direccion.IZQUIERDA),
 				miBomberman.getCelda());
+		
+		int left = distancia(miNivel.getAdyacente(celdaSirius, Direccion.ARRIBA),
+				miBomberman.getCelda());
+		
+		if(up==left)
+			left++;
+		
 		int right = distancia(
 				miNivel.getAdyacente(celdaSirius, Direccion.DERECHA),
 				miBomberman.getCelda());
+		
+		while(right==up||right==left)
+			right++;
+		
+		int down = distancia(
+				miNivel.getAdyacente(celdaSirius, Direccion.ABAJO),
+				miBomberman.getCelda());
+		
+		while(down==up||down==left||down==right)
+			down++;
+		
+		
 
 		pq.add(up);
 		pq.add(down);

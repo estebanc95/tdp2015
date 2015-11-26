@@ -38,6 +38,7 @@ public class Nivel {
 	public Nivel(gui guigraf) {
 
 		pg = new ProcesadorGrafico(guigraf);
+		pg.seleccionarTipoGrafico();
 		puntuacion = 0;
 		rnd = new Random();
 		enemigos = new ArrayList<Enemigo>();

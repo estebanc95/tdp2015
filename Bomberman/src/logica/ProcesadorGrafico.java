@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.Random;
+
 import personaje.Personaje;
 import powerUp.PowerUp;
 import threads.ThreadBomba;
@@ -7,6 +9,7 @@ import threads.ThreadExplosionGrafica;
 import bombas.Bomba;
 import bombas.Explosion;
 import celda.Celda;
+import entidades.CeldaIndestructibleGrafica;
 import Gui.gui;
 
 public class ProcesadorGrafico {
@@ -161,6 +164,14 @@ public class ProcesadorGrafico {
 	 */
 	public void aumentarMasacrality() {
 		miGui.aumentarMasacrality();
+	}
+	
+	/**
+	 * Selecciona al azar un tipo de pared indestructible
+	 */
+	
+	public void seleccionarTipoGrafico(){
+		CeldaIndestructibleGrafica.seleccionarTipoGrafico();	
 	}
 
 }

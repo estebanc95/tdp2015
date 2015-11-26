@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  */
 public class CeldaIndestructibleGrafica extends CeldaGrafica {
 	
-	private static final int tipo=new Random().nextInt(3);
+	private static int tipo=new Random().nextInt(3);
 	
 	/**
 	 * Constructor de CeldaIndestructibleGrafica
@@ -37,5 +37,11 @@ public class CeldaIndestructibleGrafica extends CeldaGrafica {
 		}
 	}
 	
+	/**
+	 * Selecciona al azar un tipo de pared indestructible
+	 */
 	
+	public static void seleccionarTipoGrafico(){
+		tipo=new Random().nextInt(3);	
+	}
 }

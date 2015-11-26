@@ -27,11 +27,10 @@ public class ThreadMasacrality extends Thread {
 	public void run(){
 		try {
 			miBomberman.setFantasma(true);
-			System.out.println("Inicio modo dios.");
 			sleep(duracion);
 			miBomberman.setFantasma(false);
-			System.out.println("Fin modo dios.");
 			this.interrupt();
+			miBomberman.getNivel().procesarGrafico().desactivarMassa();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

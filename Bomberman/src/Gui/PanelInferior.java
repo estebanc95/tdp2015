@@ -110,7 +110,7 @@ public class PanelInferior extends JPanel {
 			//MASACRALITY
 			
 			massacrality = new JLabel();
-			this.massacrality.setIcon(new ImageIcon(getClass().getResource("/imagenes/MasacralityPI.png")));
+			this.massacrality.setIcon(new ImageIcon(getClass().getResource("/imagenes/MasacralityPIOff.png")));
 			this.add(massacrality);
 			totalMassa=0;
 			cantMa= new JLabel(" 0 ");
@@ -263,6 +263,7 @@ public class PanelInferior extends JPanel {
 		   */
 		  
 		  public void aumentarMasacrality() {
+			  this.massacrality.setIcon(new ImageIcon(getClass().getResource("/imagenes/MasacralityPI.png")));
 			  totalMassa++;
 			  String tot = Integer.toString(totalMassa);
 			  cantMa.setText(" "+tot+" ");
@@ -308,5 +309,13 @@ public class PanelInferior extends JPanel {
 				  seg.setText(segu);
 			  
 		  }
+		  
+		/**
+		 * Desactiva el icono del Massacrality
+		 */
+		  
+		public void desactivarMassa() {
+			this.massacrality.setIcon(new ImageIcon(getClass().getResource("/imagenes/MasacralityPIOff.png")));
+		}
 }
 

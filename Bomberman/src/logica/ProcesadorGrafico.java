@@ -173,5 +173,12 @@ public class ProcesadorGrafico {
 	public void seleccionarTipoGrafico(){
 		CeldaIndestructibleGrafica.seleccionarTipoGrafico();	
 	}
+	
+	/**
+	 * Desactiva el icono del Massacrality
+	 */
+	public void desactivarMassa() {
+		miGui.desactivarMassa();
+	}
 
 }

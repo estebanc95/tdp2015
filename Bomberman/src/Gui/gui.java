@@ -248,5 +248,12 @@ public class gui extends JFrame {
 		music.stop();
 	}
 	
+	/**
+	 * Desactiva el icono del Massacrality
+	 */
+	
+	public void desactivarMassa() {
+		panelI.desactivarMassa();
+	}
 }
 	

@@ -248,8 +248,10 @@ public class Celda {
 	 */
 
 	public void matarPersonaje() {
-		if (miBomberman != null&&!miBomberman.esFantasma())
+		if (miBomberman != null&&!miBomberman.esFantasma()) {
+			miBomberman=null;
 			miNivel.gameOver();
+		}
 		miNivel.destruirEnemigo(miEnemigo);
 		miEnemigo = null;
 	}

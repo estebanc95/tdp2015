@@ -31,7 +31,7 @@ public class PanelSuperior extends JPanel {
 	
 	/**
 	 * Constructor de Panel Superior
-	 * @param p gui del menu.
+	 * @param p Menu gui del menu.
 	 * @param j gui del mapa.
 	 */
 	

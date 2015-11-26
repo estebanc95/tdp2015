@@ -10,6 +10,11 @@ import javax.swing.ImageIcon;
 public class AltairGrafica extends EntidadGrafica {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructor de AltairGrafica, establece las imagenes del Altair
 	 * @param vel velocidad del personaje
 	 * @param x ubicacion del personaje en pos x

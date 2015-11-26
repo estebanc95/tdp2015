@@ -1,6 +1,5 @@
 package entidades;
 
-import java.applet.AudioClip;
 import java.awt.Point;
 
 import javax.swing.Icon;

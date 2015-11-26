@@ -12,6 +12,11 @@ import logica.Direccion;
 public class BombermanGrafico extends EntidadGrafica {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructor de Bomberman Grafico
 	 * @param vel velocidad del personaje
 	 * @param x posicion X

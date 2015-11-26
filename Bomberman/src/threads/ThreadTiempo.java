@@ -1,9 +1,5 @@
 package threads;
 
-import java.applet.AudioClip;
-
-import javax.print.attribute.standard.Media;
-
 import Gui.PanelInferior;
 /**
  * Clase ThreadTiempo

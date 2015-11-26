@@ -2,7 +2,6 @@ package threads;
 
 import herramientas.Pair;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -44,13 +43,14 @@ public class ThreadSirius extends ThreadEnemigo {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		//Calculo las prioridades en orden.
 		List<Integer> dir = dirPrioridad();
 		while (activar) {
 			try {
 				sleep(800);
 			} catch (InterruptedException e) {
 			}
-
+			//Intento moverme en la dirección con mayor prioridad.
 			int direccion = dir.remove(0);
 
 			switch (direccion) {
@@ -71,7 +71,7 @@ public class ThreadSirius extends ThreadEnemigo {
 				break;
 			}
 			}
-
+			//Si pudo moverme, vuelvo a calcular las distancias para la nueva celda.
 			if (pudoMoverse() || dir.isEmpty()) {
 				dir = dirPrioridad();
 			}
